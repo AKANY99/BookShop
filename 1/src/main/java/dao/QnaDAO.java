@@ -20,45 +20,6 @@ public class QnaDAO {
 	public void setCon(Connection con) {
 		this.con = con;
 	}
-	public ArrayList<QnaDTO> getQnaList(int pageNum, int listLimit, String type) {
-		ArrayList<QnaDTO> list = new ArrayList<QnaDTO>();
-		QnaDTO qna = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = null;
-		int startRow = (pageNum - 1) * listLimit;
-		
-		try {
-						
-				sql = "SELECT * FROM qna WHERE qna_type = ? AND qna_rep IS NULL ORDER BY qna_date DESC LIMIT ?,?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, type);
-				pstmt.setInt(2, startRow);
-				pstmt.setInt(3, listLimit);
-
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				qna = new QnaDTO();
-				qna.setQna_num(rs.getInt("qna_num"));
-				qna.setQna_user(rs.getString("qna_user"));
-				qna.setQna_subject(rs.getString("qna_subject"));
-				qna.setQna_content(rs.getString("qna_content"));
-				qna.setQna_date(rs.getDate("qna_date"));
-				qna.setQna_pd_num(rs.getInt("qna_pd_num"));
-				qna.setQna_user_email(rs.getString("qna_user_email"));
-				qna.setQna_type(rs.getString("qna_type"));
-				list.add(qna);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("getQnaList 구문 오류"+e.getMessage());
-		}finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
 	public QnaDTO getQna(int qna_num) {
 		
 		PreparedStatement pstmt = null;
@@ -206,6 +167,52 @@ public class QnaDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return list;
+	}
+	public ArrayList<QnaDTO> getQnaList(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate, String endDate) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+		ArrayList<QnaDTO> list = null;
+		try {
+			String sql = "";
+			if(qna_rep.equals("repno")){
+				sql = "SELECT * FROM qna WHERE qna_date >= ? AND qna_date <= ? AND  qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NULL ORDER BY qna_date "+orderBy;
+				}else{
+				sql = "SELECT * FROM qna WHERE qna_date >= ? AND qna_date <= ? AND qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NOT NULL ORDER BY qna_date "+orderBy;
+				}
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, startDate);
+			pstmt.setString(2, endDate);
+			pstmt.setString(3, searchObject);
+			rs = pstmt.executeQuery();
+			
+			QnaDTO dto = null;
+			list = new ArrayList<QnaDTO>();
+				while(rs.next()){
+					dto = new QnaDTO();
+					dto.setQna_num(rs.getInt("qna_num"));
+					dto.setQna_user(rs.getString("qna_user"));
+					dto.setQna_subject(rs.getString("qna_subject"));
+					dto.setQna_content(rs.getString("qna_content"));
+					dto.setQna_date(rs.getDate("qna_date"));
+					dto.setQna_pd_num(rs.getInt("qna_pd_num"));
+					dto.setQna_user_email(rs.getString("qna_user_email"));
+					dto.setQna_type(rs.getString("qna_type"));
+					dto.setQna_rep(rs.getString("qna_rep"));
+					
+					list.add(dto);
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("getQnaList 구문 에러");
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
 		return list;
 	}
 	
