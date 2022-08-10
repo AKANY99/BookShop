@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+p {
+	color: #444444;
+	margin: 20px 110px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.product_seach {
+	margin: 0 100px;
+	padding: 0 20px;
+	padding-top: 5px;
+	box-shadow: 0.5px 0.5px 10px #c8c8c8;
+	box-shadow: -0.5px -0.5px 10px #d4d4d4;
+	border-radius:20px;
+	height: 250px;
+}
+
+.product_seach > .search_requirement {
+	color: #a1a1a1;
+	font-weight: bold;
+	margin: 10px 6px;
+}
+
+.product_seach > .cell {
+	font-size:13px;
+	margin-left: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-weight: bold;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.cell > .container {
+	width: 300px;
+	height: 10px;
+}
+
+
+
+.input-group-addon, .input-group-text {
+    border-left: 0 none;
+    padding: 2px 7px 2px 7px;
+}
+
+.input-group-addon .glyphicon-calendar:before, .input-group-text .datePicker-calendar:before{
+    content: " ";
+    background: url(/assets/images/buttons/btn_calendar.png) center center no-repeat;
+    display: block;
+    overflow: hidden;
+}
+
+
+

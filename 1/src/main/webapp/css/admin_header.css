@@ -1,0 +1,83 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	position: relative;
+	background: #6c96ec;
+	border-bottom: 2px solid #696969;
+	display: flex;
+	height: 70px;
+	clear: both;
+	justify-content: center;
+    align-items: center;
+}
+
+span {
+	font-weight: bold;
+	position: absolute;
+	color: #000000;
+	left: 30px;
+}
+
+span:hover {
+  color: #dedede;
+}
+
+/* https://cssbuttons.app/buttons/36 활용 */
+.to_main {
+	position: absolute;
+	right: 130px;
+	top: 18.8px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 13px;
+	font-weight: 500;
+	font-size: 13px;
+	text-align: justify;
+	text-decoration: none;
+	color: #000000;
+	backface-visibility: hidden;
+	border: 3px solid transparent;
+	border-radius: 3rem;
+}
+
+.admin_logout {
+	position: absolute;
+	right: 30px;
+	top: 18.8px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 13px;
+	font-weight: 500;
+	font-size: 13px;
+	text-align: justify;
+	text-decoration: none;
+	color: #000000;
+	backface-visibility: hidden;
+	border: 3px solid transparent;
+	border-radius: 3rem;
+}
+
+.header_btn {
+	font-weight: bold;
+	border-color: #383838;
+	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+
+.header_btn:hover {
+	font-weight: bold;
+	border-color: #fafafa;
+	background: #050505;
+	transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
+/* https://cssbuttons.app/buttons/36 활용 */
+
+
+
+
+

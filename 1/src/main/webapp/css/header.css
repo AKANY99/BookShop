@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+/* 걍 전체 부분 =====================*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* 헤더 전체 부분 =====================*/
+header {
+	/* 크기(차지하는 부분) */
+	height: 200px;
+	
+	background-color: rebeccapurple;
+	margin-bottom: 10px;
+	clear: both; /* -float 컷- */
+}
+
+/* 헤더 top 부분 =====================*/
+header>.header_top{
+	height: 40px;
+	background-color: cadetblue;
+	clear: both; /* -float 컷- */
+}
+header>.header_top>nav{
+	height: 40px; width: 900px;
+	margin: 0px auto; /* 중앙 정렬 */
+/* 	background-color: white; */
+}
+header>.header_top>nav>ul{
+	float:right; /* 오른쪽으로 정렬 */
+}
+header>.header_top>nav>ul>li{
+	display: inline-block; /* 줄 바꿈 기능 해제(?) */
+	
+	line-height: 40px; /* 세로 가운데 맞추기 위함 */
+	/* 폰트 속성 */
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+}
+
+header>.header_top>nav>ul>li>a{
+	height: 40px;
+	display:block;
+	text-decoration: none; /* <a>특유의 밑줄 삭제  */
+}
+header>.header_top>nav>ul>li>a:link,
+header>.header_top>nav>ul>li>a:visited {
+	color: #000; /* <a>기본 상태 색깔 */ }
+header>.header_top>nav>ul>li>a:hover,
+header>.header_top>nav>ul>li>a:active {
+	color: #666; /* <a>마우스 올렸을 때 색깔 */}
+
+/* 헤더 mid 부분 =====================*/
+header>.header_mid{
+	/* 크기(차지하는 부분) */
+	height: 120px;
+	
+	background-color: cornflowerblue;
+	clear: both; /* -float 컷- */
+}
+header>.header_mid>nav{
+	height: 120px; width: 900px;
+	margin: 0px auto; /* 중앙 정렬 */
+/* 	background-color: white; */
+}
+header>.header_mid>nav>ul{
+	float: left;
+	height: 120px; width: 900px;
+}
+header>.header_mid>nav>ul>li{
+	display: inline-block; /* 줄 바꿈 기능 해제(?) */
+/* 	height: 120px; */
+/* 	margin: 0px auto; 중앙 정렬 */
+/* 	overflow: inherit;위치 */
+	vertical-align: middle;
+	margin-right: 25px; 
+}
+header>.header_mid>nav>ul>li>.serch_area{ /* 검색창 */
+	/* 위치 */
+/* 	position:relative; */
+/* 	top: -30px; */
+	/* 속성 */
+	display: inline-block;
+	
+}
+header>.header_mid>nav>ul>li>.serch_area
+.serch_input {
+	border: none; /* 상자 테두리 네모나게 만들기 */
+	
+	padding: 6px;
+	font-size: 17px;
+}
+header>.header_mid>nav>ul>li>.serch_area
+.serch_submit {
+	border: none; /* 상자 테두리 네모나게 만들기 */
+	
+	float: right;
+	padding: 6px 9px;
+	margin-right: 16px;
+	background: #ddd;
+	font-size: 17px;
+	cursor: pointer;
+}
+header>.header_mid>nav>ul>li>.serch_area>
+.serch_submit:hover {
+	background: #ccc;
+}
+
+header>.header_mid>nav>ul>li>.login_form{ /* 검색창 */
+	/* 위치 */
+/* 	position:relative; */
+/* 	top: -20px; */
+	/* 속성 */
+	display: inline-block;
+}
+
+header>.header_mid>nav>ul>li>.login_form input[type=submit]{ /* 검색창 */
+	/* 위치 */
+/* 	position:relative; */
+/* 	top: -20px; */
+	/* 속성 */
+	width: 45px; 
+	height: 36px;
+	border: none;
+	
+}
+
+header>.header_mid>nav>ul>li>.login_form
+input[type=submit]:hover{ /* 검색창 */
+	/* 위치 */
+/* 	position:relative; */
+/* 	top: -20px; */
+	/* 속성 */
+	font-weight: bold;
+	background-color: gray;
+	color: white;
+	cursor: pointer;
+}
+
+/* 헤더 bot 부분 =====================*/
+header>.header_bot{
+	height: 40px;
+	
+	background-color: darkslategrey;
+	clear: both; /* -float 컷- */
+}
+
+header>.header_bot>nav{
+	height: 40px; width: 900px;
+	margin: 0px auto; /* 중앙 정렬 */
+/* 	background-color: white; */
+}
+header>.header_bot>nav>ul{
+	float:left; /* 왼쪽으로 정렬 */
+}
+header>.header_bot>nav>ul>li{
+	display: inline-block; /* 줄 바꿈 기능 해제(?) */
+	
+	line-height: 40px; /* 세로 가운데 맞추기 위함 */
+	border-left: 6px solid black;
+	padding-right: 6px;
+
+	/* 폰트 속성 */
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+}
+header>.header_bot>nav>ul>li>a{
+	height: 40px;
+	display:block;
+	text-decoration: none; /* <a>특유의 밑줄 삭제  */
+}
+header>.header_bot>nav>ul>li>a:link,
+header>.header_bot>nav>ul>li>a:visited {
+	color: #fff; /* <a>기본 상태 색깔 */ }
+header>.header_bot>nav>ul>li>a:hover,
+header>.header_bot>nav>ul>li>a:active {
+	color: #999; /* <a>마우스 올렸을 때 색깔 */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

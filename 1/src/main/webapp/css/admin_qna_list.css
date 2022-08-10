@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+
+
+h1{
+	font-size: 30px;
+}
+
+.qna_option{
+	margin-left:30px;
+	margin-right:30px;
+	border: 0.8px solid;
+	border-radius:20px;
+	margin-top: 60px;
+	height: 300px;
+}
+.qna_option_subject{
+	padding-left: 10px;	
+}
+
+.qna_option_content{
+	width:90%;
+	padding-top:20px;
+	padding-left:20px;
+	height: 100%;
+	margin: auto 60px auto 60px;
+	border-radius: 20px;
+}
+
+.option_first{
+	height:35px;
+    float: left;
+    width:15%;
+    box-sizing: border-box;
+    margin-bottom: 10px
+}
+.option_second{
+	height:35px;
+    float: left;
+    width:42.5%;
+    box-sizing: border-box;
+    margin-bottom: 10px
+}
+.option_third{
+	height:35px;
+    float: left;
+    width:42.5%;
+    box-sizing: border-box;
+    margin-bottom: 10px
+}

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+body {
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 400;
+	background: #ffffff;
+}
+
+
+.wrapper {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.table {
+	background: #f6f6f6;
+	width: 400px;
+	height: 255px;
+	margin: 0 auto;
+  	box-shadow: 0 1px 3px;
+  	border-radius: 10px;
+}
+
+.row.header {
+  	background: #6c96ec;
+  	border-bottom: 2px solid #7a7a7a;
+  	border-top-left-radius: 10px;
+  	border-top-right-radius: 10px;
+}
+
+a {
+	text-decoration-line: none;
+	color: #000000;
+}
+
+a:hover {
+	color: #dedede;
+}	
+
+.row {
+	font-size: 15px;
+	font-weight: bold;
+	padding: 12px 0 7px;
+	display: flex;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.row .cell {
+	margin: 5px;
+  	flex: 2;
+}
+.row .cell2 {
+	margin: 5px;
+	text-align: right;
+}
+
+.veiw_chart {
+	box-shadow: 0 -1px #000000;
+	padding-top: 20px;
+	background: #ffffff;
+	justify-content: center;
+}
+
+#chart_subject {
+	font-size: 20px;
+	font-weight: bold;
+	padding-left: 112px;
+	padding-bottom: 10px;
+}
+
+.chart1 {
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
