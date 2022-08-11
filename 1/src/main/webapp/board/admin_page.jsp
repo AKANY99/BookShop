@@ -175,7 +175,7 @@
 		</div>
 		<!-- 일별 매출그래프 자리 -->
 		<div class="chart1" id="chart_div"  style="width: 1285px; height: 400px;"></div>
-		<!-- 일별 매출그래프 자리 -->
+		<!-- 일별 매출그래프 자리  -->
 	</div>
 </body>
 </html>
