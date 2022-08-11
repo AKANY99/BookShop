@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AdminGetQnaListAction;
 import action.AdminPageAction;
 import vo.ActionForward;
 
@@ -39,6 +40,13 @@ public class AdminFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("product/admin_product_list.jsp");
 			forward.setRedirect(false);
+		}else if(command.equals("/QnaGetList.ad")) {
+			try {
+			forward = new AdminGetQnaListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/QnaGetList.ad 오류!");
+			}
 		}
 		
 		

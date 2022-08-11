@@ -27,18 +27,29 @@ public class AdminQnaListService {
 		return listCount;
 	}
 	
-	public ArrayList<QnaDTO> getQnaList(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate, String endDate) {
+	public ArrayList<QnaDTO> getQnaList(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate, String endDate, int pageNum, int listLimit) {
 		Connection con = JdbcUtil.getConnection();
 		QnaDAO dao = QnaDAO.getInstance();
 		dao.setCon(con);
 		
-		ArrayList<QnaDTO> list = dao.getQnaList(qna_rep, qna_type, orderBy, searchObject, startDate, endDate);
+		ArrayList<QnaDTO> list = dao.getQnaList(qna_rep, qna_type, orderBy, searchObject, startDate, endDate, pageNum, listLimit);
 		
 		JdbcUtil.close(con);
 		return list;
 	}
 
-	
+	public int getListCount(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate, String endDate) {
+		int listCount = 0;
+		Connection con = getConnection();
+		
+		QnaDAO dao = QnaDAO.getInstance();
+		dao.setCon(con);
+		
+		listCount = dao.selectListCount(qna_rep, qna_type, orderBy, searchObject, startDate, endDate);
+		close(con);
+		
+		return listCount;
+	}
 	
 	
 	

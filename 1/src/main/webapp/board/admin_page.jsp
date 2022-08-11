@@ -146,7 +146,7 @@
 	 		<div class="table">
 	    	<div class="row header">
 	      		<div class="cell">
-	        		<a href="QnaList.ad?pageNum=1">고객문의 ></a>
+	        		<a href="QnaList.ad">고객문의 ></a>
 	      		</div>
 	      	</div>
 		    <div class="row">
@@ -154,7 +154,7 @@
 		        	일반문의 미답변
 		      	</div>
 		      	<div class="cell2">
-		        	<a href="QnaList.ad?pageNum=1&qna_type=일반" ><!-- 일반문의 미답변 건수 -->${qnaNoArr[1] }건</a>
+		        	<a href="QnaList.ad?qna_type=일반" ><!-- 일반문의 미답변 건수 -->${qnaNoArr[1] }건</a>
 		        </div>
 		    </div>
 		    <div class="row">
@@ -162,7 +162,7 @@
 		        	상품문의 미답변
 		      	</div>
 		      	<div class="cell2">
-		        	<a href="QnaList.ad?pageNum=1&qna_type=상품" ><!-- 상품문의 미답변 건수 -->${qnaNoArr[0] }건</a>
+		        	<a href="QnaList.ad?qna_type=상품" ><!-- 상품문의 미답변 건수 -->${qnaNoArr[0] }건</a>
 		        </div>
 		   	</div>
 		</div>

@@ -169,24 +169,26 @@ public class QnaDAO {
 		}
 		return list;
 	}
-	public ArrayList<QnaDTO> getQnaList(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate, String endDate) {
+	public ArrayList<QnaDTO> getQnaList(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate, String endDate, int pageNum, int listLimit) {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		int startRow = (pageNum - 1) * listLimit;
 		
 		ArrayList<QnaDTO> list = null;
 		try {
-			String sql = "";
+			String sql;
 			if(qna_rep.equals("repno")){
-				sql = "SELECT * FROM qna WHERE qna_date >= ? AND qna_date <= ? AND  qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NULL ORDER BY qna_date "+orderBy;
+				sql = "SELECT * FROM qna WHERE qna_date >= ? AND qna_date <= ? AND  qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NULL ORDER BY qna_date "+orderBy+" LIMIT ?,?";
 				}else{
-				sql = "SELECT * FROM qna WHERE qna_date >= ? AND qna_date <= ? AND qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NOT NULL ORDER BY qna_date "+orderBy;
+				sql = "SELECT * FROM qna WHERE qna_date >= ? AND qna_date <= ? AND qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NOT NULL ORDER BY qna_date "+orderBy+" LIMIT ?,?";
 				}
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, startDate);
 			pstmt.setString(2, endDate);
 			pstmt.setString(3, searchObject);
+			pstmt.setInt(4, startRow);
+			pstmt.setInt(5, listLimit);
 			rs = pstmt.executeQuery();
 			
 			QnaDTO dto = null;
@@ -214,6 +216,34 @@ public class QnaDAO {
 		}
 		
 		return list;
+	}
+	public int selectListCount(String qna_rep, String qna_type, String orderBy, String searchObject, String startDate,
+			String endDate) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		try {
+			if(qna_rep.equals("repno")){
+				sql = "SELECT COUNT(*) FROM qna WHERE qna_date >= ? AND qna_date <= ? AND  qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NULL ORDER BY qna_date "+orderBy;
+				}else{
+				sql = "SELECT COUNT(*) FROM qna WHERE qna_date >= ? AND qna_date <= ? AND qna_type "+qna_type+" AND qna_subject like ? AND qna_rep IS NOT NULL ORDER BY qna_date "+orderBy;
+				}
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, startDate);
+			pstmt.setString(2, endDate);
+			pstmt.setString(3, searchObject);
+			rs = pstmt.executeQuery();
+			rs.next();
+			listCount = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("selectListCount 구문 오류" + e.getMessage());
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return listCount;
 	}
 	
 	

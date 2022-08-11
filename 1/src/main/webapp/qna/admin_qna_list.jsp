@@ -9,20 +9,22 @@
 <link href="css/admin_qna_list.css" rel="stylesheet"/>
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
-$(function() {
-	var qna_type = ${param.qna_type}
-	if(qna_type){
-		$.ajax({
-			type:"get",
-			url:"QnaGetList.ad?qna_type="+${param.qna_type}+"&order_by=DESC&qna_rep=repno",
-			dataType:"text"
-		}).done(function(data){
-			$("#qna_search_result").html(response);
-		}).fail(function(){
-		alert("AJAX실패");
-	});
-	}
-});
+
+
+// $(function() {
+// 	var qna_type = ${param.qna_type}
+// 	if(qna_type){
+// 		$.ajax({
+// 			type:"get",
+// 			url:"QnaGetList.ad?qna_type="+${param.qna_type}+"&order_by=DESC&qna_rep=repno",
+// 			dataType:"text"
+// 		}).done(function(data){
+// 			$("#qna_search_result").html(response);
+// 		}).fail(function(){
+// 		alert("AJAX실패");
+// 	});
+// 	}
+// });
 
 
 
@@ -47,15 +49,15 @@ $(function() {
 <body>
 <jsp:include page="/inc/admin_header.jsp"/>
 
+<form>
 	<div class="qna_option">
 		<div class="qna_option_subject">
 			<h1>QnA관리</h1>
 		</div>
-		<form>
 			<div class="qna_option_content">
 					<div class="option_first">등록일</div>
-					<div class="option_second">시작일 <input type="date"></div>
-					<div class="option_third">종료일 <input type="date"></div>
+					<div class="option_second">시작일 <input type="date" name="startDate"></div>
+					<div class="option_third">종료일 <input type="date" name="endDate"></div>
 					
 					<div class="option_first">구분</div>
 					<div class="option_second">
@@ -84,42 +86,12 @@ $(function() {
 					<div class="option_third"></div>
 					<input type="button" value="찾기" id="search">
 			</div>
-		</form>
 	</div>
 	<div id="qna_search_result"><!-- AJAX로 출력할 QNA DB --></div>
+</form>
+
+
 	
-
-
-	<div class="page"  style="text-align: center;">
-		<c:choose>
-			<c:when test="${pageInfo.pageNum > 1}">
-				<input type="button" value="이전" onclick="location.href='QnaList.ad?pageNum=${pageInfo.pageNum - 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="이전">
-			</c:otherwise>
-		</c:choose>
-			
-		<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-			<c:choose>
-				<c:when test="${pageInfo.pageNum eq i}">
-					${i }
-				</c:when>
-				<c:otherwise>
-					<a href="QnaList.ad?pageNum=${i }">${i }</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-
-		<c:choose>
-			<c:when test="${pageInfo.pageNum < pageInfo.maxPage}">
-				<input type="button" value="다음" onclick="location.href='QnaList.ad?pageNum=${pageInfo.pageNum + 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="다음">
-			</c:otherwise>
-		</c:choose>
-	</div>
 	
 </body>
 </html>

@@ -26,6 +26,13 @@
 			<th>상태</th>
 			<th>관리</th>
 		</tr>
+<c:choose>
+	<c:when test="${empty qnaList }">
+		<tr>
+			<th colspan="7">검색 결과가 없습니다.</th>
+		</tr>			
+	</c:when>
+	<c:otherwise>
 		<c:forEach var="qnaList" items="${qnaList }">
 			<tr>
 				<td>${qnaList.qna_num }</td>
@@ -34,18 +41,52 @@
 				<td>${qnaList.qna_user }</td>
 				<td>${qnaList.qna_date }</td>
 			<c:choose>
-					<c:when test="${not empty qnaList.qna_rep }">
-							<td>답변 완료</td>
-							<td><input type="button" value="보기"></td>
-					</c:when>
-					<c:otherwise>
-							<td>답변 대기</td>
-							<td><input type="button" value="답변 달기"></td>
-					</c:otherwise>
+				<c:when test="${not empty qnaList.qna_rep }">
+					<td>답변 완료</td>
+					<td><input type="button" value="보기"></td>
+				</c:when>
+				<c:otherwise>
+					<td>답변 대기</td>
+					<td><input type="button" value="답변 달기"></td>
+				</c:otherwise>
 			</c:choose>
-		</tr>
+			</tr>
 		</c:forEach>
+	</c:otherwise>
+</c:choose>
 </table>
+
+<div class="page"  style="text-align: center;">
+		<c:choose>
+			<c:when test="${qnaPageInfo.pageNum > 1}">
+				<input type="button" value="이전" onclick="location.href='QnaList.ad?qnaPageNum=${qnaPageInfo.pageNum - 1}'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="이전">
+			</c:otherwise>
+		</c:choose>	
+			
+		<c:forEach var="i" begin="${qnaPageInfo.startPage }" end="${qnaPageInfo.endPage }">
+			<c:choose>
+				<c:when test="${qnaPageInfo.pageNum eq i}">
+					${i }
+				</c:when>
+				<c:otherwise>
+					<a href="?qnaPageNum=${i }">${i }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${qnaPageInfo.pageNum < qnaPageInfo.maxPage}">
+				<input type="button" value="다음" onclick="location.href='?qnaPageNum=${qnaPageInfo.pageNum + 1}'">
+			</c:when>
+			<c:otherwise>
+				<input type="button" value="다음">
+			</c:otherwise>
+		</c:choose>
+	</div>
+<input type="hidden" name="qnaPageNum" value="${qnaPageInfo.pageNum }">
 </body>
 </html>
 
