@@ -28,6 +28,7 @@
 	</div>
 	<div class="button">
 		<input type="hidden" name="qna_num" value="${rep.qna_num }">
+		<!-- 처음쓰는 답변일시 답글달기 표시 -->
 		<c:choose>
 			<c:when test="${not empty rep.qna_rep }">
 				<input type="submit" value="수정">
