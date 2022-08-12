@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AdminGetQnaListAction;
 import action.AdminPageAction;
+import action.AdminQnaRepAction;
+import action.AdminQnaRepModifyAction;
 import vo.ActionForward;
 
 @WebServlet("*.ad")
@@ -46,6 +48,20 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/QnaGetList.ad 오류!");
+			}
+		}else if(command.equals("/Qnarep.ad")) {
+			try {
+				forward = new AdminQnaRepAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/Qnarep.ad 오류!");
+			}
+		}else if(command.equals("/QnaRepModify.ad")) {
+			try {
+				forward = new AdminQnaRepModifyAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/QnaRepModify.ad 오류!");
 			}
 		}
 		

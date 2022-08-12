@@ -51,14 +51,13 @@ public class QnaDAO {
 		}
 		return qna;
 	}
+	// 답변달기 메서드
 	public int qnaRep(QnaDTO qna) {
 		int repCount = 0;
 		
 		try {
 			PreparedStatement pstmt = null;
 			String sql = "UPDATE qna SET qna_rep = ? WHERE qna_num = ?";
-			System.out.println(qna.getQna_rep());
-			System.out.println(qna.getQna_num());
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, qna.getQna_rep());
 			pstmt.setInt(2, qna.getQna_num());

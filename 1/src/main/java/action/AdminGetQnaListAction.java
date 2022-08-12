@@ -69,7 +69,7 @@ public class AdminGetQnaListAction implements Action{
 		request.setAttribute("qnaPageInfo", qnaPageInfo);
 		request.setAttribute("qnaList", list);
 		forward = new ActionForward();
-		forward.setPath("qna/admin_getqna_list.jsp");
+		forward.setPath("qna/admin_qna_getlist.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

@@ -43,11 +43,11 @@
 			<c:choose>
 				<c:when test="${not empty qnaList.qna_rep }">
 					<td>답변 완료</td>
-					<td><input type="button" value="보기"></td>
+					<td><input type="button" value="보기" onclick="window.open('Qnarep.ad?qna_num=${qnaList.qna_num }','repok','width=1000px, height=500px');"></td>
 				</c:when>
 				<c:otherwise>
 					<td>답변 대기</td>
-					<td><input type="button" value="답변 달기"></td>
+					<td><input type="button" value="답변 달기"onclick="window.open('Qnarep.ad?qna_num=${qnaList.qna_num }','repok','width=1000px, height=500px');"></td>
 				</c:otherwise>
 			</c:choose>
 			</tr>
