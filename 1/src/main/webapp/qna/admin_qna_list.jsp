@@ -11,26 +11,39 @@
 <script type="text/javascript">
 
 
-// $(function() {
-// 	var qna_type = ${param.qna_type}
-// 	if(qna_type){
-// 		$.ajax({
-// 			type:"get",
-// 			url:"QnaGetList.ad?qna_type="+${param.qna_type}+"&order_by=DESC&qna_rep=repno",
-// 			dataType:"text"
-// 		}).done(function(data){
-// 			$("#qna_search_result").html(response);
-// 		}).fail(function(){
-// 		alert("AJAX실패");
-// 	});
-// 	}
-// });
-
-
-
+	
 		$(function(){
+			if("${param.qna_type}" == "상품"){
+			var productform = $(".form_product").serialize();
+				$.ajax({
+					type:"get",
+					url:"QnaGetList.ad",
+					data: productform,
+					dataType:"text",
+				}).done(function(response) {
+						$("#qna_search_result").html(response);
+				}).fail(function () {
+						alert("AJAX 실패");
+				});
+			}
+			else if("${param.qna_type}" == "일반"){
+			var normalform = $(".form_normal").serialize();
+				$.ajax({
+					type:"get",
+					url:"QnaGetList.ad",
+					data: normalform,
+					dataType:"text",
+				}).done(function(response) {
+						$("#qna_search_result").html(response);
+				}).fail(function () {
+						alert("AJAX 실패");
+				});
+			}
+			
+			
+			
 			$("#search").on("click", function(){
-			var formdata = $("form").serialize();
+			var formdata = $(".form_search").serialize();
 				$.ajax({
 					type:"get",
 					url:"QnaGetList.ad",
@@ -49,7 +62,28 @@
 <body>
 <jsp:include page="/inc/admin_header.jsp"/>
 
-<form>
+<!-- 파라미터가 상품일경우 넘겨줄 파라미터 정의 -->
+	<form class="form_product">
+		<input type="hidden" name="startDate">
+		<input type="hidden" name="endDate">
+		<input type="hidden" name="searchObject">
+		<input type="hidden" name="qna_rep" value="repno">	
+		<input type="hidden" name="order_by" value="ASC">	
+		<input type="hidden" name="qna_type" value="상품">	
+	</form>
+<!-- ------------------------------ -->
+<!-- 파라미터가 일반일경우 넘겨줄 파라미터 정의 -->
+	<form class="form_normal">
+		<input type="hidden" name="startDate">
+		<input type="hidden" name="endDate">
+		<input type="hidden" name="searchObject">
+		<input type="hidden" name="qna_rep" value="repno">	
+		<input type="hidden" name="order_by" value="ASC">	
+		<input type="hidden" name="qna_type" value="상품">	
+	</form>
+<!-- ------------------------------ -->
+
+<form class="form_search">
 	<div class="qna_option">
 		<div class="qna_option_subject">
 			<h1>QnA관리</h1>
