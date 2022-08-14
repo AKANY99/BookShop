@@ -34,7 +34,7 @@
 	});
 	
 	$(function(){
-		if("${param.qna_type}" == "상품"){
+		if("${param.pd_type}" == ""){
 		var productform = $(".form_product").serialize();
 			$.ajax({
 				type:"get",
@@ -47,7 +47,7 @@
 					alert("AJAX 실패");
 			});
 		}
-		else if("${param.qna_type}" == "일반"){
+		else if("${param.pd_type}" == ""){
 		var normalform = $(".form_normal").serialize();
 			$.ajax({
 				type:"get",
