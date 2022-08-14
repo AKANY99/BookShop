@@ -7,17 +7,15 @@
 <meta charset="UTF-8">
 <title>BookShop_Admin</title>
 <link href="css/admin_product_list.css" rel="stylesheet"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css"/>
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
-<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-<script src="/js/bootstrap-datepicker.kr.js" charset="UTF-8"></script>
-
+<link href="css/bootstrap-datepicker3.css" rel="stylesheet"/>
+<link href="css/bootstrap-datepicker3.standalone.css" rel="stylesheet"/>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-datepicker.kr.min.js"></script>
+<script src="js/jquery-3.6.0.js"></script>
 <script type='text/javascript'>
 	$(function(){
-		$('.input-group.date').datepicker({
+		$('#datePicker1').datepicker({
 			calendarWeeks: false,
 			todayHighlight: true,
 			autoclose: true,
@@ -25,16 +23,60 @@
 			language: "kr"
 		});
 	});
-
-	;(function($){
-		$.fn.datepicker.dates['kr'] = {
-				days: ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
-				daysShort: ["일", "월", "화", "수", "목", "금", "토", "일"],
-				daysMin: ["일", "월", "화", "수", "목", "금", "토", "일"],
-				months: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-				monthsShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
-		};
-	}(jQuery));
+	$(function(){
+		$('#datePicker2').datepicker({
+			calendarWeeks: false,
+			todayHighlight: true,
+			autoclose: true,
+			format: "yyyy-mm-dd",
+			language: "kr"
+		});
+	});
+	
+	$(function(){
+		if("${param.qna_type}" == "상품"){
+		var productform = $(".form_product").serialize();
+			$.ajax({
+				type:"get",
+				url:"QnaGetList.ad",
+				data: productform,
+				dataType:"text",
+			}).done(function(response) {
+					$("#qna_search_result").html(response);
+			}).fail(function () {
+					alert("AJAX 실패");
+			});
+		}
+		else if("${param.qna_type}" == "일반"){
+		var normalform = $(".form_normal").serialize();
+			$.ajax({
+				type:"get",
+				url:"QnaGetList.ad",
+				data: normalform,
+				dataType:"text",
+			}).done(function(response) {
+					$("#qna_search_result").html(response);
+			}).fail(function () {
+					alert("AJAX 실패");
+			});
+		}
+		
+		
+		
+		$("#search").on("click", function(){
+		var formdata = $(".form_search").serialize();
+			$.ajax({
+				type:"get",
+				url:"QnaGetList.ad",
+				data: formdata,
+				dataType:"text",
+			}).done(function(response) {
+					$("#qna_search_result").html(response);
+			}).fail(function () {
+					alert("AJAX 실패");
+				});
+			});
+		});
 </script>
 
 	
@@ -45,45 +87,54 @@
 	<!-- 헤더 넣는 자리 -->
 	
 	<!-- 검색란  -->
-	<p>상품관리</p>
-	<div class="product_seach">
-		<div class="search_requirement">
-			검색조건
-		</div>
-		<div class="cell">
-			등록일
-			<div class="container">
-				<div class="input-group date">
-					<input type="text" class="form-control" height="12px" width="200px">
-					<span class="input-group-addon">
-						<i class="glyphicon glyphicon-calendar"></i>
-					</span>
+		<p>상품관리</p>
+		<div class="product_seach">
+			<div class="search_requirement">
+				검색조건
+			</div>
+			<div class="cell">
+				<div id="req_subject">
+					등록일
+				</div>
+				<div class="start_date">
+					시작일
+					<input type="text" id="datePicker1" name="start_date">
+				</div>
+				<div class="end_date">
+					종료일
+					<input type="text" id="datePicker2" name="end_date">
 				</div>
 			</div>
-			<div class="container">
-				<div class="input-group date">
-					<input type="text" class="form-control">
-					<span class="input-group-addon">
-						<i class="glyphicon glyphicon-calendar"></i>
-					</span>
+			
+			<div class="cell">
+				<div id="req_subject">
+					타입
 				</div>
+				<input type="radio" name="pd_subject" value="전체" class="type_select">전체&nbsp;&nbsp;
+				<input type="radio" name="pd_subject" value="국내도서" class="type_select">국내도서&nbsp;&nbsp;
+				<input type="radio" name="pd_subject" value="해외도서" class="type_select">해외도서&nbsp;&nbsp;
+				<input type="radio" name="pd_subject" value="eBook" class="type_select">eBook&nbsp;&nbsp;
+			</div>
+			
+			<div class="cell">
+				<div id="req_subject">
+					검색
+				</div>
+				<input type="text" class="search_input">
+			</div>
+			<hr>
+			<div class="cell2">
+				<input type="button" value="검색" class="search_submit">
 			</div>
 		</div>
-		
-		<div class="cell">
-			구분
-			<div class="wait_answer"><input type="button" value="답변대기"></div>
-			<div class="done_answer"><input type="button" value="답변완료"></div>
-		</div>
-		
-		<div class="cell">분류
-		
-		</div>
-		
-		<div class="cell">검색
-		
-		</div>
-	</div>
 	<!-- 검색란  -->
+	
+	<!-- 상품표시란 -->
+	<div id="pd_search_result">
+		<!-- AJAX로 검색결과표시 -->
+		
+		<!-- AJAX로 검색결과표시 -->
+	</div>
+	<!-- 상품표시란 -->
 </body>
 </html>

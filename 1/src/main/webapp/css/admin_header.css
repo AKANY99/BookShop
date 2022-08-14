@@ -71,8 +71,9 @@ span:hover {
 
 .header_btn:hover {
 	font-weight: bold;
+	color: #fafafa;
 	border-color: #fafafa;
-	background: #050505;
+	background: #353555;
 	transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
 }
 /* https://cssbuttons.app/buttons/36 활용 */

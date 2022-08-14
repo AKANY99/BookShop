@@ -120,25 +120,17 @@
 	 		<div class="table">
 	    	<div class="row header">
 	      		<div class="cell">
-	      		<a href="ProductList.ad?pageNum=1">상품관리 현황 ></a>
+	      		<a href="ProductList.ad">상품관리 현황 ></a>
 	      		</div>
 	      	</div>
 		    <div class="row">
 		      	<div class="cell">
-		        	상품교환
+		        	상품품절
 		      	</div>
 		      	<div class="cell2">
-		        	<a href="ProductList.ad?pageNum=1&type=교환" ><!-- 상품교환 건수 -->건</a>
+		        	<a href="ProductList.ad?type=품절" ><!-- 상품교환 건수 -->건</a>
 		        </div>
 		    </div>
-		    <div class="row">
-		      	<div class="cell">
-		        	상품취소
-		      	</div>
-		      	<div class="cell2">
-		        	<a href="ProductList.ad?pageNum=1&type=취소" ><!-- 상품취소 건수 -->건</a>
-		        </div>
-		   	</div>
 		</div>
 		<!-- 교환/취소 게시판자리 -->
 		
