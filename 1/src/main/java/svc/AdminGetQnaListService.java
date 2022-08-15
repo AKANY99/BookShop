@@ -34,7 +34,7 @@ public class AdminGetQnaListService {
 		
 		ArrayList<QnaDTO> list = dao.getQnaList(qna_rep, qna_type, orderBy, searchObject, startDate, endDate, pageNum, listLimit);
 		
-		JdbcUtil.close(con);
+		close(con);
 		return list;
 	}
 

@@ -14,6 +14,8 @@ public class AdminUserDetailService {
 		dao.setConnection(con);
 		UserDTO user = dao.userDetail(user_num);
 		
+		JdbcUtil.close(con);
+		
 		return user;
 	}
 

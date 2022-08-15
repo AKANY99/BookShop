@@ -13,8 +13,8 @@ public class AdminPageService {
 		dao.setCon(con);
 		
 		int[] qnaNoArr = new int[2];
-		qnaNoArr[0] = dao.selectListCount("상품");
-		qnaNoArr[1] = dao.selectListCount("일반");
+		qnaNoArr[0] = dao.qnaIsnullCount("상품");
+		qnaNoArr[1] = dao.qnaIsnullCount("일반");
 		
 		close(con);
 		

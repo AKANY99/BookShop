@@ -14,6 +14,7 @@ import action.AdminGetQnaListAction;
 import action.AdminPageAction;
 import action.AdminQnaRepAction;
 import action.AdminQnaRepModifyAction;
+import action.AdminUserDeleteAction;
 import action.AdminUserDetailAction;
 import action.AdminUserGetListAction;
 import vo.ActionForward;
@@ -82,6 +83,13 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/UserDetail.ad 오류!");
+			}
+		}else if(command.equals("/UserDelete.ad")) {
+			try {
+				forward = new AdminUserDeleteAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/UserDelete.ad 오류!");
 			}
 		}
 		

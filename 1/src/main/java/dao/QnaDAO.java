@@ -96,7 +96,7 @@ public class QnaDAO {
 	}
 	
 //	타입별 QNA 미답변 게시글 갯수
-		public int selectListCount(String type) {
+		public int qnaIsnullCount(String type) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int count = 0;
