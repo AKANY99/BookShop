@@ -6,7 +6,7 @@ p {
 	font-weight: bold;
 }
 
-.qna_option{
+.user_option{
 	box-shadow: 0.5px 0.5px 10px #c8c8c8;
 	box-shadow: -0.5px -0.5px 10px #d4d4d4;
 	margin-left:30px;
@@ -14,21 +14,20 @@ p {
 	border-radius:20px;
 	height: 280px;
 }
-.qna_option_subject{
+.user_option_subject{
 	color: #a1a1a1;
 	font-weight: bold;
 	margin-left: 45px;
 	margin-top: 5px;
 }
 
-.qna_option_content{
+.user_option_content{
 	width:90%;
 	padding-top:20px;
 	padding-left:20px;
 	height: 100%;
 	margin: auto 60px auto 60px;
 	border-radius: 20px;
-	text-overflow: ellipsis
 }
 
 .option_first{
@@ -53,6 +52,9 @@ p {
     margin-bottom: 10px
 }
 
+/* ajax css */
+
+
 .table {
 	box-shadow: 0.5px 0.5px 10px #c8c8c8;
 	box-shadow: -0.5px -0.5px 10px #d4d4d4;
@@ -60,8 +62,10 @@ p {
 	margin-left:30px;
 	margin-right:30px;
 	border-radius:20px;
-	height: 320px;
+	height: 300px;
+	
 }
+
 .table_subject {
 	border-bottom: 0.5px dotted;
 	display: flex;
@@ -79,27 +83,22 @@ p {
 .table_1 {
 	margin-top:5px;
 	text-align:center;
-	flex:7;
+	flex:5;
 	font-size: 20px;
 	color: gray;
 }
-
 .table_2 {
-	width:201px;
-	white-space: nowrap;
 	margin-top:5px;
 	text-align:center;
 	flex:5;
-	text-overflow: ellipsis;
-	overflow: hidden;
 }
+
 .none{
 	flex:1;	
 	text-align: center;
 	font-size: 20px;
 	
 }
-
 
 
 

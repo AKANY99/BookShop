@@ -38,10 +38,5 @@ public class AdminQnaRepService {
 		return modify;
 	}
 	
-	
-	
-	
-	
-	
 
 }

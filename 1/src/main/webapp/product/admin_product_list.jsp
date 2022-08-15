@@ -12,7 +12,6 @@
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/bootstrap-datepicker.kr.min.js"></script>
-<script src="js/jquery-3.6.0.js"></script>
 <script type='text/javascript'>
 	$(function(){
 		$('#datePicker1').datepicker({

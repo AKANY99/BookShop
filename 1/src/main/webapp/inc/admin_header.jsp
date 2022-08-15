@@ -31,8 +31,8 @@
 			<a href="#">매출조회</a>
 			<a href="#">주문내역</a>
 			<a href="ProductList.ad?pageNum=1">상품관리</a>
-			<a href="QnaList.ad?pageNum=1">고객문의</a>
-			<a href="#">회원관리</a>
+			<a href="QnaList.ad">고객문의</a>
+			<a href="UserManagement.ad">회원관리</a>
 		</div>
 	</div>
 	<!-- 사이드바 메뉴 자리(JOA(조아)의 웹스토리 : 홈페이지 & 웹루션개발) 활용 -->

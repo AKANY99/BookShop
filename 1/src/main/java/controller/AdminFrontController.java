@@ -14,6 +14,8 @@ import action.AdminGetQnaListAction;
 import action.AdminPageAction;
 import action.AdminQnaRepAction;
 import action.AdminQnaRepModifyAction;
+import action.AdminUserDetailAction;
+import action.AdminUserGetListAction;
 import vo.ActionForward;
 
 @WebServlet("*.ad")
@@ -63,9 +65,27 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("/QnaRepModify.ad 오류!");
 			}
+		}else if(command.equals("/UserManagement.ad")) {
+				forward = new ActionForward();
+				forward.setPath("user/admin_user_list.jsp");
+				forward.setRedirect(false);
+		}else if(command.equals("/UserGetList.ad")) {
+			try {
+				forward = new AdminUserGetListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/UserGetList.ad 오류!");
+			}
+		}else if(command.equals("/UserDetail.ad")) {
+			try {
+				forward = new AdminUserDetailAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/UserDetail.ad 오류!");
+			}
 		}
 		
-		
+			
 		// -------------------------------------------------------------------------------------------------------
 		
 		if(forward != null) {

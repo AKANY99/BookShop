@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/adminrep.css" rel="stylesheet"/>
+<link href="css/admin_rep.css" rel="stylesheet"/>
 </head>
 <body>
 <form action="QnaRepModify.ad" method="post">

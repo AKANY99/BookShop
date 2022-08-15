@@ -11,7 +11,7 @@ import dao.QnaDAO;
 import db.JdbcUtil;
 import vo.QnaDTO;
 
-public class AdminQnaListService {
+public class AdminGetQnaListService {
 
 	
 	public int getListCount() {

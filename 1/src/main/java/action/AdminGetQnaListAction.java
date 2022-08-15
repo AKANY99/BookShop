@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import svc.AdminQnaListService;
+import svc.AdminGetQnaListService;
 import vo.ActionForward;
 import vo.PageInfo;
 import vo.QnaDTO;
@@ -17,7 +17,7 @@ public class AdminGetQnaListAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
-		AdminQnaListService service = new AdminQnaListService();
+		AdminGetQnaListService service = new AdminGetQnaListService();
 		String qna_rep = request.getParameter("qna_rep");
 		String qna_type = request.getParameter("qna_type");
 		String orderBy = request.getParameter("order_by");
@@ -45,7 +45,7 @@ public class AdminGetQnaListAction implements Action{
 			endDate = request.getParameter("endDate");
 		}
 		
-	// 조건에 부합한 동적인 qnaPageNum 받기===============================================
+	// 조건에 부합한 동적인 qnaPageNum 받기=======================================
 		int qnaPageNum = 1;
 		int listLimit = 10;
 		int qnaPageLimit = 10;
@@ -60,13 +60,19 @@ public class AdminGetQnaListAction implements Action{
 		if(endqnaPage > maxqnaPage) {
 			endqnaPage = maxqnaPage;
 		}
-		
+		// 페이지 유지를위한 value값================================================
+		request.setAttribute("qna_rep", qna_rep);
+		request.setAttribute("qna_type", request.getParameter("qna_type"));
+		request.setAttribute("order_by", orderBy);
+		request.setAttribute("searchObject", request.getParameter("searchObject"));
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
 		PageInfo qnaPageInfo = new PageInfo(qnaPageNum, maxqnaPage, startqnaPage, endqnaPage, listCount);
-	// =========================================================================	
+		request.setAttribute("qnaPageInfo", qnaPageInfo);
+		//=======================================================================
 		ArrayList<QnaDTO> list = service.getQnaList(qna_rep, qna_type, orderBy, searchObject, startDate, endDate, qnaPageNum, listLimit);
 		
 		
-		request.setAttribute("qnaPageInfo", qnaPageInfo);
 		request.setAttribute("qnaList", list);
 		forward = new ActionForward();
 		forward.setPath("qna/admin_qna_getlist.jsp");

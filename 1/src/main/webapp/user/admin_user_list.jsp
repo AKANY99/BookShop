@@ -6,65 +6,109 @@
 <head>
 <meta charset="UTF-8">
 <title>회원관리</title>
+<link href="css/admin_user_list.css" rel="stylesheet"/>
+<link href="css/bootstrap-datepicker3.css" rel="stylesheet"/>
+<link href="css/bootstrap-datepicker3.standalone.css" rel="stylesheet"/>
+<script src="js/jquery-3.6.0.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-datepicker.kr.min.js"></script>
+<script type='text/javascript'>
+	$(function(){
+		$('#datePicker1').datepicker({
+			calendarWeeks: false,
+			todayHighlight: true,
+			autoclose: true,
+			format: "yyyy-mm-dd",
+			language: "kr"
+		});
+	});
+	$(function(){
+		$('#datePicker2').datepicker({
+			calendarWeeks: false,
+			todayHighlight: true,
+			autoclose: true,
+			format: "yyyy-mm-dd",
+			language: "kr"
+		});
+	});
+	
+	$(function(){
+		$("#search").on("click", function(){
+		var formdata = $(".form_search").serialize();
+		$.ajax({
+			type:"get",
+			url:"UserGetList.ad",
+			data: formdata,
+			dataType:"text",
+		}).done(function(response) {
+			$("#user_search_result").html(response);
+		}).fail(function () {
+			alert("AJAX 실패");
+			});
+		});
+	})
+			function pageMove(pageNum) {
+			$("#userPageNum").val(pageNum);
+			var formdata = $(".form_page").serialize();
+			$.ajax({
+				type:"get",
+				url:"UserGetList.ad",
+				data: formdata,
+				dataType:"text",
+			}).done(function(response) {
+					$("#user_search_result").html(response);
+			}).fail(function () {
+					alert("AJAX 실패");
+				});
+			};
+	
+</script>
 </head>
 <body>
-	<h1>회원관리게시판</h1>
-	<hr>
-	<table border="1" align="center">
-		<tr id="tr_top">
-			<td>유저 번호</td>
-			<td>유저 이름</td>
-			<td>유저 이메일</td>
-			<td>유저 비밀번호</td>
-			<td>유저 성별</td>
-			<td>유저 주민번호</td>
-			<td>유저 우편번호</td>
-			<td>유저 주소</td>
-			<td>유저 전화번호</td>
-		</tr>
-		<c:forEach var="userList" items="${userList }">
-			<tr>
-				<td>${userList.user_num }</td>
-				<td><a href="UserDetail.ad?user_num=${userList.user_num }&pageNum=${param.pageNum }">${userList.user_name }</a></td>
-				<td>${userList.user_email }</td>
-				<td>${userList.user_passwd }</td>
-				<td>${userList.user_gender }</td>
-				<td>${userList.user_jumin }</td>
-				<td>${userList.user_address_code }</td>
-				<td>${userList.user_address }</td>
-				<td>${userList.user_phone }</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<section align="center">
-		<c:choose>
-			<c:when test="${param.pageNum > 1}">
-				<input type="button" value="이전" onclick="location.href='UserList.ad?pageNum=${pageInfo.pageNum - 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="이전">
-			</c:otherwise>
-		</c:choose>
-			
-		<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-			<c:choose>
-				<c:when test="${param.pageNum eq i}">
-					${i }
-				</c:when>
-				<c:otherwise>
-					<a href="UserList.ad?page=${i }">${i }</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		
-		<c:choose>
-			<c:when test="${param.pageNum < pageInfo.maxPage}">
-				<input type="button" value="다음" onclick="location.href='UserList.ad?pageNum=${param.pageNum + 1}'">
-			</c:when>
-			<c:otherwise>
-				<input type="button" value="다음">
-			</c:otherwise>
-		</c:choose>
-	</section>
+<jsp:include page="/inc/admin_header.jsp"/>
+<form class="form_search">
+<p>회원 관리</p>
+	<div class="user_option">
+		<div class="user_option_subject">
+		검색 조건
+		</div>
+			<div class="user_option_content">
+					<div class="option_first">가입일자</div>
+					<div class="option_second">시작일<input type="text" id="datePicker1" name="startDate"></div>
+					<div class="option_third">종료일<input type="text" id="datePicker2" name="endDate"></div>
+					<!-- 구현 불가능 -->
+					<div class="option_first">총구매액(미완)</div>
+					<div class="option_second"><input type="text"placeholder="이상"name="startWon">￦</div>
+					<div class="option_third"><input type="text"placeholder="이하"name="endWon">￦</div>
+					<!-- 구현 불가능 -->
+					
+					<div class="option_first">성별</div>
+					<div class="option_second">
+						남<input type="radio" name="gender" value="남" checked="checked">
+						여<input type="radio" name="gender" value="여">
+					
+					</div>
+					<div class="option_third"></div>
+					
+					<div class="option_first">검색</div>
+					<div class="option_second">
+						<select name="searchType">
+							<option value="전체">전체</option>
+							<option value="user_name">이름</option>
+							<option value="user_email">아이디</option>
+						</select>
+						<input type="text" name="searchObject">
+					</div>
+					<div class="option_third"></div>
+					<input type="button" value="찾기" id="search">
+			</div>
+	</div>
+
+</form>
+<form class="form_page">
+	<div id="user_search_result"><!-- AJAX로 출력할 userList --></div>
+</form>
+
+
 </body>
 </html>
