@@ -17,12 +17,23 @@ public class UserLoginProService {
 		UserDAO dao = UserDAO.getInstance();
 		dao.setConnection(con);
 
-		System.out.println(user_email +  user_passwd);
 		isLoginSuccess = dao.loginUser(user_email, user_passwd);
 		
 		close(con);
 		
 		return isLoginSuccess;
 	}
+	
+	public String getLoginUserName(String user_email) {
+		String userName = "";
+		Connection con = getConnection();
+		UserDAO dao = UserDAO.getInstance();
+		dao.setConnection(con);
 
+		userName = dao.getLoginUserName(user_email);
+		
+		close(con);
+		
+		return userName;
+	}
 }
