@@ -128,7 +128,7 @@
 		        	상품품절
 		      	</div>
 		      	<div class="cell2">
-		        	<a href="ProductList.ad?type=품절" ><!-- 상품교환 건수 -->건</a>
+		        	<a href="ProductList.ad?type=품절" >${pdNoArr[0] }건</a>
 		        </div>
 		    </div>
 		</div>

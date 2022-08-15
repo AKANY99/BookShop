@@ -13,11 +13,11 @@ public class AdminPageAction implements Action {
 		ActionForward forward = null;
 		AdminPageService service = new AdminPageService();
 //		int[] odNoArr = service.OrderNoticeCount();
-//		int[] pdNoArr = service.ProductNoticeCount();
+		int[] pdNoArr = service.ProductNoticeCount();
 		int[] qnaNoArr = service.QnaNoticeCount();
 		
 //		request.setAttribute("odNoArr", odNoArr);
-//		request.setAttribute("pdNoArr", pdNoArr);
+		request.setAttribute("pdNoArr", pdNoArr);
 		request.setAttribute("qnaNoArr", qnaNoArr);
 		
 		forward = new ActionForward();
