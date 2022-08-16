@@ -21,5 +21,10 @@
 	display: inline-flex;
 	margin: 15px;
 	background-color: rgb(155, 205, 255);
+	border-radius: 10px;
+	border: none;
 }
 
+a {
+	color: black;
+}

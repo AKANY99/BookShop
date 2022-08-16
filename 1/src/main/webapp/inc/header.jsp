@@ -48,7 +48,7 @@
 								</div>
 								<div class="tab_area">
 									<div class="tab_box">
-										<a href="./AdminPage.ad" class="tab">관리자페이지</a>
+										<a href="" class="tab">관리자페이지</a>
 										<a href="" class="tab">메뉴1</a>
 										<a href="" class="tab">메뉴2</a>
 										<a href="" class="tab">메뉴3</a>

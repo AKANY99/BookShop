@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.user_check {width: 400; position: absolute; left: 50%; top:50%;
+transform: translate(-50%, -50%);}
+
+.user_check >h2 { font-size: 32px;
+color: #111; 
+border-bottom:  2px solid #111;
+text-align: center; 
+}
+
+.check {
+padding: 0 0 12px;}
+
+.check>input[type=text] {
+	width: 100% ;
+	padding: 15px 0px;
+	margin-bottom: 10px;}
+	
+
+.check>input[type=password]{
+	width: 100%;
+	padding: 15px 0px;
+}
+
+.submit{
+	position:relative;
+/*   background-color: #4376e6; */
+  background-color: #3d6dd6;
+  text-decoration:none;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+}
+
+a {text-decoration: none;
+}
+
+nav a:link, nav a:visited {
+	color: #111;}
+nav a:hover, nav a:active {
+	color: #111;}
+	
+nav {display: flex;
+justify-content: center;
+margin-bottom: 20px;}

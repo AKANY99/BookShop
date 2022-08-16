@@ -24,20 +24,21 @@
 
 	<h2 align="center">가입 정보</h2>
 	<hr>
-	<form action="" method="post" class="infofr" align="center">
-	 
+	<form action="MyInfoModPro.us" method="post" class="infofr" align="center">
+	 					<input type="text" name="num" value="${requestScope.user.user_num}" hidden="hidden">
 		 	회  원  명 : <input type="text" name="name" value="${requestScope.user.user_name}" readonly="readonly"><br>
 			이  메  일 : <input type="text" name="email" value="${requestScope.user.user_email}" readonly="readonly"><br>
-		 	비밀번호 : <input type="password" name="passwd" value="${requestScope.user.user_passwd}" readonly="readonly" ><br>
-		 	성      별 : <input type="text" name="gender" value="${requestScope.user.user_gender}" readonly="readonly"><br>
-			생년월일 : <input type="text" name="birth" value="${requestScope.user.user_jumin}" readonly="readonly"><br>
-			주      소 : <input type="text" name="address" value="${requestScope.user.user_address}" readonly="readonly"><br>
-			연  락  처 : <input type="text" name="phone" value="${requestScope.user.user_phone}" readonly="readonly"><br>
+		 	비밀번호 : <input type="password" name="passwd" value="${requestScope.user.user_passwd}" readonly="readonly"><br>
+		 	성      별 : <input type="text" name="gender" value="${requestScope.user.user_gender}"><br>
+			생년월일 : <input type="text" name="birth" value="${requestScope.user.user_jumin}"><br>
+			주      소 : <input type="text" name="address' value="${requestScope.user.user_address_code}" hidden="hidden">
+			<input type="text" name="address" value="${requestScope.user.user_address}"><br>
+			연  락  처 : <input type="text" name="phone" value="${requestScope.user.user_phone}"><br>
 			가  입  일 : <input type="text" name="date" value="${requestScope.user.user_date}" readonly="readonly"><br>
+			<input type="submit">
 	</form>
 	<div id="dml" align="center">
-		<input type="button" value="수정" onclick="location.href='UserAuthen.us?sId=${requestScope.user.user_email}'"><input type="button" value="메인화면" onclick="location.href='/BookShop/'"><br>
-		<a href="MyInfoDel.us?sId=${requestScope.user.user_email}">회원탈퇴를 원하시나요?</a>
+		<input type="button" value="메인화면" onclick="location.href='/BookShop/'"><br>
 	</div>
 	
 	

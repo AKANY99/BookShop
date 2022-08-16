@@ -48,6 +48,7 @@ public class UserDAO {
 		return userCount;
 	}
 	
+	// 관리자페이지에서 사용할 전체 회원목록 조회 기능
 	public ArrayList<UserDTO> getUserList(int pageNum, int listLimit) {
 		ArrayList<UserDTO>userList = new ArrayList<UserDTO>();
 		int startRow = (pageNum-1)*listLimit;
@@ -236,95 +237,36 @@ public class UserDAO {
 			close(pstmt);
 		}
 		
-		
-		
 		return user;
 	}
-	
-	// 관리자페이지에서 사용할 전체 회원목록 조회 기능
-		public ArrayList<UserDTO> getUserList(String startDate, String endDate, String gender, String searchType, String searchObject, int userPageNum, int listLimit) {
-			ArrayList<UserDTO>userList = new ArrayList<UserDTO>();
-			int startRow = (userPageNum-1)*listLimit;
-			UserDTO user = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = "";
-			try {
-				if(searchType.equals("전체")) {
-					sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND user_name like ? "
-							+ " OR user_date >= ? AND user_date <= ? AND user_gender = ? AND user_email like ? LIMIT ?, ?";
-					
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, startDate);
-					pstmt.setString(2, endDate);
-					pstmt.setString(3, gender);
-					pstmt.setString(4, searchObject);
-					pstmt.setString(5, startDate);
-					pstmt.setString(6, endDate);
-					pstmt.setString(7, gender);
-					pstmt.setString(8, searchObject);
-					pstmt.setInt(9, startRow);
-					pstmt.setInt(10, listLimit);
-				}else {
-					sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND "+searchType+" like ? LIMIT ?, ?";
-					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, startDate);
-					pstmt.setString(2, endDate);
-					pstmt.setString(3, gender);
-					pstmt.setString(4, searchObject);
-					pstmt.setInt(5, startRow);
-					pstmt.setInt(6, listLimit);
-				}
-				
-
-				rs = pstmt.executeQuery();
-				while(rs.next()) {
-					user = new UserDTO();
-					user.setUser_num(rs.getInt("user_num"));
-					user.setUser_name(rs.getString("user_name"));
-					user.setUser_email(rs.getString("user_email"));
-					user.setUser_passwd(rs.getString("user_passwd"));
-					user.setUser_gender(rs.getString("user_gender"));
-					user.setUser_jumin(rs.getString("user_jumin"));
-					user.setUser_address_code(rs.getInt("user_address_code"));
-					user.setUser_address(rs.getString("user_address"));
-					user.setUser_phone(rs.getString("user_phone"));
-					user.setUser_date(rs.getDate("user_date"));
-					userList.add(user);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-				System.out.println("getUserList() - SQL 구문 오류 : " + e.getMessage());
-			}finally {
-				close(pstmt);
-				close(rs);
-			}
-			return userList;
-		}
-	
-	public UserDTO userDetail(int user_num) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+	public UserDTO MyInfoModify(String sId) {
+		System.out.println("DAO 진입");
 		UserDTO user = new UserDTO();
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
 		
+		String sql = "select * from user where user_email=?";
 		try {
-			String sql = "SELECT * FROM user WHERE user_num = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, user_num);
+			pstmt.setString(1, sId);
 			rs = pstmt.executeQuery();
-			rs.next();
-			user.setUser_num(rs.getInt("user_num"));
-			user.setUser_name(rs.getString("user_name"));
-			user.setUser_email(rs.getString("user_email"));
-			user.setUser_gender(rs.getString("user_gender"));
-			user.setUser_jumin(rs.getString("user_jumin"));
-			user.setUser_address_code(rs.getInt("user_address_code"));
-			user.setUser_address(rs.getString("user_address"));
-			user.setUser_phone(rs.getString("user_phone"));
-			user.setUser_date(rs.getDate("user_date"));
+			
+			if(rs.next()) {
+				user.setUser_num(rs.getInt("user_num"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_email(rs.getString("user_email"));
+				user.setUser_passwd(rs.getString("user_passwd"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setUser_jumin(rs.getString("user_jumin"));
+				user.setUser_address_code(rs.getInt("user_address_code"));
+				user.setUser_address(rs.getString("user_address"));
+				user.setUser_phone(rs.getString("user_phone"));
+				user.setUser_date(rs.getDate("user_date"));
+				
+			}
 		} catch (SQLException e) {
+			System.out.println("sql 구문오류"+e.getMessage());
 			e.printStackTrace();
-			System.out.println("userDetail 구문 오류"+ e.getMessage());
 		}finally {
 			close(rs);
 			close(pstmt);
@@ -332,53 +274,75 @@ public class UserDAO {
 		
 		return user;
 	}
-	// 관리자 페이지에서 사용할 전체 회원수 조회 기능
-	public int getUserCount(String startDate, String endDate, String gender, String searchType, String searchObject) {
-		int userCount = 0;
+	public UserDTO MyInfoModifyPro(UserDTO user2) {
+		int updateCount=0;
+		System.out.println("DAO 진입");
+		UserDTO user = new UserDTO();
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "";
+		
+		String sql="update user set user_name=?,user_email=?,user_passwd=?,user_gender=?,user_jumin=?,user_address_code=?,user_address=?,user_phone=?,user_date=? where user_num=?";
 		try {
-			if(searchType.equals("전체")) {
-				sql = "SELECT COUNT(*) FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND user_name like ? "
-						+ " OR user_date >= ? AND user_date <= ? AND user_gender = ? AND user_email like ?";
-				
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, startDate);
-				pstmt.setString(2, endDate);
-				pstmt.setString(3, gender);
-				pstmt.setString(4, searchObject);
-				pstmt.setString(5, startDate);
-				pstmt.setString(6, endDate);
-				pstmt.setString(7, gender);
-				pstmt.setString(8, searchObject);
-			}else {
-				sql = "SELECT COUNT(*) FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND "+searchType+" like ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, startDate);
-				pstmt.setString(2, endDate);
-				pstmt.setString(3, gender);
-				pstmt.setString(4, searchObject);
-			}
-			rs = pstmt.executeQuery();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user2.getUser_name());
+			pstmt.setString(2, user2.getUser_email());
+			pstmt.setString(3, user2.getUser_passwd());
+			pstmt.setString(4, user2.getUser_gender());
+			pstmt.setString(5, user2.getUser_jumin());
+			pstmt.setInt(6, user2.getUser_address_code());
+			pstmt.setString(7, user2.getUser_address());
+			pstmt.setString(8, user2.getUser_phone());
+			pstmt.setDate(9, user2.getUser_date());
+			pstmt.setInt(10, user2.getUser_num());
 			
-			if(rs.next()) {
-				userCount = rs.getInt(1);
+			updateCount = pstmt.executeUpdate();
+			System.out.println(updateCount);
+			
+			if(updateCount>0) {
+				System.out.println("수정작업완료");
+				user.setUser_num(user2.getUser_num());
+				user.setUser_name(user2.getUser_name());
+				user.setUser_email(user2.getUser_email());
+				user.setUser_passwd(user2.getUser_passwd());
+				user.setUser_gender(user2.getUser_gender());
+				user.setUser_jumin(user2.getUser_jumin());
+				user.setUser_address_code(user2.getUser_address_code());
+				user.setUser_address(user2.getUser_address());
+				user.setUser_phone(user2.getUser_phone());
+				user.setUser_date(user2.getUser_date());
+				
 			}
 		} catch (SQLException e) {
-			System.out.println("getUserCount() - SQL 구문 오류 : " + e.getMessage());
+		System.out.println("sql 구문 오류" + e.getMessage());
 			e.printStackTrace();
-		} finally {
-			close(rs);
+		}finally {
 			close(pstmt);
 		}
-		return userCount;
+		
+		return user;
+		
+		
+		
 	}
-	
-	
-	
-	
-	
-	
+	public int userDel(String sId) {
+		int deleteCount = 0;
+		
+		System.out.println("DAO 진입");
+		UserDTO user = new UserDTO();
+		PreparedStatement pstmt = null;
+		
+		String sql = "delete from user where user_email=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sId);
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("sql 구문오류 !"+e.getMessage());
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
 	
 }
