@@ -25,14 +25,33 @@ public class UserDAO {
 	}
 	
 	// 관리자 페이지에서 사용할 전체 회원수 조회 기능
-	public int getUserCount() {
+	public int getUserCount(String startDate, String endDate, String gender, String searchType, String searchObject) {
 		int userCount = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+		String sql = "";
 		try {
-			String sql = "SELECT COUNT(*) FROM user";
-			pstmt = con.prepareStatement(sql);
+			if(searchType.equals("전체")) {
+				sql = "SELECT COUNT(*) FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND user_name like ? "
+						+ " OR user_date >= ? AND user_date <= ? AND user_gender = ? AND user_email like ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, startDate);
+				pstmt.setString(2, endDate);
+				pstmt.setString(3, gender);
+				pstmt.setString(4, searchObject);
+				pstmt.setString(5, startDate);
+				pstmt.setString(6, endDate);
+				pstmt.setString(7, gender);
+				pstmt.setString(8, searchObject);
+			}else {
+				sql = "SELECT COUNT(*) FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND "+searchType+" like ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, startDate);
+				pstmt.setString(2, endDate);
+				pstmt.setString(3, gender);
+				pstmt.setString(4, searchObject);
+			}
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -49,41 +68,63 @@ public class UserDAO {
 	}
 	
 	// 관리자페이지에서 사용할 전체 회원목록 조회 기능
-	public ArrayList<UserDTO> getUserList(int pageNum, int listLimit) {
-		ArrayList<UserDTO>userList = new ArrayList<UserDTO>();
-		int startRow = (pageNum-1)*listLimit;
-		UserDTO user = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		try {
-			String sql = "SELECT * FROM user ORDER BY user_num DESC LIMIT ?,?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, listLimit);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				user = new UserDTO();
-				user.setUser_num(rs.getInt("user_num"));
-				user.setUser_name(rs.getString("user_name"));
-				user.setUser_email(rs.getString("user_email"));
-				user.setUser_passwd(rs.getString("user_passwd"));
-				user.setUser_gender(rs.getString("user_gender"));
-				user.setUser_jumin(rs.getString("user_jumin"));
-				user.setUser_address_code(rs.getInt("user_address_code"));
-				user.setUser_address(rs.getString("user_address"));
-				user.setUser_phone(rs.getString("user_phone"));
-				userList.add(user);
+			public ArrayList<UserDTO> getUserList(String startDate, String endDate, String gender, String searchType, String searchObject, int userPageNum, int listLimit) {
+				ArrayList<UserDTO>userList = new ArrayList<UserDTO>();
+				int startRow = (userPageNum-1)*listLimit;
+				UserDTO user = null;
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "";
+				try {
+					if(searchType.equals("전체")) {
+						sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND user_name like ? "
+								+ " OR user_date >= ? AND user_date <= ? AND user_gender = ? AND user_email like ? LIMIT ?, ?";
+
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, startDate);
+						pstmt.setString(2, endDate);
+						pstmt.setString(3, gender);
+						pstmt.setString(4, searchObject);
+						pstmt.setString(5, startDate);
+						pstmt.setString(6, endDate);
+						pstmt.setString(7, gender);
+						pstmt.setString(8, searchObject);
+						pstmt.setInt(9, startRow);
+						pstmt.setInt(10, listLimit);
+					}else {
+						sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND "+searchType+" like ? LIMIT ?, ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setString(1, startDate);
+						pstmt.setString(2, endDate);
+						pstmt.setString(3, gender);
+						pstmt.setString(4, searchObject);
+						pstmt.setInt(5, startRow);
+						pstmt.setInt(6, listLimit);
+					}
+					rs = pstmt.executeQuery();
+					while(rs.next()) {
+						user = new UserDTO();
+						user.setUser_num(rs.getInt("user_num"));
+						user.setUser_name(rs.getString("user_name"));
+						user.setUser_email(rs.getString("user_email"));
+						user.setUser_passwd(rs.getString("user_passwd"));
+						user.setUser_gender(rs.getString("user_gender"));
+						user.setUser_jumin(rs.getString("user_jumin"));
+						user.setUser_address_code(rs.getInt("user_address_code"));
+						user.setUser_address(rs.getString("user_address"));
+						user.setUser_phone(rs.getString("user_phone"));
+						user.setUser_date(rs.getDate("user_date"));
+						userList.add(user);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println("getUserList() - SQL 구문 오류 : " + e.getMessage());
+				}finally {
+					close(pstmt);
+					close(rs);
+				}
+				return userList;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("getUserList() - SQL 구문 오류 : " + e.getMessage());
-		}finally {
-			close(pstmt);
-			close(rs);
-		}
-		return userList;
-	}
 	
 	// 사용자 개인정보 조회
 	public int insertUser(UserDTO user) {
@@ -343,6 +384,31 @@ public class UserDAO {
 		}
 		
 		return deleteCount;
+	}
+	public UserDTO userDetail(int user_num) {
+		UserDTO user = new UserDTO();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT * FROM user WHERE user_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, user_num);
+			rs.next();
+			user.setUser_num(rs.getInt("user_num"));
+			user.setUser_name(rs.getString("user_name"));
+			user.setUser_email(rs.getString("user_email"));
+			user.setUser_gender(rs.getString("user_gender"));
+			user.setUser_jumin(rs.getString("user_jumin"));
+			user.setUser_address_code(rs.getInt("user_address_code"));
+			user.setUser_address(rs.getString("user_address"));
+			user.setUser_phone(rs.getString("user_phone"));
+			user.setUser_date(rs.getDate("user_date"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("userDetail 구문 오류");
+		}
+		
+		return user;
 	}
 	
 }

@@ -7,9 +7,9 @@
 <title>메인화면</title>
 <!-- CSS모음 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="css/header.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/sidebar.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
 <!-- CSS모음 끝 -->
 <body>
 <!-- 헤더 a -->
