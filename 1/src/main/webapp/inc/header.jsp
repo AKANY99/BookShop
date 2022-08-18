@@ -11,7 +11,12 @@
 			<li><a href=""><img alt="로고" src="images/BookShopLogo2.png"  style="width: 200px"></a></li>
 			<li>
 			<div class="serch_area">
-			<form action="Search.bo" method="post">
+			<form action="Search.us?sort=last" method="post">
+				<select class="header_select" name="searchType">
+					<option value="all">통합검색</option>
+					<option value="subject">제목검색</option>
+					<option value="writer">작가검색</option>
+				</select>
 			    <input type="text" class="serch_input" placeholder="Search.." name="search">
 			    <button type="submit" class="serch_submit"><i class="fa fa-search"></i></button>
 		    </form>
@@ -95,10 +100,10 @@
 	<section class="header_bot">
 	<nav>
 		<ul>
-			<li><a href="ProductList.po">전체 상품조회</a></li>
-			<li><a href="">메뉴2</a></li>
-			<li><a href="">메뉴3</a></li>
-			<li><a href="">메뉴4</a></li>
+			<li><a href="UserProductList.us?sort_type=last&pd_type=all">전체상품조회</a></li>
+			<li><a href="UserProductList.us?sort_type=last&pd_type=국내도서">국내도서</a></li>
+			<li><a href="UserProductList.us?sort_type=last&pd_type=해외도서">해외도서</a></li>
+			<li><a href="">베스트셀러</a></li>
 		</ul>
 	</nav>
 	</section>

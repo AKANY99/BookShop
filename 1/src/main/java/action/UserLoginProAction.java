@@ -32,8 +32,6 @@ public class UserLoginProAction implements Action {
 			out.println("history.back()");
 			out.println("</script>");
 		} else {
-			String user_name = service.getLoginUserName(user_email);
-			request.getSession().setAttribute("sName", user_name);
 			request.getSession().setAttribute("sId", user_email);
 			forward = new ActionForward();
 			forward.setPath("./");
