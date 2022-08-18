@@ -1,3 +1,4 @@
+테이터베이스와 테이블
 create database bookshop;
 
 create table user(
