@@ -18,7 +18,6 @@ public class AdminProductListService {
 		list = dao.getProductList(start_date, end_date, search_input, pdPageNum, listLimit);
 		
 		close(con);
-		
 		return list;
 	}
 	
