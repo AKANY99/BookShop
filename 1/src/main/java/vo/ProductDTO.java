@@ -11,9 +11,8 @@ pd_price int not null,
 pd_quan int not null,
 pd_file varchar(100) not null,
 pd_subject varchar(50) not null,
-pd_content varchar(500) not null,
-pd_date date not null,
-pd_count int DEFAULT 0 not null
+pd_content varchar(500) not null
+pd_date date not null
 );
  */
 public class ProductDTO {
@@ -27,7 +26,6 @@ public class ProductDTO {
 	private String pd_content;
 	private Date pd_date;
 	private int pd_count;
-	
 	public String getPd_type() {
 		return pd_type;
 	}

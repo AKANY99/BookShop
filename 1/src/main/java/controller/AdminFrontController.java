@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AdminGetQnaListAction;
 import action.AdminPageAction;
+import action.AdminProductListAction;
 import action.AdminQnaRepAction;
 import action.AdminQnaRepModifyAction;
 import action.AdminUserDeleteAction;
@@ -45,21 +46,21 @@ public class AdminFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("product/admin_product_list.jsp");
 			forward.setRedirect(false);
-		}else if(command.equals("/QnaGetList.ad")) {
+		} else if(command.equals("/QnaGetList.ad")) {
 			try {
 			forward = new AdminGetQnaListAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/QnaGetList.ad 오류!");
 			}
-		}else if(command.equals("/Qnarep.ad")) {
+		} else if(command.equals("/Qnarep.ad")) {
 			try {
 				forward = new AdminQnaRepAction().execute(request,response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/Qnarep.ad 오류!");
 			}
-		}else if(command.equals("/QnaRepModify.ad")) {
+		} else if(command.equals("/QnaRepModify.ad")) {
 			try {
 				forward = new AdminQnaRepModifyAction().execute(request, response);
 			} catch (Exception e) {
@@ -70,26 +71,34 @@ public class AdminFrontController extends HttpServlet {
 				forward = new ActionForward();
 				forward.setPath("user/admin_user_list.jsp");
 				forward.setRedirect(false);
-		}else if(command.equals("/UserGetList.ad")) {
+		} else if(command.equals("/UserGetList.ad")) {
 			try {
 				forward = new AdminUserGetListAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/UserGetList.ad 오류!");
 			}
-		}else if(command.equals("/UserDetail.ad")) {
+		} else if(command.equals("/UserDetail.ad")) {
 			try {
 				forward = new AdminUserDetailAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/UserDetail.ad 오류!");
 			}
-		}else if(command.equals("/UserDelete.ad")) {
+		} else if(command.equals("/UserDelete.ad")) {
 			try {
 				forward = new AdminUserDeleteAction().execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/UserDelete.ad 오류!");
+			}
+		} else if(command.equals("/ProductGetList.ad")) {
+			try {
+				action = new AdminProductListAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/ProductGetList.ad 오류!");
 			}
 		}
 		
