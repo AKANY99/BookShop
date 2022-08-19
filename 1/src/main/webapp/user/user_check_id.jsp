@@ -46,10 +46,12 @@
 	
 	function useId() {
 		// 아이디 사용 버튼 클릭 시
+		let user_email = "${param.user_email}"; 
+		let emails = user_email.split('@');
 		// 부모창(join_form.html)의 폼 영역 내의 ID 입력창에 현재 입력된 아이디를 표시
 		// => window.opener.document.폼이름.요소이름.value = 값; 형태로 표시 가능
-		window.opener.document.fr.user_email.value = document.fr.user_email.value; // 부모창 ID 영역에 표시
-		window.opener.document.fr.user_email2.value = document.fr.user_email2.value; // 부모창 ID 영역에 표시
+		window.opener.document.fr.user_email.value = emails[0]; // 부모창 ID 영역에 표시
+		window.opener.document.fr.user_email2.value = emails[1]; // 부모창 ID 영역에 표시
 		
 		var spanCheckIdResult = window.opener.document.getElementById("duplicate");
 		spanCheckIdResult.innerHTML = "중복체크 O";

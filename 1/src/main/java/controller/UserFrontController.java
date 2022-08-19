@@ -73,21 +73,24 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("board/my_page.jsp");
 			forward.setRedirect(false);
-		} else if(command.equals("/UserProductList.us")){
-			try {
-				action = new UserProductListProAction();
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if(command.equals("/UserProductDetail.us")) {
-			action = new userProductDetailAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if(command.equals("/Popup.us")) {
+		} 
+//		else if(command.equals("/UserProductList.us")){
+//			try {
+//				action = new UserProductListProAction();
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		} 
+//		else if(command.equals("/UserProductDetail.us")) {
+//			action = new userProductDetailAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		} 
+		else if(command.equals("/Popup.us")) {
 			//팝업창 페이지 popup.jsp
 			forward = new ActionForward();
 			forward.setPath("/main/popup.jsp");
@@ -102,13 +105,19 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("/main/cat.jpg");
 			forward.setRedirect(false);
-		} else if(command.equals("/Search.us")) {
-			action = new UserSearchProductAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		} 
+//		else if(command.equals("/Search.us")) {
+//			action = new UserSearchProductAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		} 
+		else if(command.equals("/UserTerms.us")) {
+            forward = new ActionForward();
+            forward.setPath("user/user_terms.jsp");
+            forward.setRedirect(false);
 		}
 		
 		

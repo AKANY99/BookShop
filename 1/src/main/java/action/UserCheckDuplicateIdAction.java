@@ -12,13 +12,12 @@ public class UserCheckDuplicateIdAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		
-		
-		String id = request.getParameter("id");
-		System.out.println(id);
+		String user_email = request.getParameter("user_email")+'@'+request.getParameter("user_email2");
+		System.out.println(user_email);
 		
 		UserCheckDuplicateIdService service = new UserCheckDuplicateIdService();
-		
-		boolean isDuplicate = service.checkDuplicateId(id);
+
+		boolean isDuplicate = service.checkDuplicateId(user_email);
 		
 		if(isDuplicate) {
 			System.out.println("중복");
@@ -26,9 +25,8 @@ public class UserCheckDuplicateIdAction implements Action {
 			System.out.println("안중복");
 		}
 		forward = new ActionForward();
-		System.out.println("UserCheckIdForm.us?id=" + id + "&isDuplicate=" + isDuplicate);
-		forward.setPath("UserCheckIdForm.us?id=" + id + "&isDuplicate=" + isDuplicate);
-		forward.setRedirect(true);
+		System.out.println("UserCheckIdForm.us?user_email=" + user_email + "&isDuplicate=" + isDuplicate);
+		forward.setPath("UserCheckIdForm.us?user_email=" + user_email + "&isDuplicate=" + isDuplicate);
 		return forward;
 	}
 
