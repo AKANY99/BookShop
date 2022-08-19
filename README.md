@@ -23,6 +23,7 @@ pd_quan int not null,
 pd_file varchar(100) not null,
 pd_subject varchar(50) not null,
 pd_content varchar(500) not null,
+pd_count int not null,
 pd_date date not null
 );
 
@@ -47,22 +48,22 @@ qna_rep VARCHAR(200)
 );
 
 ex) 상품 등록
-insert into product values(1, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(2, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(3, '해외도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(4, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(5, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(6, '해외도서', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(7, '국내도서', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(8, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(9, '해외도서', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(10, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(11, '해외도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(12, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(13, 'eBook', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(14, '해외도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(15, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', now());
-insert into product values(16, 'eBook', '인간1', 900000, 0, '역행자_표지.jpg', 'ㅁㅁ음음음ㅁㅁ', '역행자_소개.jpg', '2022-08-01');
+insert into product values(1, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(2, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(3, '해외도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(4, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(5, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(6, '해외도서', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(7, '국내도서', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(8, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(9, '해외도서', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(10, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(11, '해외도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(12, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(13, 'eBook', '사람1', 10000, 0, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(14, '해외도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(15, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
+insert into product values(16, 'eBook', '인간1', 900000, 0, '역행자_표지.jpg', 'ㅁㅁ음음음ㅁㅁ', '역행자_소개.jpg', 0, '2022-08-01');
 
 ex) 사용자 등록
 INSERT INTO user VALUES (1, '관리자', 'admin', '12341234', '남', '123123-1234123', 1234, '부산언저리', '010-1234-1234', now());
