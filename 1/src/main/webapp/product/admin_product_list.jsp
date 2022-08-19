@@ -86,11 +86,16 @@
 				$("#pd_search_result").html(response);
 		}).fail(function () {
 				alert("AJAX 실패");
-			});
-		};
+		});
+	};
+	
 </script>
-</head>
+
 <body>
+
+
+
+
 	<!-- pd_quan 이 "전체"일 경우 넘겨줄 파라미터 -->
 	<form class="all_form">
 		<input type="hidden" name="start_date">
@@ -170,13 +175,12 @@
 	<!-- 검색란  -->
 	
 	<!-- 상품표시란 -->
-	<form class="form_page">
+	
 		<div id="pd_search_result">
 		<!-- AJAX로 검색결과표시 -->
 		
 		<!-- AJAX로 검색결과표시 -->
 		</div>
-	</form>
 	<!-- 상품표시란 -->
 </body>
 </html>

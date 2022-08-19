@@ -163,7 +163,7 @@
 	
 	<div class=veiw_chart>
 		<div id="chart_subject">
-			<a href ="">일별 매출 / 일별 가입자 수 차트 ></a>
+			<a href ="">&lt; 일별 매출 / 일별 가입자 수 차트 &gt;</a>
 		</div>
 		<!-- 일별 매출그래프 자리 -->
 		<div class="chart1" id="chart_div"  style="width: 1285px; height: 400px;"></div>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
 <!-- AJAX로 인해 admin_product_list.jsp 의 검색결과 안에 표시될 정보들 -->
 <p id="result_p">검색결과</p>
 <div class="search_result">
@@ -28,7 +28,7 @@
 					<div class="table_content">${pdList.pd_name }</div>
 					<div class="table_content">${pdList.pd_quan }</div>
 					<div class="table_content">
-						<input type="button" value="상세정보" onclick="window.open()">
+						<input type="button" value="상세정보" onclick="window.open('ProductInfo.ad')">
 					</div>
 				</div>
 			</c:forEach>
@@ -65,15 +65,26 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+	
+	<div class="modal hidden">
+  		<div class="bg"></div>
+  		<div class="modalBox">
+   			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur magni soluta!</p>
+  		<button class="closeBtn">✖</button>
+		</div>
+	</div>
+	
 <!-- AJAX로 인해 admin_product_list.jsp 의 검색결과 안에 표시될 정보들 -->
 	
 <!-- 페이지를 유지하기 위한 값 -->
+<form class="form_page">
 <input type="hidden" id="pdPageNum" name="pdPageNum" value="${pdPageInfo.pageNum }">
 <input type="hidden" name="start_date" value="${start_date }">
 <input type="hidden" name="end_date" value="${end_date }">
 <input type="hidden" name="pd_quan" value="${pd_quan }">
 <input type="hidden" name="pd_type" value="${pd_type }">
 <input type="hidden" name="search_input" value="${search_input }">
+</form>
 <!-- 페이지를 유지하기 위한 값 -->
 
 
