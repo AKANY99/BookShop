@@ -67,7 +67,7 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("/QnaRepModify.ad 오류!");
 			}
-		}else if(command.equals("/UserManagement.ad")) {
+		} else if(command.equals("/UserManagement.ad")) {
 				forward = new ActionForward();
 				forward.setPath("user/admin_user_list.jsp");
 				forward.setRedirect(false);
@@ -100,6 +100,10 @@ public class AdminFrontController extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("/ProductGetList.ad 오류!");
 			}
+		} else if(command.equals("/ProductInfo.ad")) {
+			forward = new ActionForward();
+			forward.setPath("user/admin_product_info.jsp");
+			forward.setRedirect(false);
 		}
 		
 			
