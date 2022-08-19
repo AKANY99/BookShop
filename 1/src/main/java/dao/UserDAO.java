@@ -393,6 +393,7 @@ public class UserDAO {
 			String sql = "SELECT * FROM user WHERE user_num = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, user_num);
+			rs = pstmt.executeQuery();
 			rs.next();
 			user.setUser_num(rs.getInt("user_num"));
 			user.setUser_name(rs.getString("user_name"));
@@ -410,5 +411,25 @@ public class UserDAO {
 		
 		return user;
 	}
-	
+	public Object[] getPopup() {
+		Object[] popupPath = new Object[1];
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT * FROM popup";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			rs.next();
+			popupPath[0] = rs.getInt("popup_pd_num");
+			popupPath[1] = rs.getString("popup_file");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("getPopup 구문오류!");
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return popupPath;
+	}
 }

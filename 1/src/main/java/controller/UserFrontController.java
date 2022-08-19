@@ -118,6 +118,12 @@ public class UserFrontController extends HttpServlet {
             forward = new ActionForward();
             forward.setPath("user/user_terms.jsp");
             forward.setRedirect(false);
+		} else if(command.equals("/CustomerSupporter.us")) {
+			try {
+				forward = new UsercustomerSupporterAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		

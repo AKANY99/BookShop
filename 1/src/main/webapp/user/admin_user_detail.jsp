@@ -90,7 +90,7 @@ function userDelete(){
 	</section>
 	<div class="line"></div>
 	<div class="buttons">
-		<div class="button" style="background: red; color: white;"onclick="userDelete()">회원정지</div>
+		<div class="button" style="background: red; color: white;"  onclick="userDelete()">회원정지</div>
 		<div class="button" style="background: white;"></div>
 		<div class="button" style="background: white;"></div>
 	</div>

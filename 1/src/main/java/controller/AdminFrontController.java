@@ -120,6 +120,13 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if(command.equals("/UserDetail.ad")) {
+			try {
+				forward = new AdminUserDetailAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/UserDetail.ad 오류!!");
+			}
 		}
 		
 		// -------------------------------------------------------------------------------------------------------
