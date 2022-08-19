@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AdminGetQnaListAction;
 import action.AdminPageAction;
+import action.AdminProductInfoAction;
 import action.AdminProductListAction;
+import action.AdminProductWriteProAction;
 import action.AdminQnaRepAction;
 import action.AdminQnaRepModifyAction;
 import action.AdminUserDeleteAction;
@@ -101,12 +103,25 @@ public class AdminFrontController extends HttpServlet {
 				System.out.println("/ProductGetList.ad 오류!");
 			}
 		} else if(command.equals("/ProductInfo.ad")) {
+			try {
+				action = new AdminProductInfoAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/ProductWrite.ad")) {
 			forward = new ActionForward();
-			forward.setPath("user/admin_product_info.jsp");
+			forward.setPath("product/admin_product_write.jsp");
 			forward.setRedirect(false);
+		} else if(command.equals("/ProductWritePro.ad")) {
+			try {
+				action = new AdminProductWriteProAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
-			
 		// -------------------------------------------------------------------------------------------------------
 		
 		if(forward != null) {

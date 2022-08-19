@@ -184,92 +184,92 @@ public class ProductDAO {
 	}
 	
 	// 헤더의 검색 기능 수행
-		// searchType(통합검색,제목검색,작가검색)에 따라 그에 맞는 검색어 키워드로 검색
-		// 정렬(sort)의 기본값은 pd_num(최신순 last)이고 검색결과에서 사용자가 선택한 정렬방식에 따라 정렬
-		public ArrayList<ProductDTO> getSearchProductList(String searchType, String search, String sort) {
-			ArrayList<ProductDTO> SearchProductList = new ArrayList<ProductDTO>();
-			ProductDTO product = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			
-			try {
-				if(searchType.equals("subject")) {
-					if(sort.equals("last")) {
-						String sql = "SELECT * FROM product WHERE pd_subject LIKE ? ORDER BY pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
-					else if(sort.equals("price")) {
-						String sql = "SELECT * FROM product WHERE pd_subject LIKE ? ORDER BY pd_price ASC, pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
-					else {
-						String sql = "SELECT * FROM product WHERE pd_subject LIKE ? ORDER BY pd_count DESC, pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
+	// searchType(통합검색,제목검색,작가검색)에 따라 그에 맞는 검색어 키워드로 검색
+	// 정렬(sort)의 기본값은 pd_num(최신순 last)이고 검색결과에서 사용자가 선택한 정렬방식에 따라 정렬
+	public ArrayList<ProductDTO> getSearchProductList(String searchType, String search, String sort) {
+		ArrayList<ProductDTO> SearchProductList = new ArrayList<ProductDTO>();
+		ProductDTO product = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			if(searchType.equals("subject")) {
+				if(sort.equals("last")) {
+					String sql = "SELECT * FROM product WHERE pd_subject LIKE ? ORDER BY pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					rs = pstmt.executeQuery();
 				}
-				else if(searchType.equals("writer")) {
-					if(sort.equals("last")) {
-						String sql = "SELECT * FROM product WHERE pd_name LIKE ? ORDER BY pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
-					else if(sort.equals("price")) {
-						String sql = "SELECT * FROM product WHERE pd_name LIKE ? ORDER BY pd_price ASC, pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
-					else {
-						String sql = "SELECT * FROM product WHERE pd_name LIKE ? ORDER BY pd_count DESC, pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
+				else if(sort.equals("price")) {
+					String sql = "SELECT * FROM product WHERE pd_subject LIKE ? ORDER BY pd_price ASC, pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					rs = pstmt.executeQuery();
 				}
 				else {
-					if(sort.equals("last")) {
-						String sql = "SELECT * FROM product WHERE pd_subject LIKE ? OR pd_name LIKE ? ORDER BY pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						pstmt.setString(2, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
-					else if(sort.equals("price")) {
-						String sql = "SELECT * FROM product WHERE pd_subject LIKE ? OR pd_name LIKE ? ORDER BY pd_price ASC, pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						pstmt.setString(2, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
-					else {
-						String sql = "SELECT * FROM product WHERE pd_subject LIKE ? OR pd_name LIKE ? ORDER BY pd_count DESC, pd_num DESC";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, "%" + search + "%");
-						pstmt.setString(2, "%" + search + "%");
-						rs = pstmt.executeQuery();
-					}
+					String sql = "SELECT * FROM product WHERE pd_subject LIKE ? ORDER BY pd_count DESC, pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					rs = pstmt.executeQuery();
 				}
-					
-				while(rs.next()) {
-					product = new ProductDTO();
-					product.setPd_num(rs.getInt("pd_num"));
-					product.setPd_name(rs.getString("pd_name"));
-					product.setPd_price(rs.getInt("pd_price"));
-					product.setPd_quan(rs.getInt("pd_quan"));
-					product.setPd_file(rs.getString("pd_file"));
-					product.setPd_subject(rs.getString("pd_subject"));
-					product.setPd_content(rs.getString("pd_content"));
-					product.setPd_type(rs.getString("pd_type"));
-					product.setPd_count(rs.getInt("pd_count"));
-					SearchProductList.add(product);
+			}
+			else if(searchType.equals("writer")) {
+				if(sort.equals("last")) {
+					String sql = "SELECT * FROM product WHERE pd_name LIKE ? ORDER BY pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					rs = pstmt.executeQuery();
 				}
+				else if(sort.equals("price")) {
+					String sql = "SELECT * FROM product WHERE pd_name LIKE ? ORDER BY pd_price ASC, pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					rs = pstmt.executeQuery();
+				}
+				else {
+					String sql = "SELECT * FROM product WHERE pd_name LIKE ? ORDER BY pd_count DESC, pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					rs = pstmt.executeQuery();
+				}
+			}
+			else {
+				if(sort.equals("last")) {
+					String sql = "SELECT * FROM product WHERE pd_subject LIKE ? OR pd_name LIKE ? ORDER BY pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					pstmt.setString(2, "%" + search + "%");
+					rs = pstmt.executeQuery();
+				}
+				else if(sort.equals("price")) {
+					String sql = "SELECT * FROM product WHERE pd_subject LIKE ? OR pd_name LIKE ? ORDER BY pd_price ASC, pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					pstmt.setString(2, "%" + search + "%");
+					rs = pstmt.executeQuery();
+				}
+				else {
+					String sql = "SELECT * FROM product WHERE pd_subject LIKE ? OR pd_name LIKE ? ORDER BY pd_count DESC, pd_num DESC";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, "%" + search + "%");
+					pstmt.setString(2, "%" + search + "%");
+					rs = pstmt.executeQuery();
+				}
+			}
+				
+			while(rs.next()) {
+				product = new ProductDTO();
+				product.setPd_num(rs.getInt("pd_num"));
+				product.setPd_name(rs.getString("pd_name"));
+				product.setPd_price(rs.getInt("pd_price"));
+				product.setPd_quan(rs.getInt("pd_quan"));
+				product.setPd_file(rs.getString("pd_file"));
+				product.setPd_subject(rs.getString("pd_subject"));
+				product.setPd_content(rs.getString("pd_content"));
+				product.setPd_type(rs.getString("pd_type"));
+				product.setPd_count(rs.getInt("pd_count"));
+				SearchProductList.add(product);
+			}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				System.out.println("getSearchProductList() - SQL 구문 오류 : " + e.getMessage());
@@ -277,9 +277,8 @@ public class ProductDAO {
 				close(pstmt);
 				close(rs);
 			}
-			
-			return SearchProductList;
-		}
+		return SearchProductList;
+	}
 		
 		// 사용자의 상품 조회 & 사용자가 지정한 방식으로 정렬
 		// 선택한 카테고리가 전체목록이면 파라미터로 받아온 타입이 'all' 이고 전체 상품 목록 출력
@@ -386,6 +385,7 @@ public class ProductDAO {
 			}
 			return product;
 		}
+		
 	// 검색조건에 맞는 상품갯수 조회
 	public int getListCount(String start_date, String end_date, String pd_type, String pd_quan, String search_input) {
 //		System.out.println(start_date + "/" + end_date + "/" + pd_type + "/" + pd_quan + "/" + search_input);

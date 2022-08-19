@@ -2,19 +2,6 @@ package vo;
 
 import java.sql.Date;
 
-/*
-create table product(
-pd_num int primary key,
-pd_type varchar(10) not null,
-pd_name varchar(10) not null,
-pd_price int not null,
-pd_quan int not null,
-pd_file varchar(100) not null,
-pd_subject varchar(50) not null,
-pd_content varchar(500) not null
-pd_date date not null
-);
- */
 public class ProductDTO {
 	private int pd_num;
 	private String pd_type;
@@ -24,8 +11,9 @@ public class ProductDTO {
 	private String pd_file;
 	private String pd_subject;
 	private String pd_content;
-	private Date pd_date;
 	private int pd_count;
+	private Date pd_date;
+	
 	public String getPd_type() {
 		return pd_type;
 	}

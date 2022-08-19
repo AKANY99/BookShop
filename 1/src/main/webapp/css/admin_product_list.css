@@ -81,7 +81,13 @@ p {
 
 /* ========================================= */
 #result_p {
-	margin: 25px 110px 15px 110px;
+	margin: 35px 110px 15px 110px;
+}
+
+#product_add {
+	margin-left: 740px;
+	padding: 3px 10px;
+	letter-spacing: 2px;
 }
 
 .search_result {

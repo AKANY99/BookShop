@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- AJAX로 인해 admin_product_list.jsp 의 검색결과 안에 표시될 정보들 -->
-<p id="result_p">검색결과</p>
+<p id="result_p">
+	검색결과
+	<input id="product_add" type="button" value="상품등록" onclick="location.href='ProductWrite.ad'">
+</p>
 <div class="search_result">
 	<div id="table_subject">
 		<div class="table_subject">도서번호</div>
@@ -28,7 +31,7 @@
 					<div class="table_content">${pdList.pd_name }</div>
 					<div class="table_content">${pdList.pd_quan }</div>
 					<div class="table_content">
-						<input type="button" value="상세정보" onclick="window.open('ProductInfo.ad')">
+						<input type="button" value="상세정보" onclick="location.href='ProductInfo.ad?pd_num=${pdList.pd_num }'">
 					</div>
 				</div>
 			</c:forEach>
@@ -65,15 +68,6 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	
-	<div class="modal hidden">
-  		<div class="bg"></div>
-  		<div class="modalBox">
-   			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur magni soluta!</p>
-  		<button class="closeBtn">✖</button>
-		</div>
-	</div>
-	
 <!-- AJAX로 인해 admin_product_list.jsp 의 검색결과 안에 표시될 정보들 -->
 	
 <!-- 페이지를 유지하기 위한 값 -->
