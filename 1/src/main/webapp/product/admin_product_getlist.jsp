@@ -3,10 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- AJAX로 인해 admin_product_list.jsp 의 검색결과 안에 표시될 정보들 -->
-<p id="result_p">
-	검색결과
-	<input id="product_add" type="button" value="상품등록" onclick="location.href='ProductWrite.ad'">
-</p>
+<div id="result_subject">
+	<p>검색결과</p>
+	<div>
+		<input type="button" value="상품등록" onclick="location.href='ProductWrite.ad'">
+	</div>
+</div>
 <div class="search_result">
 	<div id="table_subject">
 		<div class="table_subject">도서번호</div>

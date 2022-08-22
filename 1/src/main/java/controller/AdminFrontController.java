@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AdminGetQnaListAction;
 import action.AdminPageAction;
-import action.AdminProductInfoAction;
+import action.AdminProductDetailAction;
 import action.AdminProductListAction;
 import action.AdminProductWriteProAction;
 import action.AdminQnaRepAction;
@@ -104,7 +104,7 @@ public class AdminFrontController extends HttpServlet {
 			}
 		} else if(command.equals("/ProductInfo.ad")) {
 			try {
-				action = new AdminProductInfoAction();
+				action = new AdminProductDetailAction();
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

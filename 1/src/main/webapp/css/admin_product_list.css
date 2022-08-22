@@ -1,19 +1,23 @@
 @charset "UTF-8";
 
 p {
+	text-align: center;
+	max-width: 1000px;
+	min-width: 1000px;
 	color: #444444;
-	margin: 15px 110px;
 	font-size: 20px;
 	font-weight: bold;
 }
 
 .product_search {
-	margin: 0 100px;
+	margin: 30px auto;
+	max-width: 1000px;
+	min-width: 1000px;
 	padding: 0 20px;
 	padding-top: 5px;
 	box-shadow: 0.5px 0.5px 10px #c8c8c8;
 	box-shadow: -0.5px -0.5px 10px #d4d4d4;
-	border-radius:20px;
+	border-radius: 20px;
 	height: 300px;
 }
 
@@ -21,6 +25,10 @@ p {
 	color: #a1a1a1;
 	font-weight: bold;
 	margin: 8px 6px;
+}
+
+.search_form > p {
+	margin: 15px auto;
 }
 
 .product_search > .cell {
@@ -65,7 +73,7 @@ p {
 }
 
 .search_input {
-	width: 80%;
+	width: 71%;
 	font-size: 16px;
 	padding: 4px 10px;
 	margin-left: 10px;
@@ -80,23 +88,34 @@ p {
 }
 
 /* ========================================= */
-#result_p {
-	margin: 35px 110px 15px 110px;
+
+
+#result_subject > p {
+	margin: 0 auto;
+	padding-top: 30px;
 }
 
-#product_add {
-	margin-left: 740px;
+#result_subject > div {
+	text-align: right;
+	margin: 10px auto;
+	max-width: 1000px;
+	min-width: 1000px;
+}
+
+#result_subject > div > input {
 	padding: 3px 10px;
 	letter-spacing: 2px;
 }
 
 .search_result {
-	margin: 0 100px;
+	margin: 0 auto;
 	padding: 0 20px;
 	padding-top: 5px;
 	box-shadow: 0.5px 0.5px 10px #c8c8c8;
 	box-shadow: -0.5px -0.5px 10px #d4d4d4;
 	border-radius:20px;
+	max-width: 1000px;
+	min-width: 1000px;
 	height: auto;
 }
 

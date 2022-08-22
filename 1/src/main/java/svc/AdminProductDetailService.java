@@ -7,7 +7,7 @@ import dao.ProductDAO;
 import static db.JdbcUtil.*;
 import vo.ProductDTO;
 
-public class AdminProductInfoService {
+public class AdminProductDetailService {
 
 	public ProductDTO getProductDetail(int pd_num) {
 		ProductDTO product = null;
