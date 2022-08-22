@@ -1,73 +1,77 @@
-@charset "UTF-8";
-
 #wrapper{
-	margin:auto;
 	width: 900px;
-	height:auto;
+	height: auto;
 	background: #f5f5f5;
+	margin: 100px auto 30px auto;
 }
-.FAQ{
-	width: 900px;
+.subject{
+	font-size: 25px;
+	font-weight: bold;
+	
 }
 
-.subject{
-	color: gray;
-	margin-top: 100px;
-	font-size: 30px;
-	font-weight: 500;
-	margin-left: 30px;
-	margin-right: 30px;
-	border-bottom: 0.5px solid #ccc;
+.content_flex{
+	display: flex;
 }
 
 .content{
-	font-size: 26px;
-	margin-right: 40px;
-	margin-left: 40px;
-	margin-top: 15px;
-	border-bottom: 0.1px dotted #ccc;
-	padding-bottom: 5px;
-}
-
-a{
-	text-decoration: none;
-	color: black;
-}
-a:hover{
 	color: gray;
+	font-weight: bold;
+	font-size:20px;
+	border-radius:20px;
+	border:0.5px solid #c8c8c8;
+	height: 140px;
+	padding-top: 10px;
+	margin: 10px 10px 10px 10px;
+	cursor: pointer;
+	flex:4;
 }
 
-#addfaq {
-	text-align:center;
+
+.more{
+	margin: 10px 10px 10px 10px;
+	text-align: center;
+	font-size: 20px;
 	cursor: pointer;
 }
 
 
 
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
 
+  width: 100%;
+  height: 100%;
 
+  display: none;
 
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
+.modal.show {
+  display: block;
+}
 
+.ex {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display:none;
+  width: 400px;
+  height: 600px;
 
+  padding: 40px;
 
+  text-align: center;
 
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  transform: translateX(-50%) translateY(-50%);
+}
 
 
 
