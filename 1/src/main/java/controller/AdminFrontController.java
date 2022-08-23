@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import action.Action;
 import action.AdminGetQnaListAction;
 import action.AdminPageAction;
+import action.AdminProductDeleteAction;
 import action.AdminProductDetailAction;
 import action.AdminProductListAction;
+import action.AdminProductUpdateAction;
 import action.AdminProductWriteProAction;
 import action.AdminQnaRepAction;
 import action.AdminQnaRepModifyAction;
@@ -126,6 +128,24 @@ public class AdminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("/UserDetail.ad 오류!!");
+			}
+		} else if(command.equals("/ProductUpdate.ad")) {
+			forward = new ActionForward();
+			forward.setPath("product/admin_product_update.jsp");
+			forward.setRedirect(false);
+		} else if(command.equals("/ProductUpdatePro.ad")) {
+			try {
+				action = new AdminProductUpdateAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/ProductDelete.ad")) {
+			try {
+				action = new AdminProductDeleteAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		

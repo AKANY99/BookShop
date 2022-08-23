@@ -470,6 +470,53 @@ public class ProductDAO {
 		return insertCount;
 	}
 	
+	// 상품수정
+	public int updateProduct(ProductDTO product) {
+		int updateCount = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE product SET "
+					+ "pd_type=?, pd_name=?, pd_price=?, pd_quan=?, pd_file=?, pd_subject=?, pd_content=? "
+					+ "WHERE pd_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, product.getPd_type());
+			pstmt.setString(2, product.getPd_name());
+			pstmt.setInt(3, product.getPd_price());
+			pstmt.setInt(4, product.getPd_quan());
+			pstmt.setString(5, product.getPd_file());
+			pstmt.setString(6, product.getPd_subject());
+			pstmt.setString(7, product.getPd_content());
+			pstmt.setInt(8, product.getPd_num());
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("updateProduct(DTO) - SQL구문 오류 - " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return updateCount;
+	}
+	
+	// 상품삭제
+	public int deleteProduct(String pd_num) {
+		int deleteCount = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM product WHERE pd_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pd_num);
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("productDelete(S) - SQL구문 오류 - " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return deleteCount;
+	}
+	
 	
 }
 

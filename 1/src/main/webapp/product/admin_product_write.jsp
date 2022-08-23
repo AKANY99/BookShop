@@ -7,7 +7,10 @@
 <title>상품게시판</title>
 </head>
 <body>
-<h1>상품등록란</h1>
+	<!-- 헤더부분 -->
+	<jsp:include page="../inc/admin_header.jsp"></jsp:include>
+	<!-- 헤더부분 -->
+	<h1>상품등록</h1>
 	<form action="ProductWritePro.ad" method="post" enctype="multipart/form-data"> 
 	<table border="1">
 	<tr>

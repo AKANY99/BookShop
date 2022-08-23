@@ -3,27 +3,26 @@ package svc;
 import java.sql.Connection;
 
 import dao.ProductDAO;
-import vo.ProductDTO;
 
 import static db.JdbcUtil.*;
 
-public class AdminProductWriteProService {
+public class AdminProductDeleteService {
 
-	public int insertProduct(ProductDTO product) {
-		int insertCount = 0;
+	public int deleteProduct(String pd_num) {
+		int deleteCount = 0;
 		Connection con = getConnection();
 		ProductDAO dao = ProductDAO.getInstance();
 		dao.setCon(con);
 		
-		insertCount = dao.insertProduct(product);
+		deleteCount = dao.deleteProduct(pd_num);
 		
-		if(insertCount == 0) {
+		if(deleteCount == 0) {
 			rollback(con);
 		} else {
 			commit(con);
 		}
 		close(con);
-		return insertCount;
+		return deleteCount;
 	}
 
 }
