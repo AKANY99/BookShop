@@ -2,37 +2,37 @@
 create database bookshop;
 
 create table user(
-user_num int primary key,
-user_name varchar(10) not null,
-user_email varchar(50) unique not null,
-user_passwd varchar(30) not null,
-user_gender varchar(1) not null,
-user_jumin varchar(30) not null,
-user_address_code int not null,
-user_address varchar(100) not null,
-user_phone varchar(40) not null,
-user_date date not null
+	user_num int primary key,
+	user_name varchar(10) not null,
+	user_email varchar(50) unique not null,
+	user_passwd varchar(30) not null,
+	user_gender varchar(1) not null,
+	user_jumin varchar(30) not null,
+	user_address_code int not null,
+	user_address varchar(100) not null,
+	user_phone varchar(40) not null,
+	user_date date not null
 );
 
 create table product(
-pd_num int primary key,
-pd_type varchar(10) not null,
-pd_name varchar(10) not null,
-pd_price int not null,
-pd_quan int not null,
-pd_file varchar(100) not null,
-pd_subject varchar(50) not null,
-pd_content varchar(500) not null,
-pd_count int not null,
-pd_date date not null
+	pd_num int primary key,
+	pd_type varchar(10) not null,
+	pd_name varchar(10) not null,
+	pd_price int not null,
+	pd_quan int not null,
+	pd_file varchar(100) not null,
+	pd_subject varchar(50) not null,
+	pd_content varchar(500) not null,
+	pd_count int not null,
+	pd_date date not null
 );
 
 create table review(
- review_num int primary key,
- review_pd_num int,
- review_subject varchar(20),
- review_content varchar(500),
- review_score float
+	 review_num int primary key,
+	 review_pd_num int,
+	 review_subject varchar(20),
+	 review_content varchar(500),
+	 review_score float
 );
 
 CREATE TABLE qna (
@@ -58,18 +58,18 @@ CREATE TABLE cart(
 
 USER =추가
 create table user(
-user_num int primary key,
-user_name varchar(10) not null,
-user_email varchar(50) unique not null,
-user_passwd varchar(30) not null,
-user_gender varchar(2) not null,
-user_jumin varchar(30) not null,
-user_address_code int not null,
-user_address varchar(100) not null,
-user_phone varchar(40) not null,
-user_date date not null
-user_points int default 0,
-user_purchased int default 0
+	user_num int primary key,
+	user_name varchar(10) not null,
+	user_email varchar(50) unique not null,
+	user_passwd varchar(30) not null,
+	user_gender varchar(2) not null,
+	user_jumin varchar(30) not null,
+	user_address_code int not null,
+	user_address varchar(100) not null,
+	user_phone varchar(40) not null,
+	user_date date not null
+	user_points int default 0,
+	user_purchased int default 0
 );
 
 
