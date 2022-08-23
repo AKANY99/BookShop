@@ -36,15 +36,15 @@ create table review(
 );
 
 CREATE TABLE qna (
-qna_num INT PRIMARY KEY,
-qna_user VARCHAR(30),
-qna_subject VARCHAR(50) NOT NULL,
-qna_content VARCHAR(100) NOT NULL,
-qna_date DATE,
-qna_pd_num INT,
-qna_user_email VARCHAR(50) NOT NULL,
-qna_type VARCHAR(15) NOT NULL,
-qna_rep VARCHAR(200)
+	qna_num INT PRIMARY KEY,
+	qna_user VARCHAR(30),
+	qna_subject VARCHAR(50) NOT NULL,
+	qna_content VARCHAR(100) NOT NULL,
+	qna_date DATE,
+	qna_pd_num INT,
+	qna_user_email VARCHAR(50) NOT NULL,
+	qna_type VARCHAR(15) NOT NULL,
+	qna_rep VARCHAR(200)
 );
 
 장바구니  
