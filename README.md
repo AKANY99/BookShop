@@ -47,6 +47,42 @@ qna_type VARCHAR(15) NOT NULL,
 qna_rep VARCHAR(200)
 );
 
+장바구니  
+CREATE TABLE cart(
+	cart_user_num int NOT NULL,
+	cart_pd_num int NOT NULL,
+	cart_pd_quan int NOT NULL,
+	constraint user_num_fk FOREIGN KEY(cart_user_num) REFERENCES user(user_num),
+	constraint pd_num_fk FOREIGN KEY(cart_pd_num) REFERENCES product(pd_num)
+);
+
+USER =추가
+create table user(
+user_num int primary key,
+user_name varchar(10) not null,
+user_email varchar(50) unique not null,
+user_passwd varchar(30) not null,
+user_gender varchar(2) not null,
+user_jumin varchar(30) not null,
+user_address_code int not null,
+user_address varchar(100) not null,
+user_phone varchar(40) not null,
+user_date date not null
+user_points int default 0,
+user_purchased int default 0
+);
+
+
+관심목록(찜목록)
+CREATE TABLE interest(
+	inter_user_num int NOT NULL,
+	inter_pd_num int NOT NULL,
+	constraint int_user_num_fk FOREIGN KEY(inter_user_num) REFERENCES user(user_num),
+	constraint int_pd_num_fk FOREIGN KEY(inter_pd_num) REFERENCES product(pd_num)
+);
+
+
+
 ex) 상품 등록
 insert into product values(1, '국내도서', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
 insert into product values(2, 'eBook', '사람1', 10000, 6, '역행자_표지.jpg', '책1', '역행자_소개.jpg', 0, now());
