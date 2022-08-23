@@ -2,52 +2,56 @@
 
 
 body {
-  font-family: "Lato", sans-serif;
+	font-family: "Lato", sans-serif;
 }
 
 .sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #6c96ec;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 100px;
-  box-shadow: 0 -1px #000000;
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #6c96ec;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 100px;
+	box-shadow: 0 -1px #000000;
+}
+
+.sidenav > div {
+	margin-top: 70px;
 }
 
 .sidenav a {
-  padding: 20px 30px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #dedede;
-  display: block;
-  transition: 0.3s;
-  background: #5a85dc;
+	padding: 20px 30px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #dedede;
+	display: block;
+	transition: 0.3s;
+	background: #5a85dc;
 }
 
 .sidenav a:hover {
-  color: #ffffff;
-  background: #779ae1;
+	color: #ffffff;
+	background: #779ae1;
 }
 
 .sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 36px;
-  margin-left: 50px;
-  background: #6c96ec;
-  width: 10px;
-  box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 36px;
+	margin-left: 50px;
+	background: #6c96ec;
+	width: 10px;
+	box-sizing: border-box;
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+ .sidenav {padding-top: 15px;}
+ .sidenav a {font-size: 18px;}
 }
 
 

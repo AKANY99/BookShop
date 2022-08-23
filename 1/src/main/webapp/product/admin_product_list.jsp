@@ -33,7 +33,7 @@
 	});
 	
 	$(function() {
-		if("${param.pd_quan}" == "품절") {
+		if("${param.pd_quan}" == "false") {
 		var soldOut_form = $(".soldOut_form").serialize();
 			$.ajax({
 				type:"get",
@@ -45,7 +45,7 @@
 			}).fail(function () {
 				alert("AJAX 실패");
 			});
-		} else if("${param.pd_quan}" == "전체") {
+		} else if("${param.pd_quan}" == "all") {
 			var all_form = $(".all_form").serialize();
 			$.ajax({
 				type:"get",
@@ -100,8 +100,8 @@
 	<form class="all_form">
 		<input type="hidden" name="start_date">
 		<input type="hidden" name="end_date">
-		<input type="hidden" name="pd_quan" value="전체">
-		<input type="hidden" name="pd_type" value="전체">
+		<input type="hidden" name="pd_quan" value="all">
+		<input type="hidden" name="pd_type" value="all">
 		<input type="hidden" name="search_input">
 	</form>	
 	<!-- pd_quan 이 "전체"일 경우 넘겨줄 파라미터 -->
@@ -110,8 +110,8 @@
 	<form class="soldOut_form">
 		<input type="hidden" name="start_date">
 		<input type="hidden" name="end_date">
-		<input type="hidden" name="pd_quan" value="품절">
-		<input type="hidden" name="pd_type" value="전체">
+		<input type="hidden" name="pd_quan" value="false">
+		<input type="hidden" name="pd_type" value="all">
 		<input type="hidden" name="search_input">
 	</form>	
 	<!-- pd_quan 이 "품절"일 경우 넘겨줄 파라미터 -->
@@ -145,18 +145,18 @@
 				<div id="req_subject">
 					상태
 				</div>
-				<input type="radio" name="pd_quan" value="전체" class="type_select" checked="checked">전체&nbsp;&nbsp;
-				<input type="radio" name="pd_quan" value="재고있음" class="type_select">재고있음&nbsp;&nbsp;
-				<input type="radio" name="pd_quan" value="품절" class="type_select">품절&nbsp;&nbsp;
+				<input type="radio" name="pd_quan" value="all" class="type_select" checked="checked">전체&nbsp;&nbsp;
+				<input type="radio" name="pd_quan" value="true" class="type_select">재고있음&nbsp;&nbsp;
+				<input type="radio" name="pd_quan" value="false" class="type_select">품절&nbsp;&nbsp;
 			</div>
 			
 			<div class="cell">
 				<div id="req_subject">
 					타입
 				</div>
-				<input type="radio" name="pd_type" value="전체" class="type_select" checked="checked">전체&nbsp;&nbsp;
-				<input type="radio" name="pd_type" value="국내도서" class="type_select">국내도서&nbsp;&nbsp;
-				<input type="radio" name="pd_type" value="해외도서" class="type_select">해외도서&nbsp;&nbsp;
+				<input type="radio" name="pd_type" value="all" class="type_select" checked="checked">전체&nbsp;&nbsp;
+				<input type="radio" name="pd_type" value="domestic" class="type_select">국내도서&nbsp;&nbsp;
+				<input type="radio" name="pd_type" value="overseas" class="type_select">해외도서&nbsp;&nbsp;
 				<input type="radio" name="pd_type" value="eBook" class="type_select">eBook&nbsp;&nbsp;
 			</div>
 			

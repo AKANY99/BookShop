@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>상품관리 게시판</title>
 <link href="css/admin_product_detail.css" rel="stylesheet" />
+<link href="css/admin_sidebar.css" rel="stylesheet" />
 </head>
 <body>
 	<!-- 헤더부분 -->
@@ -23,27 +24,31 @@
 					등록일 : ${product.pd_date }
 				</div>
 				<div class="product_cell">
-					책 이름 : ${product.pd_subject }
-					작가 : ${product.pd_name }				
+					책 이름 : ${product.pd_subject } 
+					작가 : ${product.pd_name }
 				</div>
 				<div class="product_cell">
-					남은 수량 : ${product.pd_quan }
-					판매 수량 : ${product.pd_count }
+					남은 수량 : ${product.pd_quan } 권
+					판매 수량 : ${product.pd_count } 권
 				</div>
 				<div class="product_cell product_price">
-					가격 : ${product.pd_price }
+					가격 : ${product.pd_price } 원
 				</div>
 			</div>
 		</div>
 		<img src="upload/${product.pd_content }">
+		<!-- 오른쪽 고정 사이드바 -->
+		<section id="sidebar_section">
+			<div class="sidebar">
+				<input type="button" value="상품목록" onclick="location.href='ProductList.ad?pd_quan=all'">
+				<input type="button" value="상품수정" onclick="location.href=''">
+				<input type="button" value="상품삭제" onclick="location.href=''">
+			</div>
+		</section>
+		<!-- 오른쪽 고정 사이드바 -->
 	</div>
 	<!-- 상품상세내용 -->
 	
-	<!-- 오른쪽 고정 사이드바 -->
-	<div>
-		
-	</div>
-	<!-- 오른쪽 고정 사이드바 -->
 	
 	
 </body>

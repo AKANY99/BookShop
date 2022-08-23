@@ -46,7 +46,7 @@ public class AdminProductListAction implements Action {
 		}
 		service = new AdminProductListService();
 		int listCount = 0;
-		if(pd_quan.equals("전체") && pd_type.equals("전체")) {
+		if(pd_quan.equals("all") && pd_type.equals("all")) {
 			listCount = service.getListCount(start_date, end_date, search_input);
 		} else {			
 			listCount = service.getListCount(start_date, end_date, pd_type, pd_quan, search_input);
@@ -61,7 +61,7 @@ public class AdminProductListAction implements Action {
 		PageInfo pdPageInfo = new PageInfo(pdPageNum, maxPdPage, startPdPage, endPdPage, listCount);
 		
 		ArrayList<ProductDTO> list = null;
-		if(pd_quan.equals("전체") && pd_type.equals("전체")) {
+		if(pd_quan.equals("all") && pd_type.equals("all")) {
 			list = service.getProductList(start_date, end_date, search_input, pdPageNum, listLimit);
 		} else {
 			list = service.getProductList(start_date, end_date, pd_type, pd_quan, search_input, pdPageNum, listLimit);			

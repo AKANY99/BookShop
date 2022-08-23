@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#sidebar_section {
+	position: fixed;
+	top: 40%;
+	right: 10%;
+	border: 1px solid #a5a5a5;
+}
+
+.sidebar {
+	padding: 50px 10px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar > input {
+	padding: 2px 5px;
+	letter-spacing: 1px;
+	margin: 20px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+

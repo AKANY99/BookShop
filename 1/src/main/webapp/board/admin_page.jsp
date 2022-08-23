@@ -120,7 +120,7 @@
 	 		<div class="table">
 	    	<div class="row header">
 	      		<div class="cell">
-	      		<a href="ProductList.ad?pd_quan=전체">상품관리 현황 ></a>
+	      		<a href="ProductList.ad?pd_quan=all">상품관리 현황 ></a>
 	      		</div>
 	      	</div>
 		    <div class="row">
@@ -128,7 +128,7 @@
 		        	상품품절
 		      	</div>
 		      	<div class="cell2">
-		        	<a href="ProductList.ad?pd_quan=품절" >${pdNoArr[0] }건</a>
+		        	<a href="ProductList.ad?pd_quan=false" >${pdNoArr[0] }건</a>
 		        </div>
 		    </div>
 		</div>

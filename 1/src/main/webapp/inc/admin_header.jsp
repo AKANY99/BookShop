@@ -30,7 +30,7 @@
 		<div>
 			<a href="#">매출조회</a>
 			<a href="#">주문내역</a>
-			<a href="ProductList.ad?pageNum=1">상품관리</a>
+			<a href="ProductList.ad?pd_quan=all">상품관리</a>
 			<a href="QnaList.ad">고객문의</a>
 			<a href="UserManagement.ad">회원관리</a>
 		</div>

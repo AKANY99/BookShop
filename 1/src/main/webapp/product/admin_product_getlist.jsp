@@ -6,7 +6,7 @@
 <div id="result_subject">
 	<p>검색결과</p>
 	<div>
-		<input type="button" value="상품등록" onclick="location.href='ProductWrite.ad'">
+		<input type="button" value="상품등록" onclick="location.href='ProductWrite.ad?pd_quan=all'">
 	</div>
 </div>
 <div class="search_result">
@@ -33,7 +33,7 @@
 					<div class="table_content">${pdList.pd_name }</div>
 					<div class="table_content">${pdList.pd_quan }</div>
 					<div class="table_content">
-						<input type="button" value="상세정보" onclick="location.href='ProductInfo.ad?pd_num=${pdList.pd_num }'">
+						<input type="button" value="상세정보" onclick="location.href='ProductInfo.ad?pageNum=${pdPageInfo.pageNum }&pd_num=${pdList.pd_num }'">
 					</div>
 				</div>
 			</c:forEach>

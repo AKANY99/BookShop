@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>상품등록란</h1>
-	<form action="ProductWritePro.ad?pageNum=${param.pageNum }" method="post" enctype="multipart/form-data"> 
+	<form action="ProductWritePro.ad" method="post" enctype="multipart/form-data"> 
 	<table border="1">
 	<tr>
 		<td class="td_left">도서제목</td>
@@ -17,9 +17,9 @@
 	<tr>
 		<td class="td_left">도서분류</td>
 		<td class="td_right">
-			<input type="radio" name="pd_type" value="국내도서">국내도서
-			<input type="radio" name="pd_type" value="해외도서">해외도서
-			<input type="radio" name="pd_type" value="e-Book">e-Book
+			<input type="radio" name="pd_type" value="domestic">국내도서
+			<input type="radio" name="pd_type" value="overseas">해외도서
+			<input type="radio" name="pd_type" value="eBook">eBook
 		</td>
 	</tr>
 	<tr>
@@ -46,9 +46,9 @@
 	</tr>
 	</table>
 	<br>
-	<input type="button" value="글목록" onclick="location.href='ProductList.ad?pageNum=${param.pageNum}'">
-	<input type="submit" value="등록">
-	<input type="reset" value="다시 쓰기">
+	<input type="button" value="상품목록" onclick="location.href='ProductList.ad?pd_quan=전체'">
+	<input type="submit" value="등록하기">
+	<input type="reset" value="초기화">
 </form>
 </body>
 </html>
