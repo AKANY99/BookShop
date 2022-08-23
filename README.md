@@ -34,17 +34,22 @@ create table review(
 	 review_content varchar(500),
 	 review_score float
 );
-
-CREATE TABLE qna (
-	qna_num INT PRIMARY KEY,
-	qna_user VARCHAR(30),
-	qna_subject VARCHAR(50) NOT NULL,
-	qna_content VARCHAR(100) NOT NULL,
-	qna_date DATE,
-	qna_pd_num INT,
-	qna_user_email VARCHAR(50) NOT NULL,
-	qna_type VARCHAR(15) NOT NULL,
-	qna_rep VARCHAR(200)
+문의 내역
+create table qna(
+	qna_num int primary key,
+	qna_user varchar(30),
+	qna_subject varchar(50) not null,
+	qna_content varchar(100) not null,
+	qna_date date,
+	qna_pd_num int,
+	qna_user_email varchar(50) not null,
+	qna_type varchar(15) not null,
+	qna_rep varchar(200),
+	qna_accesspermission varchar(10) default 'public',
+	constraint qna_u_fk foreign key(qna_user_email)
+	references user(user_email),
+	constraint qna_pd_fk foreign key(qna_pd_num)
+	references product(pd_num)
 );
 
 장바구니  
