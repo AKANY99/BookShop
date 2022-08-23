@@ -1,4 +1,4 @@
-테이터베이스와 테이블
+테이터베이스와 테이블test
 create database bookshop;
 
 create table user(
