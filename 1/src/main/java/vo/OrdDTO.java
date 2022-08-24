@@ -13,7 +13,7 @@ import java.sql.Date;
 
 //INSERT INTO ord value(1,'a@naver.com',now(),default,50000);
 
-public class ordDTO {
+public class OrdDTO {
 	private int order_num;
 	private Date order_date;
 	private String order_status;

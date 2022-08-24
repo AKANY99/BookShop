@@ -92,13 +92,18 @@ public class ProductDAO {
 	}
 	
 	// 타입별 상품현황란 건수 표시
-	public int selectListCount(String Condition) {
+	public int selectProductQuan(String type) {
 		int count = 0;
+		int quanType = 0;
+		if(type.equals("품절")) {
+			quanType = 0;
+		}
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "SELECT COUNT(*) FROM product WHERE pd_quan=0";
+			String sql = "SELECT COUNT(*) FROM product WHERE pd_quan=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, quanType);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

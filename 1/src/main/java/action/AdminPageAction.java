@@ -12,11 +12,11 @@ public class AdminPageAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = null;
 		AdminPageService service = new AdminPageService();
-//		int[] odNoArr = service.OrderNoticeCount();
+		int[] ordNoArr = service.OrderNoticeCount();
 		int[] pdNoArr = service.ProductNoticeCount();
 		int[] qnaNoArr = service.QnaNoticeCount();
 		
-//		request.setAttribute("odNoArr", odNoArr);
+		request.setAttribute("ordNoArr", ordNoArr);
 		request.setAttribute("pdNoArr", pdNoArr);
 		request.setAttribute("qnaNoArr", qnaNoArr);
 		

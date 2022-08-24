@@ -76,87 +76,86 @@
 	<div class="wrapper">
 		<!-- 주문 / 배송 처리 현황 자리 -->
 		<div class="table">
-		    <div class="row header">
-	      		<div class="cell">
-	        		<a href="">주문 / 배송 현황 ></a>
-	      		</div>
-	      	</div>
-	      	<div class="row">
-		      	<div class="cell">
-		        	신규주문
+			<a href="OrderList.ad?order_status=all">
+			    <div class="row header">
+		      		<div class="cell">
+		        		주문관리 &gt;
+		      		</div>
 		      	</div>
-		      	<div class="cell2">
-		        	<a href="" ><!-- 신규주문 건수 -->건</a>
-		        </div>
-		   	</div>
-		   	<div class="row">
-		      	<div class="cell">
-		        	입금대기
-		      	</div>
-		      	<div class="cell2">
-		        	<a href="" ><!-- 입금대기 건수 -->건</a>
-		        </div>
-		   	</div>
-		   	<div class="row">
-		      	<div class="cell">
-		        	결제완료
-		      	</div>
-		      	<div class="cell2">
-		        	<a href="" ><!-- 결제완료 건수 -->건</a>
-		        </div>
-		   	</div>
-		     <div class="row">
-		      	<div class="cell">
-		        	배송완료
-		      	</div>
-		      	<div class="cell2">
-		        	<a href="" ><!-- 배송완료 건수 -->건</a>
-		        </div>
-		   	</div>
+			</a>
+			<a href="OrderList.ad?order_status=new">
+		      	<div class="row">
+			      	<div class="cell">
+			        	당일 신규주문
+			      	</div>
+			      	<div class="cell2">
+			        	<!-- 신규주문 건수 -->${ordNoArr[0] }건
+			        </div>
+			   	</div>
+			</a>
+			<a href="OrderList.ad?order_status=cancle">
+		      	<div class="row">
+			      	<div class="cell">
+			        	당일 주문취소
+			      	</div>
+			      	<div class="cell2">
+			        	<!-- 신규주문 건수 -->${ordNoArr[1] }건
+			        </div>
+			   	</div>
+			</a>
 		</div>
 		<!-- 주문 / 배송 처리 현황 자리 -->
 		
 		<!-- 상품관리 게시판자리 -->
 	 		<div class="table">
-	    	<div class="row header">
-	      		<div class="cell">
-	      		<a href="ProductList.ad?pd_quan=all">상품관리 현황 ></a>
-	      		</div>
-	      	</div>
-		    <div class="row">
-		      	<div class="cell">
-		        	상품품절
+	 		<a href="ProductList.ad?pd_quan=all">
+		    	<div class="row header">
+		      		<div class="cell">상품관리 &gt;
+		      		</div>
 		      	</div>
-		      	<div class="cell2">
-		        	<a href="ProductList.ad?pd_quan=false" >${pdNoArr[0] }건</a>
-		        </div>
-		    </div>
+	      	</a>
+		    <a href="ProductList.ad?pd_quan=false" >
+			    <div class="row">
+			      	<div class="cell">
+			        	상품품절
+			      	</div>
+			      	<div class="cell2">
+			        	${pdNoArr[0] }건
+			        </div>
+			    </div>
+		    </a>
 		</div>
 		<!-- 교환/취소 게시판자리 -->
 		
 		<!-- 고객문의 게시판자리 -->
 	 		<div class="table">
-	    	<div class="row header">
-	      		<div class="cell">
-	        		<a href="QnaList.ad">고객문의 ></a>
-	      		</div>
-	      	</div>
-		    <div class="row">
-		      	<div class="cell">
-		        	일반문의 미답변
-		      	</div>
-		      	<div class="cell2">
-		        	<a href="QnaList.ad?qna_type=일반" ><!-- 일반문의 미답변 건수 -->${qnaNoArr[1] }건</a>
-		        </div>
-		    </div>
-		    <div class="row">
-		      	<div class="cell">
-		        	상품문의 미답변
-		      	</div>
-		      	<div class="cell2">
-		        	<a href="QnaList.ad?qna_type=상품" ><!-- 상품문의 미답변 건수 -->${qnaNoArr[0] }건</a>
-		        </div>
-		   	</div>
+		 		<a href="QnaList.ad">
+			    	<div class="row header">
+			      		<div class="cell">
+			        		고객문의 &gt;
+			      		</div>
+			      	</div>
+		      	</a>
+		      	<a href="QnaList.ad?qna_type=일반" >
+				    <div class="row">
+				      	<div class="cell">
+				        	일반문의 미답변
+				      	</div>
+				      	<div class="cell2">
+				        	<!-- 일반문의 미답변 건수 -->${qnaNoArr[1] }건
+				        </div>
+				    </div>
+				</a>
+				<a href="QnaList.ad?qna_type=상품" >
+				    <div class="row">
+				      	<div class="cell">
+				        	상품문의 미답변
+				      	</div>
+				      	<div class="cell2">
+				        	<!-- 상품문의 미답변 건수 -->${qnaNoArr[0] }건
+				        </div>
+				   	</div>
+				</a>
 		</div>
 		<!-- 고객문의 게시판자리 -->
 	</div>

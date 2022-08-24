@@ -73,18 +73,29 @@ p {
 	border-left: 2px solid #a0a0a0;
 }
 
-.type_select {
-	padding: 3px 10px;
-	margin-right: 5px;
-}
-
-.search_input {
-	width: 755px;
-	height: 30px;
-	font-size: 16px;
-	padding-left: 5px;
+.min_price, .max_price {
+	max-width: 350px;
+	min-width: 350px;
+	text-align: center;
+	letter-spacing: 2px;
+	margin-right: 55px;
 	border: 2px solid #a0a0a0;
 	border-radius: 5px;
+}
+
+.min_price > input, .max_price > input {
+	text-align: center;
+    height: 30px;
+    width: 250px;
+	margin-left: 5px;
+	border: none;
+	border-left: 2px solid #a0a0a0;
+}
+
+.type_select {
+	padding: 3px 10px;
+	margin-left: 10px;
+	margin-right: 5px;
 }
 
 .search_submit {

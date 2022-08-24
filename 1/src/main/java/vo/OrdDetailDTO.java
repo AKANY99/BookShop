@@ -9,11 +9,11 @@ import java.sql.Date;
 //		order_pd_price int NOT NULL,
 //		constraint ord_num_fk foreign key(order_num) references ord(order_num),
 //		constraint ord_pdn_fk foreign key(order_pd_num) references product(pd_num)
-//	);
+//);
 
 //insert into ordDetail value(1,5,5,20000);
 
-public class ordDetailDTO {
+public class OrdDetailDTO {
 	private int order_num;
 	private int order_pd_num;
 	private int order_quan;
