@@ -69,27 +69,29 @@ public class UserFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setPath("user/user_list.jsp");
 			forward.setRedirect(false);
-		} else if(command.equals("/MyPage.us")) {
-			forward = new ActionForward();
-			forward.setPath("board/my_page.jsp");
-			forward.setRedirect(false);
+		}  
+		else if(command.equals("/UserProductList.us")){
+			try {
+				action = new UserProductListProAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} 
-//		else if(command.equals("/UserProductList.us")){
-//			try {
-//				action = new UserProductListProAction();
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		} 
-//		else if(command.equals("/UserProductDetail.us")) {
-//			action = new userProductDetailAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		} 
+		else if(command.equals("/UserProductDetail.us")) {
+			action = new userProductDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/UserAuthen.us")) {
+			
+			forward = new ActionForward();
+			forward.setPath("/user/user_authen.jsp");
+			forward.setRedirect(false);
+		}
+		
 		else if(command.equals("/Popup.us")) {
 			//팝업창 페이지 popup.jsp
 			forward = new ActionForward();
@@ -106,17 +108,17 @@ public class UserFrontController extends HttpServlet {
 			forward.setPath("/main/cat.jpg");
 			forward.setRedirect(false);
 		} 
-//		else if(command.equals("/Search.us")) {
-//			action = new UserSearchProductAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		} 
+		else if(command.equals("/Search.us")) {
+			action = new UserSearchProductAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
 		else if(command.equals("/UserTerms.us")) {
             forward = new ActionForward();
-            forward.setPath("user/user_terms.jsp");
+            forward.setPath("/user/user_terms.jsp");
             forward.setRedirect(false);
 		} else if(command.equals("/CustomerSupporter.us")) {
 			try {
@@ -124,10 +126,105 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/MyPage.us")) {
+			try {
+				action = new UserInfoAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MyInfoMod.us")) {
+			try {
+				action = new MyInfoModAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MyInfoModPro.us")) {
+			try {
+				action = new MyInfoModProAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MyInfoDel.us")) {
+			forward = new ActionForward();
+            forward.setPath("/user/user_del_terms.jsp");
+            forward.setRedirect(false);
+		}else if(command.equals("/MyInfoDelPro.us")) {
+			try {
+				action = new MyInfoDelProAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/CartOn.us")) {
+			action = new CartOnAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MyCart.us")) {
+			action = new MyCartAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/InterestOn.us")) {
+			action = new InterestOnAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/MyInterest.us")) {
+			action = new MyInterestAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/DeleteInterest.us")) {
+			action = new DeleteInterestAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/DeleteCart.us")) {
+			action = new DeleteCartAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/CartQuanChange.us")) {
+			action = new CartQuanChangeAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/CartToPayment.us")) {
+		//	System.out.println("컨트롤러 진입 "+request.getParameter("sId"));
+			action = new CartToPaymentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/PaymentResult.us")) {
+			System.out.println("결제 후(성공) 페이지 도착");
+			action = new PaymentResultAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
-		
 		
 		// --------------------------------------------------------------------------------------
 		// ActionForward 객체에 저장된 포워딩 정보에 따른 포워딩 작업 수행하기 위한 공통코드 작성
@@ -141,7 +238,7 @@ public class UserFrontController extends HttpServlet {
 			}
 		}
 		
-	}
+		}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);

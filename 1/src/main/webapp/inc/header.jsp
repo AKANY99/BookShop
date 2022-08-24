@@ -8,7 +8,7 @@
 	<section class="header_mid">
 	<nav>
 		<ul>
-			<li><a href=""><img alt="로고" src="images/BookShopLogo2.png"  style="width: 200px"></a></li>
+			<li><a href="./"><img alt="로고" src="images/BookShopLogo2.png"  style="width: 200px"></a></li>
 			<li>
 			<div class="serch_area">
 			<form action="Search.us?sort=last" method="post">
@@ -79,9 +79,9 @@
 								<div class="tab_area">
 									<div class="tab_box">
 										<a href="MyPage.us?sId=${sessionScope.sId}" class="tab">마이페이지</a>
-										<a href="" class="tab">메뉴1</a>
-										<a href="" class="tab">메뉴2</a>
-										<a href="" class="tab">메뉴3</a>
+										<a href="MyOrder.us?sId=${sessionScope.sId}" class="tab">주문/배송</a>
+										<a href="MyCart.us?sId=${sessionScope.sId}" class="tab">장바구니</a>
+										<a href="MyInterest.us?sId=${sessionScope.sId }" class="tab">찜</a>
 									</div>
 								</div>
 							</li>

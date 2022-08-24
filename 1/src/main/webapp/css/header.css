@@ -6,6 +6,19 @@
 	padding: 0;
 }
 
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
 /* 헤더 전체 부분 =====================*/
 header {
 	/* 크기(차지하는 부분) */
@@ -309,7 +322,7 @@ header>.header_bot>nav>ul>li>a:active {
 
 
 .serch_area .header_select{
-	width: 100px; 
+	width: 90px; 
 	height: 36px;
 	padding: 6px 6px; 
 	border-right: none;

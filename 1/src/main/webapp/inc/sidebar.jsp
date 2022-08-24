@@ -85,8 +85,5 @@
 		
 	</section>
 	<!-- 리모콘 영역 끝 -->
-	<div class="top_button">
-		<a href="#"><img src="images/ico_top.svg" style="padding: 15px; width:20px; height: 20px;"></a>
-	</div>
 </section>
 <script type="text/javascript" src="js/sidebar.js"></script>
