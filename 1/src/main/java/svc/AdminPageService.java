@@ -28,7 +28,7 @@ public class AdminPageService {
 		dao.setCon(con);
 		
 		int[] pdNoArr = new int[1];
-		pdNoArr[0] = dao.selectProductQuan("품절");
+		pdNoArr[0] = dao.selectProductQuan("false");
 		
 		close(con);
 		
