@@ -2,6 +2,20 @@ package vo;
 
 import java.sql.Date;
 
+/*
+create table product(
+pd_num int primary key,
+pd_type varchar(10) not null,
+pd_name varchar(10) not null,
+pd_price int not null,
+pd_quan int not null,
+pd_file varchar(100) not null,
+pd_subject varchar(50) not null,
+pd_content varchar(500) not null,
+pd_date date not null,
+pd_count int DEFAULT 0 not null
+);
+ */
 public class ProductDTO {
 	private int pd_num;
 	private String pd_type;
@@ -11,8 +25,11 @@ public class ProductDTO {
 	private String pd_file;
 	private String pd_subject;
 	private String pd_content;
-	private int pd_count;
 	private Date pd_date;
+	private int pd_count;
+	
+	//조인용
+	private int cart_pd_quan;
 	
 	public String getPd_type() {
 		return pd_type;
@@ -73,6 +90,14 @@ public class ProductDTO {
 	}
 	public void setPd_count(int pd_count) {
 		this.pd_count = pd_count;
+	}
+	
+	//조인용
+	public int getCart_pd_quan() {
+		return cart_pd_quan;
+	}
+	public void setCart_pd_quan(int cart_pd_quan) {
+		this.cart_pd_quan = cart_pd_quan;
 	}
 	
 	@Override

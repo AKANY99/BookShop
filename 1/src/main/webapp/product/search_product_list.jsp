@@ -92,10 +92,17 @@
 									${searchProductList.pd_content }
 								</div>
 								<div class="info_button">
-									<input type="button" value="상품보기" onclick="location.href='UserProductDetail.us?pd_num=${searchProductList.pd_num }&pageNum=${pageInfo.pageNum }'">
-									<input type="button" value="바로구매">
-									<input type="button" value="장바구니">
-									<input type="button" value="찜하기">
+									<!-- 수량 및 버튼 -->
+									<form action="">
+<%-- 									<input type="hidden" name="pd_num" value="${product.pd_num }"> --%>
+<%-- 									<input type="hidden" name="sId" value="<%=(String)session.getAttribute("sId") %>"> --%>
+<!-- 									<input type="hidden" name="quantity" value="1"> -->
+										<input type="button" value="상품보기" onclick="location.href='UserProductDetail.us?pd_num=${searchProductList.pd_num }&pageNum=${pageInfo.pageNum }'">
+<!-- 										<input type="submit" value="바로구매" formaction="CartToPayment.us"> -->
+<!-- 										<input type="submit" value="장바구니" formaction="CartOn.us"> -->
+<!-- 										<input type="submit" value="찜하기" formaction="InterestOn.us"> -->
+									</form>
+									<!-- 수량 및 버튼 끝 -->
 								</div>
 							</div>
 							<!-- 오른쪽 정보란 끝 -->
