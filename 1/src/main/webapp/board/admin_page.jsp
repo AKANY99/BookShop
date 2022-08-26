@@ -83,7 +83,7 @@
 		      		</div>
 		      	</div>
 			</a>
-			<a href="OrderList.ad?order_status=new">
+			<a href="OrderList.ad?order_status=yes">
 		      	<div class="row">
 			      	<div class="cell">
 			        	당일 신규주문
@@ -93,7 +93,7 @@
 			        </div>
 			   	</div>
 			</a>
-			<a href="OrderList.ad?order_status=cancle">
+			<a href="OrderList.ad?order_status=no">
 		      	<div class="row">
 			      	<div class="cell">
 			        	당일 주문취소

@@ -113,7 +113,7 @@
 		<input type="hidden" name="end_date">
 		<input type="hidden" name="min_price">
 		<input type="hidden" name="max_price">
-		<input type="hidden" name="status_select" value="all">
+		<input type="hidden" name="order_status" value="all">
 	</form>	
 	<!-- order_status 이 all일 경우 넘겨줄 파라미터 -->
 	
@@ -123,7 +123,7 @@
 		<input type="hidden" name="end_date">
 		<input type="hidden" name="min_price">
 		<input type="hidden" name="max_price">
-		<input type="hidden" name="status_select" value="true">
+		<input type="hidden" name="order_status" value="true">
 	</form>	
 	<!-- order_status 이 true일 경우 넘겨줄 파라미터 -->
 	
@@ -133,7 +133,7 @@
 		<input type="hidden" name="end_date">
 		<input type="hidden" name="min_price">
 		<input type="hidden" name="max_price">
-		<input type="hidden" name="status_select" value="false">
+		<input type="hidden" name="order_status" value="false">
 	</form>	
 	<!-- order_status 이 false일 경우 넘겨줄 파라미터 -->
 	

@@ -23,6 +23,92 @@ public class ProductDAO {
 		this.con = con;
 	}
 	
+	// 상품등록
+	public int insertProduct(ProductDTO product) {
+		int insertCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int pd_num = 1;
+		try {
+			String sql = "";
+			// 1. 상품에 지정할 새 상품번호 저장하기
+			sql = "SELECT MAX(pd_num) FROM product";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pd_num = rs.getInt(1) + 1;
+			}
+			close(pstmt); // 상품번호를 저장했을때 쓰인 pstmt 자원반환
+			// 2. 상품등록
+			sql = "INSERT INTO product VALUES (?,?,?,?,?,?,?,?,0,now())";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pd_num);
+			pstmt.setString(2, product.getPd_type());
+			pstmt.setString(3, product.getPd_name());
+			pstmt.setInt(4, product.getPd_price());
+			pstmt.setInt(5, product.getPd_quan());
+			pstmt.setString(6, product.getPd_file());
+			pstmt.setString(7, product.getPd_subject());
+			pstmt.setString(8, product.getPd_content());
+			insertCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("insertProduct(DTO) - SQL구문 오류 - " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return insertCount;
+	}
+	
+	// 상품수정
+	public int updateProduct(ProductDTO product) {
+		int updateCount = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "UPDATE product SET "
+					+ "pd_type=?, pd_name=?, pd_price=?, pd_quan=?, pd_file=?, pd_subject=?, pd_content=? "
+					+ "WHERE pd_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, product.getPd_type());
+			pstmt.setString(2, product.getPd_name());
+			pstmt.setInt(3, product.getPd_price());
+			pstmt.setInt(4, product.getPd_quan());
+			pstmt.setString(5, product.getPd_file());
+			pstmt.setString(6, product.getPd_subject());
+			pstmt.setString(7, product.getPd_content());
+			pstmt.setInt(8, product.getPd_num());
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("updateProduct(DTO) - SQL구문 오류 - " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return updateCount;
+	}
+	
+	// 상품삭제
+	public int deleteProduct(String pd_num) {
+		int deleteCount = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM product WHERE pd_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pd_num);
+			deleteCount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("productDelete(S) - SQL구문 오류 - " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return deleteCount;
+	}
+	
 	// 전체 게시물수 조회 기능
 	public int getListCount() {
 		int listCount = 0;
@@ -74,36 +160,188 @@ public class ProductDAO {
 		return count;
 	}
 	
-	public ArrayList<ProductDTO> getProductList(String start_date, String end_date, String pd_subject, String pd_condition, String search_input, int pdPageNum, int listLimit) {
+	// 타입과 상태가 전체일 때 상품 조회
+	public ArrayList<ProductDTO> getProductList(String start_date, String end_date, String search_input, int pdPageNum, int listLimit) {
+		System.out.println(search_input);
 		ArrayList<ProductDTO> list = null;
+		ProductDTO product = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int startRow = (pdPageNum - 1) * listLimit;
 		
 			try {
-				String sql = "";
-				
-				
+				String sql = "SELECT * FROM product WHERE pd_date>=? AND pd_date<=? AND pd_subject LIKE ? ORDER BY pd_num DESC LIMIT ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setString(1, start_date);
 				pstmt.setString(2, end_date);
-				pstmt.setString(3, pd_subject);
-				pstmt.setString(4, pd_condition);
-				pstmt.setString(5, search_input);
+				pstmt.setString(3, "%" + search_input + "%");
+				pstmt.setInt(4, startRow);
+				pstmt.setInt(5, listLimit);
+				rs = pstmt.executeQuery();
+				list = new ArrayList<ProductDTO>();
+				while(rs.next()) {
+					product = new ProductDTO();
+					product.setPd_num(rs.getInt("pd_num"));
+					product.setPd_type(rs.getString("pd_type"));
+					product.setPd_name(rs.getString("pd_name"));
+					product.setPd_price(rs.getInt("pd_price"));
+					product.setPd_quan(rs.getInt("pd_quan"));
+					product.setPd_file(rs.getString("pd_file"));
+					product.setPd_subject(rs.getString("pd_subject"));
+					product.setPd_content(rs.getString("pd_content"));
+					product.setPd_date(rs.getDate("pd_date"));
+					list.add(product);
+				}
+			} catch (SQLException e) {
+				System.out.println("getProductList(S,S,S,I,I) - SQL구문 오류 - " + e.getMessage());
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+				close(rs);
+			}
+		return list;
+	}
+		
+	// 타입과 상태가 전체일 때 상품갯수 조회 기능
+	public int getListCount(String start_date, String end_date, String search_input) {
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT COUNT(*) FROM product WHERE pd_date>=? AND pd_date<=? AND pd_subject LIKE ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, start_date);
+			pstmt.setString(2, end_date);
+			pstmt.setString(3, "%" + search_input + "%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				listCount = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("getListCount(S,S,S) - SQL 구문 오류 : " + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return listCount;
+	}
+
+	// 검색조건에 맞는 상품들 조회
+	public ArrayList<ProductDTO> getProductList(String start_date, String end_date, String pd_type, String pd_quan, String search_input, int pdPageNum, int listLimit) {
+//		System.out.println(start_date + "/" + end_date + "/" + pd_type + "/" + pd_quan + "/" + search_input);
+		ArrayList<ProductDTO> list = null;
+		ProductDTO product = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int startRow = (pdPageNum - 1) * listLimit;
+			try {
+				String sql = "";
+				if(pd_type.equals("all")) {
+					if(pd_quan.equals("true")) {
+						// 타입이 전체이고 상태가 재고있음일 때
+						pd_quan = "0";
+						sql = "SELECT * FROM product WHERE pd_date>=? AND pd_date<=? AND NOT pd_type=? AND pd_quan>? AND pd_subject LIKE ? ORDER BY pd_num DESC LIMIT ?,?";
+					} else {
+						// 타입이 전체이고 상태가 품절일 때
+						pd_quan = "0";
+						sql = "SELECT * FROM product WHERE pd_date>=? AND pd_date<=? AND NOT pd_type=? AND pd_quan=? AND pd_subject LIKE ? ORDER BY pd_num DESC LIMIT ?,?";
+					}
+				} else if(!pd_type.equals("all")) {
+					if(pd_quan.equals("true")) {
+						// 타입이 전체가 아니고 상태가 재고있음일 때
+						pd_quan = "0";
+						sql = "SELECT * FROM product WHERE pd_date>=? AND pd_date<=? AND pd_type=? AND pd_quan>? AND pd_subject LIKE ? ORDER BY pd_num DESC LIMIT ?,?";
+					} else if(pd_quan.equals("false")) {
+						// 타입이 전체가 아니고 상태가 품절일 때
+						pd_quan = "0";
+						sql = "SELECT * FROM product WHERE pd_date>=? AND pd_date<=? AND pd_type=? AND pd_quan=? AND pd_subject LIKE ? ORDER BY pd_num DESC LIMIT ?,?";
+					} else {
+						// 타입이 전체가 아니고 상태가 전체일 때
+						pd_quan = "0";
+						sql = "SELECT * FROM product WHERE pd_date>=? AND pd_date<=? AND pd_type=? AND pd_quan>=? AND pd_subject LIKE ? ORDER BY pd_num DESC LIMIT ?,?";
+					}
+				}
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, start_date);
+				pstmt.setString(2, end_date);
+				pstmt.setString(3, pd_type);
+				pstmt.setString(4, pd_quan);
+				pstmt.setString(5, "%" + search_input + "%");
 				pstmt.setInt(6, startRow);
 				pstmt.setInt(7, listLimit);
 				rs = pstmt.executeQuery();
+				list = new ArrayList<ProductDTO>();
+				while(rs.next()) {
+					product = new ProductDTO();
+					product.setPd_num(rs.getInt("pd_num"));
+					product.setPd_type(rs.getString("pd_type"));
+					product.setPd_name(rs.getString("pd_name"));
+					product.setPd_price(rs.getInt("pd_price"));
+					product.setPd_quan(rs.getInt("pd_quan"));
+					product.setPd_file(rs.getString("pd_file"));
+					product.setPd_subject(rs.getString("pd_subject"));
+					product.setPd_content(rs.getString("pd_content"));
+					product.setPd_date(rs.getDate("pd_date"));
+					list.add(product);
+				}
 			} catch (SQLException e) {
-				System.out.println("getProductList() - SQL구문 오류 - " + e.getMessage());
+				System.out.println("getProductList(S,S,S,S,S,I,I) - SQL구문 오류 - " + e.getMessage());
 				e.printStackTrace();
 			} finally {
-				close(rs);
 				close(pstmt);
+				close(rs);
 			}
 		
 		return list;
 	}
 	
+	// 검색조건에 맞는 상품갯수 조회
+		public int getListCount(String start_date, String end_date, String pd_type, String pd_quan, String search_input) {
+//		System.out.println(start_date + "/" + end_date + "/" + pd_type + "/" + pd_quan + "/" + search_input);
+		int listCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+			try {
+				String sql = "";
+				if(pd_type.equals("all")) {
+					if(pd_quan.equals("true")) {
+						pd_quan = "0";
+						sql = "SELECT COUNT(*) FROM product WHERE pd_date>=? AND pd_date<=? AND NOT pd_type=? AND pd_quan>? AND pd_subject LIKE ?";
+					} else {
+						pd_quan = "0";
+						sql = "SELECT COUNT(*) FROM product WHERE pd_date>=? AND pd_date<=? AND NOT pd_type=? AND pd_quan=? AND pd_subject LIKE ?";
+					}
+				} else if(!pd_type.equals("all")) {
+					if(pd_quan.equals("true")) {
+						pd_quan = "0";
+						sql = "SELECT COUNT(*) FROM product WHERE pd_date>=? AND pd_date<=? AND pd_type=? AND pd_quan>? AND pd_subject LIKE ?";
+					} else {
+						pd_quan = "0";
+						sql = "SELECT COUNT(*) FROM product WHERE pd_date>=? AND pd_date<=? AND pd_type=? AND pd_quan=? AND pd_subject LIKE ?";
+					}
+				}
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, start_date);
+				pstmt.setString(2, end_date);
+				pstmt.setString(3, pd_type);
+				pstmt.setString(4, pd_quan);
+				pstmt.setString(5, "%" + search_input + "%");
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					listCount = rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				System.out.println("getListCount(S,S,S,S,S) - SQL구문 오류 - " + e.getMessage());
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+				close(rs);
+			}
+		return listCount;
+	}
+		
 	// 헤더의 검색 기능 수행
 		// searchType(통합검색,제목검색,작가검색)에 따라 그에 맞는 검색어 키워드로 검색
 		// 정렬(sort)의 기본값은 pd_num(최신순 last)이고 검색결과에서 사용자가 선택한 정렬방식에 따라 정렬
@@ -416,7 +654,7 @@ public class ProductDAO {
 					product.setPd_price(rs.getInt("pd_price"));
 					product.setPd_file(rs.getString("pd_file"));
 					product.setPd_subject(rs.getString("pd_subject"));
-					product.setCart_pd_quan(rs.getInt("cart_pd_quan"));
+//					product.setCart_pd_quan(rs.getInt("cart_pd_quan"));
 					list.add(product);
 				}
 			} catch (SQLException e) {
