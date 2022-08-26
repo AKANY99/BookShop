@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.pd_list{
+	width: 800px;
+	height: auto;
+	background: #f5f5f5;
+	float: left;
+}
+
+.pd_search{
+	text-align: center;
+	
+}
+
+h1{
+	text-align: center;
+}
+
+img{
+	width: 150px;
+	height: 200px;
+	cursor: pointer;
+}
+
+
+.pd_set{
+	display: flex;
+	flex-direction: column;
+}
+
+.pd_file{
+	flex:2;
+}
+
+.pd_subject{
+	flex:2;
+}
+
+.pd_set{
+	float: left;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+.page{
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

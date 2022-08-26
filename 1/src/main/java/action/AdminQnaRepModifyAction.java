@@ -30,12 +30,14 @@ public class AdminQnaRepModifyAction implements Action{
 			out.println("history.back()");
 			out.println("</script>");
 		}else {
-			forward = new ActionForward();
-			forward.setPath("Qnarepok.ad?qna_num="+qna_num);
-			forward.setRedirect(true);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("window.close()");
+			out.println("</script>");
 		}
 		
-		return forward;
+		return null;
 	}
 
 }

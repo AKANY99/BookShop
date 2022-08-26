@@ -139,7 +139,7 @@
 		      	<a href="QnaList.ad?qna_type=일반" >
 				    <div class="row">
 				      	<div class="cell">
-				        	일반문의 미답변
+				        	계정문의 미답변
 				      	</div>
 				      	<div class="cell2">
 				        	<!-- 일반문의 미답변 건수 -->${qnaNoArr[1] }건

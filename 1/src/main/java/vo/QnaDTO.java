@@ -13,6 +13,13 @@ public class QnaDTO {
 	private String qna_user_email;
 	private String qna_type;
 	private String qna_rep;
+	private String qna_accesspermission;
+	public String getQna_accesspermission() {
+		return qna_accesspermission;
+	}
+	public void setQna_accesspermission(String qna_accesspermission) {
+		this.qna_accesspermission = qna_accesspermission;
+	}
 	public Date getQna_date() {
 		return qna_date;
 	}

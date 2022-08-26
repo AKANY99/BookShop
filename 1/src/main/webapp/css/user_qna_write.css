@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+
+#write_section {
+	width: 900px;
+	background: #f5f5f5;
+	margin: auto;
+	margin-top: 100px;
+	height: auto;
+}
+
+.qna_subject{
+	font-size: 20px;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+#subject_write{
+	width: 600px;
+	border: 0.2px solid;
+	background: none;
+	font-size: 20px;
+}
+
+.qna_disclosure{
+	font-size: 20px;
+	background: none;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+textarea{
+	padding-top:10px;
+	padding-left:10px;
+	border: none;
+	margin-bottom:30px;
+	margin-left:50px;
+	margin-top:15px;
+	height: 300px;
+	width: 800px;
+	font-size: 20px;
+}
+
+#qna_type{
+	font-size: 20px;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+.type_select{
+	width: 100px;
+	border: none;
+	height: 25px;
+}
+.submit{
+	text-align: center;
+}
+
+.submit_button{
+	margin-bottom: 10px;
+	background: white;
+	border: 1px solid;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+
+.submit_button:hover{
+	background: black;
+	color: white;
+	border: 1px solid  rgba(255,255,204,0.5);
+}
+
+
+
+
+
+
+

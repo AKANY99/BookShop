@@ -15,7 +15,7 @@ public class AdminPageService {
 		
 		int[] qnaNoArr = new int[2];
 		qnaNoArr[0] = dao.qnaIsnullCount("상품");
-		qnaNoArr[1] = dao.qnaIsnullCount("일반");
+		qnaNoArr[1] = dao.qnaIsnullCount("계정");
 		
 		close(con);
 		

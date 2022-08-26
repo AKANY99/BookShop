@@ -224,7 +224,40 @@ public class UserFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/QnaGetList.us")) {
+			try {
+				forward = new UserQnaGetListAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/QnaGetList.us 실패!");
+			}
+		}else if(command.equals("/QnaWrite.us")) {
+			
+			forward = new ActionForward();
+			forward.setPath("qna/user_qna_write_form.jsp");
+			forward.setRedirect(false);
+		}else if(command.equals("/UserQnaSelectProduct.us")) {
+			try {
+				forward = new UserQnaSelectProductAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/UserQnaSelectProduct.us 에 오류있어요");
+			}
+		}else if(command.equals("/QnaWritePro.us")) {
+			try {
+				forward = new UserQnaWriteProAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/UserQnaDetail.us")) {
+			try {
+				forward = new UserQnaDetailAction().execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/UserQnaDetail.us 실패!!");
+			}
 		}
+		
 		
 		// --------------------------------------------------------------------------------------
 		// ActionForward 객체에 저장된 포워딩 정보에 따른 포워딩 작업 수행하기 위한 공통코드 작성
