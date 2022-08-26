@@ -75,6 +75,7 @@
 			<div class="contentList">
 				
 				<ul>
+					<!-- 상품 하나하나에 대한 FOR문 -->
 					<c:forEach var="productList" items="${productList }">
 					<li>
 						<div class="contentUnit">
@@ -93,9 +94,9 @@
 								</div>
 								<div class="info_button">
 									<input type="button" value="상품보기" onclick="location.href='UserProductDetail.us?pd_num=${productList.pd_num }&pageNum=${pageInfo.pageNum }'">
-									<input type="button" value="장바구니">
-									<input type="button" value="바로구매">
-									<input type="button" value="찜하기">
+<!-- 									<input type="button" value="장바구니"> -->
+<!-- 									<input type="button" value="바로구매"> -->
+<!-- 									<input type="button" value="찜하기"> -->
 								</div>
 							</div>
 							<!-- 오른쪽 정보란 끝 -->
@@ -103,6 +104,7 @@
 						</div>
 					</li>
 					</c:forEach>
+					<!-- 상품 하나하나에 대한 FOR문 끝 -->
 				</ul>
 			</div>
 			<!-- 상품 목록 끝 -->

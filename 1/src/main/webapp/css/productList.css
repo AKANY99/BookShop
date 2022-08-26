@@ -158,6 +158,28 @@
 	display: block;
     margin-top: 20px;
 }
+
+.content_info .info_button input[type=submit]{
+	width: 110px;
+	height: 30px;
+	border-color: #199db3;
+    border-bottom-color: #168da1;
+    border-right-color: #168da1;
+    background-color: #199db3;
+    
+    position: relative;
+    padding: 0 7px;
+    text-align: center;
+    text-indent: 0;
+    border-radius: 3px;
+    border: solid 1px #ebebeb;
+    cursor: pointer;
+    
+    /* 폰트 */
+    color: white;
+    font-weight: bold;
+}
+
 .content_info .info_button input[type=button]{
 	width: 110px;
 	height: 30px;

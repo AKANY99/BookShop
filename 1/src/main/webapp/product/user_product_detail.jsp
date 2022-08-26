@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%
 String sId = (String)session.getAttribute("sId");
@@ -48,20 +49,27 @@ String sId = (String)session.getAttribute("sId");
 			가격
 			<em>${product.pd_price }원</em>
 		</div>
-		<div class="productQuan">
-			판매중
-			<div class="productQuanButton">
-				<span class="quanText">수량</span>
-				<input type="button" value="-" class="quanButton" onclick="quanPlus(-1)">
-				<input type="text" value="1" class="quanInput" maxlength="4" onkeyup="quanCount()"onchange="quanCount()">
-				<input type="button" value="+" class="quanButton" onclick="quanPlus(1)">
+		<!-- 수량 및 버튼 -->
+		<form action="">
+			<div class="productQuan">
+				판매중
+				<div class="productQuanButton">
+					<span class="quanText">수량</span>
+					<input type="button" value="-" class="quanButton" onclick="quanPlus(-1)">
+					<input type="text" name="quantity" value="1" class="quanInput" maxlength="4" onkeyup="quanCount()"onchange="quanCount()">
+					<input type="button" value="+" class="quanButton" onclick="quanPlus(1)">
+				</div>
 			</div>
-		</div>
-		<div class="productButton">
-			<input type="button" value="바로구매" onclick="location.href='ProductDetail.po'">
-			<input type="button" value="장바구니">
-			<input type="button" value="찜하기">
-		</div>
+			<div class="productButton">
+				
+				<input type="hidden" name="pd_num" value="${product.pd_num }">
+				<input type="hidden" name="sId" value="<%=sId %>">
+					<input type="submit" value="바로구매" formaction="CartToPayment.us">
+					<input type="submit" value="장바구니" formaction="CartOn.us">
+					<input type="submit" value="찜하기" formaction="InterestOn.us">
+			</div>
+		</form>
+		<!-- 수량 및 버튼 끝 -->
 	</section>
 </section>
 <!-- 상품 조회 시작 끝 -->
