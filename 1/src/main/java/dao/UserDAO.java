@@ -146,7 +146,7 @@ public class UserDAO {
 			// 먼저 쓴 pstmt 자원반환
 			close(pstmt);
 			
-			sql = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,now())";
+			sql = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,now(),0,0)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, uNum);
 			pstmt.setString(2, user.getUser_name());
