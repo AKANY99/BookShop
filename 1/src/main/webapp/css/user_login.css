@@ -1,24 +1,54 @@
 @charset "UTF-8";
 
-.login {width: 400; position: absolute; left: 50%; top:50%;
+.login {width: 400px; position: absolute; left: 50%; top:50%;
 transform: translate(-50%, -50%);}
 
-.login >h2 { font-size: 32px;
-color: #111; 
-border-bottom:  2px solid #111;
+
+.login .login_sides { font-size: 20px; width:200px;
+color: #999; 
+border: 1px solid #999;
+background-color:white;
+border-bottom:1px solid #fff;
 text-align: center; 
+position:relative;
+float:left;
+z-index: 1;
+cursor: pointer;
+}
+.login .on{ font-size: 20px; width:196px;
+color: #000000; 
+border:  1px solid #000000;
+background-color:white;
+border-bottom:1px solid #fff;
+text-align: center; 
+position:relative;
+float:left;
+z-index: 3;
+cursor: pointer;
 }
 
-.log_tit {
-padding: 0 0 12px;}
+
+.log_tit {position:relative;
+top:-0.5px;
+
+border-top: 1px solid #000000;
+padding: 0 0 12px;
+z-index: 2;
+
+
+}
 
 .log_tit>input[type=text] {
+	border:1px solid #999;
 	width: 100% ;
 	padding: 15px 0px;
-	margin-bottom: 10px;}
+	margin-bottom: 10px;
+	margin-top: 10px;}
+
 	
 
 .log_tit>input[type=password]{
+	border:1px solid #999;
 	width: 100%;
 	padding: 15px 0px;
 }
@@ -48,3 +78,11 @@ nav a:hover, nav a:active {
 nav {display: flex;
 justify-content: center;
 margin-bottom: 20px;}
+
+.kakao_log{height: 65px; 
+text-align:center;
+margin: auto;}
+
+.kakao_log img{
+	height: 65px;
+}

@@ -23,6 +23,7 @@
     background-color: #4e4e4e;
 
     text-decoration: none;
+    cursor: pointer;
 }
 .remote_area .remote_product{
 	position: relative;
