@@ -30,7 +30,7 @@
 					<li class="logoff">
 						<div>
 							<a href="UserLogin.us"><img src="images/login.png" width="100" height="100"></a>
-							<a href="UserJoinForm.us"><img src="images/join.png" width="100" height="100"></a>
+							<a href="UserTerms.us"><img src="images/join.png" width="100" height="100"></a>
 						</div>
 					</li>
 					<!-- 유저 로그인 안되어 있을 시 끝-->
