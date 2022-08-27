@@ -4,14 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link href="css/user_join.css" rel="stylesheet" type="text/css">
+<title>BookShop : 회원가입</title>
 <!-- 다음 우편번호 API 포함시키기 -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	// check_id.jsp 파일을 새창에서 열기
 	function checkDuplicateId() {
 		// 파라미터 넘겨줘서 아이디 바로 기입되게 만들기
-		window.open("UserCheckIdForm.us?user_email="+document.fr.user_email.value+'@'+document.fr.user_email2.value+"&isDuplicate=null", "check_id", "width=600,height=400");
+		window.open("UserCheckIdForm.us?user_email="+document.fr.user_email.value+'@'+document.fr.user_email2.value+"&isDuplicate=null", "check_id", "width=500,height=400");
 	}
 	
 	// 중복체크 - 아이디 조금이라도 바뀌면 X 표시
@@ -104,78 +105,92 @@
 </script>
 </head>
 <body>
-	<h1>회원가입</h1>
+	<a href="./"><img alt="로고" src="images/BookShopLogo2.png"></a>
 	<form action="UserJoinPro.us" onsubmit="return checkSubmit()" method="post" name="fr">
-		<table border="1">
-			<tr>
-				<td>이름</td>
-				<td>
-					<input type="text" name="name" required="required">
-				</td>
-			</tr>			
-			<tr>
-				<td>이메일</td>
-				<td>
-					<input type="text" name="user_email" required="required" onkeydown="checkIdOnkeydown()">@
-					<input type="text" name="user_email2" required="required" onkeydown="checkIdOnkeydown()">
-					<select name="emailDomain" onchange="changeDomain()">
-						<option value="">직접입력</option>
-						<option value="naver.com">naver.com</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="nate.com">nate.com</option>
-					</select>
-					<input type="button" onclick="checkDuplicateId()" value="중복체크">
-					<span id="duplicate" style="color: red;">중복체크 X</span>
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="password" name="user_passwd" placeholder="8 ~ 16글자 사이 입력" 
-							onchange="checkPasswdLength()" required="required" maxlength="16">
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호확인</td>
-				<td>
-					<input type="password" name="user_passwd2" placeholder="8 ~ 16글자 사이 입력" 
-							onchange="checkConfirmPasswd()" required="required" maxlength="16">
-					<span id="confirmPasswdResult"></span>
-				</td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td>
-					<input type="radio" name="user_gender" required="required" value="남">남
-					<input type="radio" name="user_gender" required="required" value="여">여
-				</td>
-			</tr>
-			<tr>
-				<td>주민번호</td>
-				<td>
-					<input type="text" name="user_jumin" required="required" maxlength="6">-
-					<input type="text" name="user_jumin2" required="required" maxlength="7">
-				</td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td>
-					<input type="text" id="sample4_postcode" name="user_address_code" placeholder="우편번호" required="required" readonly="readonly" onclick="execDaumPostcode()">
-					<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample4_roadAddress" name="user_address"  placeholder="도로명주소" required="required" readonly="readonly" onclick="execDaumPostcode()">
-					<input type="text" id="sample4_detailAddress" name="user_address2"  placeholder="상세주소" required="required">
-				</td>
-			</tr>
-			<tr>
-				<td>휴대폰</td>
-				<td>
-					<input type="text" name="user_phone" maxlength="11" placeholder="-없이 숫자만 입력" required="required">
-				</td>
-			</tr>
-		</table>
-		<input type="submit" value="가입">
-		<input type="reset" value="초기화">
-		<input type="button" value="돌아가기" onclick="history.back()">
+			<section id="join">
+				<h3 class="join_tit">이름</h3>
+				<input type="text" name="name" required="required">
+			
+				<h3 class="join_tit">이메일</h3>
+					<div class="group">
+						<div class="group1">
+							<input type="text" class="tyte" name="user_email" required="required" onkeydown="checkIdOnkeydown()">
+						</div>
+						<div class="sp">
+						@
+						</div>
+						<div class="group1_1">
+							<input type="text" class="tyte" name="user_email2" required="required" onkeydown="checkIdOnkeydown()">
+						</div>
+						<div class="group1">
+							<span class="em_box">
+								<select name="emailDomain" class="sel" onchange="changeDomain()">
+									<option value="">직접입력</option>
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="nate.com">nate.com</option>
+								</select>
+							</span>
+						</div>
+						<div class="bt_gr">
+							<input type="button" class="bt1" onclick="checkDuplicateId()" value="중복체크">
+						</div>	
+					</div>
+							<span id="duplicate" class="str" style="color: red;">중복체크 X</span>
+					
+				 <h3 class="join_tit">비밀번호</h3>
+						<input type="password" name="user_passwd" placeholder="8 ~ 16글자 사이 입력" 
+								onchange="checkPasswdLength()" required="required" maxlength="16">
+			 
+				<h3 class="join_tit">비밀번호확인</h3>
+						<input type="password" name="user_passwd2" placeholder="8 ~ 16글자 사이 입력" 
+								onchange="checkConfirmPasswd()" required="required" maxlength="16">
+						<span id="confirmPasswdResult"></span>
+			 
+				 <h3 class="join_tit">성별</h3>
+				 	<div class="gd_box">
+				 		<select id="gender" name="user_gender" class="gd_sel">
+				 			<option selected>성별</option>
+				 			<option value="male">남자</option>
+				 			<option value="female">여자</option>
+				 		</select>
+				 	</div>
+			 
+				 <h3 class="join_tit">주민번호</h3>
+				 	<div class="group">
+					 	<div class="group2">
+							<input type="text" class="tyte" name="user_jumin" required="required" maxlength="6">
+						</div>
+						<div class="sp">
+						 -
+						</div>
+						<div class="group2">
+							<input type="text" class="tyte" name="user_jumin2" required="required" maxlength="7">
+						</div>	
+					</div>
+					 
+				<h3 class="join_tit">주소</h3>
+					<div class="group_ad_my">
+						<div class="group_ad1">
+							<input type="text" class="tyte" id="sample4_postcode" name="user_address_code" placeholder="우편번호" required="required" readonly="readonly" onclick="execDaumPostcode()">
+						</div>
+						<div class="group_ad2">
+							<input type="button" class="bt2" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+						</div>
+						<div class="group_ad3">
+							<input type="text" class="tyte" id="sample4_roadAddress" name="user_address"  placeholder="도로명주소" required="required" readonly="readonly" onclick="execDaumPostcode()">
+						</div>
+						<div class="group_ad4">
+							<input type="text" class="tyte" id="sample4_detailAddress" name="user_address2"  placeholder="상세주소" required="required">
+						</div>
+					</div>
+				 <h3 class="join_tit">휴대폰</h3>
+						<input type="text" name="user_phone" maxlength="11" placeholder="-없이 숫자만 입력" required="required">
+					
+		<div class="btn_area">
+		<input type="submit" value="가입하기" class="submit">
+		</div>
+		</section>			
 	</form>
 </body>
 </html>
