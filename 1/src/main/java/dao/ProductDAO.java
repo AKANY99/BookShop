@@ -654,7 +654,7 @@ public class ProductDAO {
 					product.setPd_price(rs.getInt("pd_price"));
 					product.setPd_file(rs.getString("pd_file"));
 					product.setPd_subject(rs.getString("pd_subject"));
-//					product.setCart_pd_quan(rs.getInt("cart_pd_quan"));
+					product.setCart_pd_quan(rs.getInt("cart_pd_quan"));
 					list.add(product);
 				}
 			} catch (SQLException e) {
