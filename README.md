@@ -101,16 +101,6 @@ CREATE TABLE ord(
 	references user(user_email)
 );
 
-주문테이블
-CREATE TABLE ord(
-	order_num int PRIMARY KEY,
-	order_user_email VARCHAR(50) NOT NULL,
-	order_date DATE NOT NULL,
-	order_status VARCHAR(20) default '결제완료',
-	order_price int NOT NULL,
-	constraint ord_email_fk foreign key(order_user_email) references user(user_email)
-);
-
 주문 세부정보 테이블
 CREATE TABLE ordDetail(
 	order_num int NOT NULL,
