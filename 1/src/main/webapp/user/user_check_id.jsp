@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link href="css/user_check_id.css" rel="stylesheet" type="text/css">
+<title>BookShop : 이메일 중복확인</title>
 <script type="text/javascript">
 	// 아이디 검색 후 결과를 다시 현재 페이지로 리다이렉트 했을 때
 	// 검색 결과를 처리하기 위한 작업 수행
@@ -46,12 +47,10 @@
 	
 	function useId() {
 		// 아이디 사용 버튼 클릭 시
-		let user_email = "${param.user_email}"; 
-		let emails = user_email.split('@');
 		// 부모창(join_form.html)의 폼 영역 내의 ID 입력창에 현재 입력된 아이디를 표시
 		// => window.opener.document.폼이름.요소이름.value = 값; 형태로 표시 가능
-		window.opener.document.fr.user_email.value = emails[0]; // 부모창 ID 영역에 표시
-		window.opener.document.fr.user_email2.value = emails[1]; // 부모창 ID 영역에 표시
+		window.opener.document.fr.user_email.value = document.fr.user_email.value; // 부모창 ID 영역에 표시
+		window.opener.document.fr.user_email2.value = document.fr.user_email2.value; // 부모창 ID 영역에 표시
 		
 		var spanCheckIdResult = window.opener.document.getElementById("duplicate");
 		spanCheckIdResult.innerHTML = "중복체크 O";
@@ -67,18 +66,38 @@
 </script>
 </head>
 <body>
-	<h1>ID 중복 체크</h1>
+	<img alt="로고" src="images/BookShopLogo2.png" width="100">
+	<h1 align="center">이메일 중복 확인</h1>
 	<form action="CheckDuplicateId.us" name="fr" method="get">
-		<input type="text" name="user_email" required="required" placeholder="이메일 입력">@<input type="text" name="user_email2" required="required">
-		<select name="emailDomain" onchange="changeDomain()">
+					<div class="group">
+						<div class="group1">
+		<input type="text" class="tyte" name="user_email" required="required" placeholder="이메일 입력">
+						</div>
+						<div class="sp">
+		@
+						</div>
+						<div class="group1_1">
+		<input type="text" class="tyte" name="user_email2" required="required">
+						</div>
+						<div class="group1">
+							<span class="em_box">
+		<select name="emailDomain" class="sel" onchange="changeDomain()">
 						<option value="">직접입력</option>
 						<option value="naver.com">naver.com</option>
 						<option value="gmail.com">gmail.com</option>
 						<option value="nate.com">nate.com</option>
 					</select>
-		<input type="submit" value="중복확인">
+							</span>
+						</div>
+		</div>
+						<div class="bt_gr">
+		<input type="submit" class="bt1" value="중복확인">
+		<input type="button" class="bt2" value="취소">
+						</div>	
 		<div id="checkIdResult"></div>
+
 	</form>
+	
 </body>
 </html>
 
