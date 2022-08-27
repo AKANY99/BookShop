@@ -153,6 +153,11 @@
 		<!-- 상품 목록 전체에 관한 내용 끝 -->
 	</section>
 	
+	<section style="position: relative; clear: both;"></section>
+
+	<!-- 푸터 -->
+	<jsp:include page="/inc/footer.jsp"/>
+	<!-- 푸터 -->
 	
 </body>
 </html>
