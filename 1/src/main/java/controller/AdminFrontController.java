@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.AdminGetQnaListAction;
+import action.AdminOrderDetailAction;
 import action.AdminOrderListAction;
 import action.AdminPageAction;
 import action.AdminProductDeleteAction;
@@ -155,6 +156,13 @@ public class AdminFrontController extends HttpServlet {
 		}  else if(command.equals("/OrderGetList.ad")) {
 			try {
 				action = new AdminOrderListAction();
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/OrderDetail.ad")) {
+			try {
+				action = new AdminOrderDetailAction();
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -3,7 +3,7 @@ package svc;
 import java.sql.Connection;
 import java.util.List;
 
-import vo.OrdDAO;
+import dao.OrdDAO;
 import vo.OrdDTO;
 
 import static db.JdbcUtil.*;

@@ -9,9 +9,9 @@ import java.sql.Date;
 //		order_status VARCHAR(20) default '결제완료',
 //		order_price int NOT NULL,
 //		constraint ord_email_fk foreign key(order_user_email) references user(user_email)
-//	);
+//);
 
-//INSERT INTO ord value(1,'a@naver.com',now(),default,50000);
+//INSERT INTO ord value(1,'admin',now(),default,50000);
 
 public class OrdDTO {
 	private int order_num;

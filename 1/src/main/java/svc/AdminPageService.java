@@ -1,10 +1,13 @@
 package svc;
 
+import static db.JdbcUtil.close;
+import static db.JdbcUtil.getConnection;
+
 import java.sql.Connection;
-import static db.JdbcUtil.*;
+
+import dao.OrdDAO;
 import dao.ProductDAO;
 import dao.QnaDAO;
-import vo.OrdDAO;
 
 public class AdminPageService {
 

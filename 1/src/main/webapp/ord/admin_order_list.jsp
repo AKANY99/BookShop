@@ -33,12 +33,12 @@
 	});
 	
 	$(function() {
-		if("${param.order_status}" == "false") {
-		var orderFalse_form = $(".orderFalse_form").serialize();
+		if("${param.order_status}" == "yes") {
+		var statusYes_form = $(".statusYes_form").serialize();
 			$.ajax({
 				type:"get",
 				url:"OrderGetList.ad",
-				data:orderFalse_form,
+				data:statusYes_form,
 				dataType:"text",
 			}).done(function(response) {
 				$("#ord_search_result").html(response);
@@ -57,12 +57,12 @@
 			}).fail(function () {
 				alert("AJAX 실패");
 			});
-		} else if("${param.order_status}" == "true") {
-			var orderTrue_form = $(".orderTrue_form").serialize();
+		} else if("${param.order_status}" == "no") {
+			var orderNo_form = $(".orderNo_form").serialize();
 			$.ajax({
 				type:"get",
 				url:"OrderGetList.ad",
-				data:orderTrue_form,
+				data:orderNo_form,
 				dataType: "text",
 			}).done(function(response) {
 				$("#ord_search_result").html(response);
@@ -117,25 +117,25 @@
 	</form>	
 	<!-- order_status 이 all일 경우 넘겨줄 파라미터 -->
 	
-	<!-- order_status 가 true일 경우 넘겨줄 파라미터 -->
-	<form class="orderTrue_form">
+	<!-- order_status 가 yes일 경우 넘겨줄 파라미터 -->
+	<form class="orderYes_form">
 		<input type="hidden" name="start_date">
 		<input type="hidden" name="end_date">
 		<input type="hidden" name="min_price">
 		<input type="hidden" name="max_price">
-		<input type="hidden" name="order_status" value="true">
+		<input type="hidden" name="order_status" value="yes">
 	</form>	
-	<!-- order_status 이 true일 경우 넘겨줄 파라미터 -->
+	<!-- order_status 이 yes일 경우 넘겨줄 파라미터 -->
 	
-	<!-- order_status 가 false일 경우 넘겨줄 파라미터 -->
-	<form class="orderFalse_form">
+	<!-- order_status 가 no일 경우 넘겨줄 파라미터 -->
+	<form class="orderNo_form">
 		<input type="hidden" name="start_date">
 		<input type="hidden" name="end_date">
 		<input type="hidden" name="min_price">
 		<input type="hidden" name="max_price">
-		<input type="hidden" name="order_status" value="false">
-	</form>	
-	<!-- order_status 이 false일 경우 넘겨줄 파라미터 -->
+		<input type="hidden" name="order_status" value="no">
+	</form>
+	<!-- order_status 이 no일 경우 넘겨줄 파라미터 -->
 	
 	<!-- 헤더 넣는 자리 -->
 	<jsp:include page="/inc/admin_header.jsp"/>
@@ -182,8 +182,8 @@
 						상태
 					</div>
 					<input type="radio" name="order_status" value="all" class="status_select" checked="checked">전체&nbsp;&nbsp;
-					<input type="radio" name="order_status" value="true" class="status_select">결제완료&nbsp;&nbsp;
-					<input type="radio" name="order_status" value="false" class="status_select">결제취소&nbsp;&nbsp;
+					<input type="radio" name="order_status" value="yes" class="status_select">결제완료&nbsp;&nbsp;
+					<input type="radio" name="order_status" value="no" class="status_select">결제취소&nbsp;&nbsp;
 				</div>
 				
 				<div class="cell2">

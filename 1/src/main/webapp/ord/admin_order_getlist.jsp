@@ -9,7 +9,7 @@
 <div class="search_result">
 	<div id="table_subject">
 		<div class="table_subject">주문번호</div>
-		<div class="table_subject">주문자</div>
+		<div class="table_subject">주문자(이메일)</div>
 		<div class="table_subject">결제금액</div>
 		<div class="table_subject">결제상태</div>
 		<div class="table_subject">주문일</div>

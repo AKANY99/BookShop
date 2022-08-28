@@ -67,7 +67,6 @@ public class AdminOrderListAction implements Action {
 			orderList = service.getOrderList(start_date, end_date, min_price, max_price, order_status, ordPageNum, listLimit);
 		}
 		
-		System.out.println(orderList.get(1));
 		request.setAttribute("start_date", start_date);
 		request.setAttribute("end_date", end_date);
 		request.setAttribute("min_price", min_price);
