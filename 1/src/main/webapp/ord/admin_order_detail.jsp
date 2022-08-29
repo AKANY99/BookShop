@@ -17,16 +17,15 @@
 	
 	<!-- 주문상세내용 -->
 	<div id="result_subject">
-		<p>주문상세내역</p>
+		<p id="p01">주문상세내역</p>
 	</div>
 	<div class="search_result">
 		<div id="table_subject">
 			<div class="table_subject">도서번호</div>
 			<div class="table_subject">도서표지</div>
 			<div class="table_subject">도서명</div>
-			<div class="table_subject">작가명</div>
-			<div class="table_subject">재고수량</div>
-			<div class="table_subject">상세관리</div>
+			<div class="table_subject">주문수량</div>
+			<div class="table_subject">금액</div>
 		</div>
 		<c:forEach var="order" items="${orderList }">
 				<div id="table_content">

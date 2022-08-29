@@ -103,10 +103,6 @@
 </script>
 
 <body>
-
-
-
-
 	<!-- order_status 이 all일 경우 넘겨줄 파라미터 -->
 	<form class="all_form">
 		<input type="hidden" name="start_date">

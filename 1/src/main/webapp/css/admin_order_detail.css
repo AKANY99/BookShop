@@ -1,20 +1,21 @@
 @charset "UTF-8";
 
-#result_subject > p {
-	margin: 0 auto;
-	padding-top: 30px;
-}
-
-#result_subject > div {
-	text-align: right;
-	margin: 10px auto;
+#result_subject {
+	margin: 30px auto;
 	max-width: 1000px;
 	min-width: 1000px;
 }
 
-#result_subject > div > input {
-	padding: 3px 10px;
-	letter-spacing: 2px;
+#result_subject > #p01 {
+	text-align: left;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#result_subject > #p02 {
+	text-align: right;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .search_result {
