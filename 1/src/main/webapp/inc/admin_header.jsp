@@ -33,6 +33,7 @@
 			<a href="ProductList.ad?pd_quan=all">상품관리</a>
 			<a href="QnaList.ad">고객문의</a>
 			<a href="UserManagement.ad">회원관리</a>
+			<a href="Design.ad">디자인관리</a>
 		</div>
 	</div>
 	<!-- 사이드바 메뉴 자리(JOA(조아)의 웹스토리 : 홈페이지 & 웹루션개발) 활용 -->
