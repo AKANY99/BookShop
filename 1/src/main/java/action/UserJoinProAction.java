@@ -38,7 +38,8 @@ public class UserJoinProAction implements Action {
 			out.println("</script>");
 		} else {
 			forward = new ActionForward();
-			forward.setPath("./");
+			//회원가입 되었다면 인증메일 보내기
+			forward.setPath("SendAuthMail.us?email=" + user.getUser_email());
 			forward.setRedirect(true);
 		}
 		return forward;

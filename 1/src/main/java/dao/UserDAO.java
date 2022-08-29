@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import vo.AuthInfoDTO;
 import vo.ProductDTO;
 import vo.UserDTO;
 
@@ -68,63 +69,63 @@ public class UserDAO {
 	}
 	
 	// 관리자페이지에서 사용할 전체 회원목록 조회 기능
-			public ArrayList<UserDTO> getUserList(String startDate, String endDate, String gender, String searchType, String searchObject, int userPageNum, int listLimit) {
-				ArrayList<UserDTO>userList = new ArrayList<UserDTO>();
-				int startRow = (userPageNum-1)*listLimit;
-				UserDTO user = null;
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				String sql = "";
-				try {
-					if(searchType.equals("전체")) {
-						sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND user_name like ? "
-								+ " OR user_date >= ? AND user_date <= ? AND user_gender = ? AND user_email like ? LIMIT ?, ?";
-
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, startDate);
-						pstmt.setString(2, endDate);
-						pstmt.setString(3, gender);
-						pstmt.setString(4, searchObject);
-						pstmt.setString(5, startDate);
-						pstmt.setString(6, endDate);
-						pstmt.setString(7, gender);
-						pstmt.setString(8, searchObject);
-						pstmt.setInt(9, startRow);
-						pstmt.setInt(10, listLimit);
-					}else {
-						sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND "+searchType+" like ? LIMIT ?, ?";
-						pstmt = con.prepareStatement(sql);
-						pstmt.setString(1, startDate);
-						pstmt.setString(2, endDate);
-						pstmt.setString(3, gender);
-						pstmt.setString(4, searchObject);
-						pstmt.setInt(5, startRow);
-						pstmt.setInt(6, listLimit);
-					}
-					rs = pstmt.executeQuery();
-					while(rs.next()) {
-						user = new UserDTO();
-						user.setUser_num(rs.getInt("user_num"));
-						user.setUser_name(rs.getString("user_name"));
-						user.setUser_email(rs.getString("user_email"));
-						user.setUser_passwd(rs.getString("user_passwd"));
-						user.setUser_gender(rs.getString("user_gender"));
-						user.setUser_jumin(rs.getString("user_jumin"));
-						user.setUser_address_code(rs.getInt("user_address_code"));
-						user.setUser_address(rs.getString("user_address"));
-						user.setUser_phone(rs.getString("user_phone"));
-						user.setUser_date(rs.getDate("user_date"));
-						userList.add(user);
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-					System.out.println("getUserList() - SQL 구문 오류 : " + e.getMessage());
-				}finally {
-					close(pstmt);
-					close(rs);
-				}
-				return userList;
+	public ArrayList<UserDTO> getUserList(String startDate, String endDate, String gender, String searchType, String searchObject, int userPageNum, int listLimit) {
+		ArrayList<UserDTO>userList = new ArrayList<UserDTO>();
+		int startRow = (userPageNum-1)*listLimit;
+		UserDTO user = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "";
+		try {
+			if(searchType.equals("전체")) {
+				sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND user_name like ? "
+						+ " OR user_date >= ? AND user_date <= ? AND user_gender = ? AND user_email like ? LIMIT ?, ?";
+	
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, startDate);
+				pstmt.setString(2, endDate);
+				pstmt.setString(3, gender);
+				pstmt.setString(4, searchObject);
+				pstmt.setString(5, startDate);
+				pstmt.setString(6, endDate);
+				pstmt.setString(7, gender);
+				pstmt.setString(8, searchObject);
+				pstmt.setInt(9, startRow);
+				pstmt.setInt(10, listLimit);
+			}else {
+				sql = "SELECT * FROM user WHERE user_date >= ? AND user_date <= ? AND user_gender = ? AND "+searchType+" like ? LIMIT ?, ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, startDate);
+				pstmt.setString(2, endDate);
+				pstmt.setString(3, gender);
+				pstmt.setString(4, searchObject);
+				pstmt.setInt(5, startRow);
+				pstmt.setInt(6, listLimit);
 			}
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				user = new UserDTO();
+				user.setUser_num(rs.getInt("user_num"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_email(rs.getString("user_email"));
+				user.setUser_passwd(rs.getString("user_passwd"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setUser_jumin(rs.getString("user_jumin"));
+				user.setUser_address_code(rs.getInt("user_address_code"));
+				user.setUser_address(rs.getString("user_address"));
+				user.setUser_phone(rs.getString("user_phone"));
+				user.setUser_date(rs.getDate("user_date"));
+				userList.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("getUserList() - SQL 구문 오류 : " + e.getMessage());
+		}finally {
+			close(pstmt);
+			close(rs);
+		}
+		return userList;
+	}
 	
 	// 사용자 개인정보 조회
 	public int insertUser(UserDTO user) {
@@ -146,7 +147,7 @@ public class UserDAO {
 			// 먼저 쓴 pstmt 자원반환
 			close(pstmt);
 			
-			sql = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,now(),0,0)";
+			sql = "INSERT INTO user VALUES (?,?,?,?,?,?,?,?,?,now(),0,0,'N')";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, uNum);
 			pstmt.setString(2, user.getUser_name());
@@ -177,7 +178,7 @@ public class UserDAO {
 		ResultSet rs = null;
 		
 		try {
-			sql = "SELECT * FROM user WHERE user_email=? AND user_passwd=?";
+			sql = "SELECT * FROM user WHERE user_email=? AND user_passwd=? AND user_auth='Y'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_email);
 			pstmt.setString(2, user_passwd);
@@ -431,5 +432,91 @@ public class UserDAO {
 			close(pstmt);
 		}
 		return popupPath;
+	}
+	// 인증코드 등록 작업 수행
+	public int registAuthCode(String email, String authCode) {
+		int registCount = 0;
+		
+		PreparedStatement pstmt = null, pstmt2 = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT auth_code FROM authInfo WHERE auth_email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 기존 인증코드가 이미 존재하는 경우
+				// UPDATE 구문을 사용하여 인증코드 갱신(새로운 인증코드로 덮어씀)
+				sql = "UPDATE authInfo SET auth_code=? WHERE auth_email=?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, authCode);
+				pstmt2.setString(2, email);
+				registCount = pstmt2.executeUpdate();
+				System.out.println("인증코드 갱신 성공!");
+			} else { // 기존 인증코드가 존재하지 않는 경우
+				// INSERT 구문을 사용하여 아이디와 인증코드 추가
+				sql = "INSERT INTO authInfo VALUES (?,?)";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, email);
+				pstmt2.setString(2, authCode);
+				registCount = pstmt2.executeUpdate();
+				System.out.println("인증코드 등록 성공!");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+			close(pstmt2);
+		}
+		
+		return registCount;
+	}
+	
+	
+	public boolean isAuthentication(AuthInfoDTO authInfo) {
+		boolean isAuthenticationSuccess = false;
+		
+		PreparedStatement pstmt = null, pstmt2 = null;
+		ResultSet rs = null;
+		
+		try {
+			// 전달받은 AuthInfoDTO 객체의 인증정보(아이디, 인증코드)를 사용하여
+			// auth_info 테이블의 인증 정보와 비교
+			// => 결과가 일치하면 isAuthenticationSuccess 를 true 로 변경
+			String sql = "SELECT * FROM authInfo WHERE auth_email=? AND auth_code=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, authInfo.getUser_email());
+			pstmt.setString(2, authInfo.getAuth_code());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 조회 성공 시 인증 코드가 일치
+				// user 테이블 중 user_email 가 일치하는 레코드의 auth_status 값을 'Y' 로 변경하고
+				// authInfo 테이블 중 user_email 가 일치하는 레코드 삭제
+				sql = "UPDATE user SET user_auth='Y' WHERE user_email=?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, authInfo.getUser_email());
+				int updateCount = pstmt2.executeUpdate();
+				
+				sql = "DELETE FROM authInfo WHERE auth_email=?";
+				pstmt2 = con.prepareStatement(sql);
+				pstmt2.setString(1, authInfo.getUser_email());
+				int deleteCount = pstmt2.executeUpdate();
+				
+				// updateCount 또는 deleteCount 가 둘 다 0보다 크면 인증성공여부를 true 로 변경
+				if(updateCount > 0 && deleteCount > 0) {
+					isAuthenticationSuccess = true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return isAuthenticationSuccess;
 	}
 }

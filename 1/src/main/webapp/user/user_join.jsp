@@ -114,13 +114,13 @@
 				<h3 class="join_tit">이메일</h3>
 					<div class="group">
 						<div class="group1">
-							<input type="text" class="tyte" name="user_email" required="required" onkeydown="checkIdOnkeydown()">
+							<input type="text" class="tyte" name="user_email" readonly="readonly" required="required" onkeydown="checkIdOnkeydown()">
 						</div>
 						<div class="sp">
 						@
 						</div>
 						<div class="group1_1">
-							<input type="text" class="tyte" name="user_email2" required="required" onkeydown="checkIdOnkeydown()">
+							<input type="text" class="tyte" name="user_email2" readonly="readonly" required="required" onkeydown="checkIdOnkeydown()">
 						</div>
 						<div class="group1">
 							<span class="em_box">

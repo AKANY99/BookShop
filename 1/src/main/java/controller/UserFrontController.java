@@ -256,6 +256,20 @@ public class UserFrontController extends HttpServlet {
 				e.printStackTrace();
 				System.out.println("/UserQnaDetail.us 실패!!");
 			}
+		} else if(command.equals("/SendAuthMail.us")) {
+			action = new UserSendAuthMailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if(command.equals("/UserAuth.us")) {
+			action = new UserAuthAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
