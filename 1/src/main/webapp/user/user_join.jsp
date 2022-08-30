@@ -151,8 +151,8 @@
 				 	<div class="gd_box">
 				 		<select id="gender" name="user_gender" class="gd_sel">
 				 			<option selected>성별</option>
-				 			<option value="male">남자</option>
-				 			<option value="female">여자</option>
+				 			<option value="남">남자</option>
+				 			<option value="여">여자</option>
 				 		</select>
 				 	</div>
 			 

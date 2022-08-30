@@ -32,7 +32,7 @@ public class UserDTO {
 	private Date user_date;
 	private int user_points;
 	private int user_purchased;
-	private int user_auth;
+	private String user_auth;
 	
 	public int getUser_num() {
 		return user_num;
@@ -106,10 +106,10 @@ public class UserDTO {
 	public void setUser_purchased(int user_purchased) {
 		this.user_purchased = user_purchased;
 	}
-	public int getUser_auth() {
+	public String getUser_auth() {
 		return user_auth;
 	}
-	public void setUser_auth(int user_auth) {
+	public void setUser_auth(String user_auth) {
 		this.user_auth = user_auth;
 	}
 	@Override
