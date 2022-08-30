@@ -62,16 +62,28 @@ public class UserSendAuthMailAction implements Action {
 			
 			// 메일 서버 인증 정보를 생성하는 사용자 정의 클래스의 인스턴스 생성
 			Authenticator authenticator = new GmailSMTPAuthenticator(); // 업캐스팅 활용
+			System.out.println(properties);
+			System.out.println("칸나누기");
+			System.out.println(authenticator);
 			
 			// 자바 메일에서 메일 전송 기본 단위를 javax.mail.Session 객체 단위로 관리하므로
 			// Session 클래스의 getDefaultInstance() 메서드를 호출하여 객체 얻어오기
 			// => 파라미터 : 서버 정보와 인증 정보 전달
 			Session mailSession = Session.getDefaultInstance(properties, authenticator);
+
+			System.out.println("칸나누기");
+			System.out.println(mailSession);
+			
 			
 			// 서버와 인증 정보를 포함하는 MimeMessage 객체 생성
 			// => 파라미터로 Session 객체 전달
 			// => 생성된 MimeMessage 객체를 통해 전송할 메일에 대한 정보 생성
+			
 			Message mailMessage = new MimeMessage(mailSession); // 업캐스팅
+
+			System.out.println("칸나누기");
+			System.out.println(mailMessage);
+			
 			
 			// 전송할 메일에 대한 정보 설정
 			// 1. 발신자 정보 설정
