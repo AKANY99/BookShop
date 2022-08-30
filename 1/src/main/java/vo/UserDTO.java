@@ -13,7 +13,10 @@ user_jumin varchar(30) not null,
 user_address_code int not null,
 user_address varchar(100) not null,
 user_phone varchar(40) not null,
-user_date date not null
+user_date date not null,
+user_points int,
+user_purchased int,
+user_auth varchar(1) not null
 );
  */
 public class UserDTO {
@@ -27,7 +30,9 @@ public class UserDTO {
 	private String user_address;
 	private String user_phone;
 	private Date user_date;
-	
+	private int user_points;
+	private int user_purchased;
+	private int user_auth;
 	
 	public int getUser_num() {
 		return user_num;
@@ -89,12 +94,31 @@ public class UserDTO {
 	public void setUser_date(Date user_date) {
 		this.user_date = user_date;
 	}
-	
+	public int getUser_points() {
+		return user_points;
+	}
+	public void setUser_points(int user_points) {
+		this.user_points = user_points;
+	}
+	public int getUser_purchased() {
+		return user_purchased;
+	}
+	public void setUser_purchased(int user_purchased) {
+		this.user_purchased = user_purchased;
+	}
+	public int getUser_auth() {
+		return user_auth;
+	}
+	public void setUser_auth(int user_auth) {
+		this.user_auth = user_auth;
+	}
 	@Override
 	public String toString() {
 		return "UserDTO [user_num=" + user_num + ", user_name=" + user_name + ", user_email=" + user_email
 				+ ", user_passwd=" + user_passwd + ", user_gender=" + user_gender + ", user_jumin=" + user_jumin
 				+ ", user_address_code=" + user_address_code + ", user_address=" + user_address + ", user_phone="
-				+ user_phone + ", user_date=" + user_date + "]";
+				+ user_phone + ", user_date=" + user_date + ", user_points=" + user_points + ", user_purchased="
+				+ user_purchased + ", user_auth=" + user_auth + "]";
 	}
+	
 }

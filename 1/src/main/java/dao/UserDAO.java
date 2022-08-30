@@ -487,7 +487,7 @@ public class UserDAO {
 			// => 결과가 일치하면 isAuthenticationSuccess 를 true 로 변경
 			String sql = "SELECT * FROM authInfo WHERE auth_email=? AND auth_code=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, authInfo.getUser_email());
+			pstmt.setString(1, authInfo.getAuth_email());
 			pstmt.setString(2, authInfo.getAuth_code());
 			
 			rs = pstmt.executeQuery();
@@ -497,12 +497,12 @@ public class UserDAO {
 				// authInfo 테이블 중 user_email 가 일치하는 레코드 삭제
 				sql = "UPDATE user SET user_auth='Y' WHERE user_email=?";
 				pstmt2 = con.prepareStatement(sql);
-				pstmt2.setString(1, authInfo.getUser_email());
+				pstmt2.setString(1, authInfo.getAuth_email());
 				int updateCount = pstmt2.executeUpdate();
 				
 				sql = "DELETE FROM authInfo WHERE auth_email=?";
 				pstmt2 = con.prepareStatement(sql);
-				pstmt2.setString(1, authInfo.getUser_email());
+				pstmt2.setString(1, authInfo.getAuth_email());
 				int deleteCount = pstmt2.executeUpdate();
 				
 				// updateCount 또는 deleteCount 가 둘 다 0보다 크면 인증성공여부를 true 로 변경

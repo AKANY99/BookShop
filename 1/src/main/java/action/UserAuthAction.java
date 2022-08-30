@@ -17,7 +17,7 @@ public class UserAuthAction implements Action {
 		ActionForward forward = null;
 		
 		AuthInfoDTO authInfo = new AuthInfoDTO();
-		authInfo.setUser_email(request.getParameter("userEmail"));
+		authInfo.setAuth_email(request.getParameter("userEmail"));
 		authInfo.setAuth_code(request.getParameter("authCode"));
 //		System.out.println(authInfo.getId() + ", " + authInfo.getAuthCode());
 		
