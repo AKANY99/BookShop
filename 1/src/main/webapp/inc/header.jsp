@@ -104,6 +104,7 @@
 			<li><a href="UserProductList.us?sort_type=last&pd_type=국내도서">국내도서</a></li>
 			<li><a href="UserProductList.us?sort_type=last&pd_type=해외도서">해외도서</a></li>
 			<li><a href="">베스트셀러</a></li>
+			<li><a href="CustomerSupporter.us">고객 센터</a></li>
 		</ul>
 	</nav>
 	</section>
