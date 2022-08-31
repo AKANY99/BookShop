@@ -519,4 +519,24 @@ public class UserDAO {
 		
 		return isAuthenticationSuccess;
 	}
+	public boolean adminUserDelete(int user_num) {
+		boolean isDeleteSuccess = false;
+		PreparedStatement pstmt = null;
+		
+		try {
+			String sql = "DELETE FROM user WHERE user_num = ?";
+			pstmt = con.prepareStatement(sql);
+			int deleteCount = pstmt.executeUpdate();
+			
+			if(deleteCount == 1) {
+				isDeleteSuccess = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("adminUserDelete 구문 오류");
+		}
+		
+		return isDeleteSuccess;
+	}
+	
 }

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.AdminChangeMainAdAction;
+import action.AdminChangeMainAdProAction;
+import action.AdminDesignManagementAction;
 import action.AdminGetQnaListAction;
 import action.AdminOrderDetailAction;
 import action.AdminOrderListAction;
@@ -166,6 +169,27 @@ public class AdminFrontController extends HttpServlet {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
+			}
+		}else if(command.equals("/Design.ad")) {
+			try {
+				forward = new AdminDesignManagementAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/Design.ad 오류!");
+			}
+		}else if(command.equals("/ChangeMainAd.ad")) {
+			try {
+				forward = new AdminChangeMainAdAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/ChangeMainAd.ad 오류!");
+			}
+		}else if(command.equals("/ChangeMainAdPro.ad")) {
+			try {
+				forward = new AdminChangeMainAdProAction().execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("/ChangeMainAdPro.ad 오류!");
 			}
 		}
 		

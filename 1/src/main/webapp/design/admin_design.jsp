@@ -16,8 +16,6 @@
 
 
 
-
-
 </script>
 <!-- CSS모음 끝 -->
 <body>
@@ -35,37 +33,37 @@
 		
 			<!-- 메인 슬라이더의 보여줄 화면들(여러개) -->
 			<div class="mainSlides">
-				<a href="changeMainAd.ad?main_ad_num=1">
+				<a href="ChangeMainAd.ad?main_ad_num=1">
 					<img src="upload/ad/${ad[0].ad_file }" onerror="this.src='images/main/main_book1.jpg' " style="width:100%">
 				</a>
 			</div>
 		
 			<div class="mainSlides">
-				<a href="changeMainAd.ad?main_ad_num=2">
+				<a href="ChangeMainAd.ad?main_ad_num=2">
 					<img src="upload/ad/${ad[1].ad_file }" onerror="this.src='images/main/main_book2.jpg' " style="width:100%">
 				</a>
 			</div>
 		
 			<div class="mainSlides">
-				<a href="changeMainAd.ad?main_ad_num=3">
+				<a href="ChangeMainAd.ad?main_ad_num=3">
 					<img src="upload/ad/${ad[2].ad_file }" onerror="this.src='images/main/main_book3.jpg' " style="width:100%">
 				</a>
 			</div>
 			  
 			<div class="mainSlides">
-				<a href="changeMainAd.ad?main_ad_num=4">
+				<a href="ChangeMainAd.ad?main_ad_num=4">
 					<img src="upload/ad/${ad[3].ad_file }" onerror="this.src='images/main/main_book4.jpg' " style="width:100%">
 				</a>
 			</div>
 			
 			<div class="mainSlides">
-				<a href="changeMainAd.ad?main_ad_num=5">
+				<a href="ChangeMainAd.ad?main_ad_num=5">
 					<img src="upload/ad/${ad[4].ad_file }" onerror="this.src='images/main/main_book5.jpg' " style="width:100%">
 				</a>
 			</div>
 			  
 			<div class="mainSlides">
-				<a href="changeMainAd.ad?main_ad_num=6">
+				<a href="ChangeMainAd.ad?main_ad_num=6">
 					<img src="upload/ad/${ad[5].ad_file }" onerror="this.src='images/main/main_book6.jpg' " style="width:100%">
 				</a>
 			</div>

@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="css/sidebar.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="css/user_qna_detail.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-3.6.0.js"></script>
 <script type="text/javascript">
@@ -23,10 +26,12 @@ $(function(){
 </script>
 </head>
 <body>
+<jsp:include page="/inc/header.jsp"/>
+<jsp:include page="/inc/sidebar.jsp"/>
 	<div class="wrapper">
 		<div class="name_subject">${qna.qna_user } 님의 작성 문의입니다.</div>
 		<div class="main_subject">
-			<div class="subject">문의 내용 : ${qna.qna_subject }</div>
+			<div class="subject">문의 제목 : ${qna.qna_subject }</div>
 			<div class="subject">문의 날짜 : ${qna.qna_date }</div>
 			
 		</div>
@@ -45,9 +50,16 @@ $(function(){
 							</div>
 					</c:when>
 					<c:otherwise>
-						<div class="qna_content_subject">답변 대기중 입니다.</div>
+						<div class="qna_content_subject">답변</div>
+							<div class="qna_content">
+							답변  대기중 입니다.
+							</div>
 					</c:otherwise>
 				</c:choose>	
+				<div id="buttons">
+					<input type="button" value="뒤로가기" id="button" onclick="history.go(-1)">
+					<input type="button" value="문의하기" id="button" onclick="location.href='QnaWrite.us'">
+				</div>
 	</div>
 </body>
 </html>

@@ -28,10 +28,9 @@ public class AdminUserDeleteService {
 		UserDAO dao = UserDAO.getInstance();
 		dao.setConnection(con);
 		
-//		isDeleteSuccess = dao.userDelete();
+		isDeleteSuccess = dao.adminUserDelete(user_num);
 		
 		close(con);
-		
 		return isDeleteSuccess;
 	}
 

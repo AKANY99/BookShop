@@ -164,9 +164,6 @@
 		}).fail(function(){
 			alert("실패ㅜㅠ");
 		})
-		
-		
-		
 	}
 	function pageMovePrivate(pageNum) {
 		$(".qna_button2").css("background","gray");
@@ -193,7 +190,7 @@
 </script>
 </head>
 <body>
-
+<jsp:include page="/inc/sidebar.jsp"/>
 <jsp:include page="/inc/header.jsp"/>
 <div class="modal" onclick="hide()"></div>
 	<div id="wrapper">
