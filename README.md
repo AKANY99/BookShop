@@ -2,16 +2,19 @@
 create database bookshop;
 
 create table user(
-	user_num int primary key,
-	user_name varchar(10) not null,
-	user_email varchar(50) unique not null,
-	user_passwd varchar(30) not null,
-	user_gender varchar(1) not null,
-	user_jumin varchar(30) not null,
-	user_address_code int not null,
-	user_address varchar(100) not null,
-	user_phone varchar(40) not null,
-	user_date date not null
+user_num int primary key,
+user_name varchar(10) not null,
+user_email varchar(50) unique not null,
+user_passwd varchar(30) not null,
+user_gender varchar(1) not null,
+user_jumin varchar(30) not null,
+user_address_code int not null,
+user_address varchar(100) not null,
+user_phone varchar(40) not null,
+user_date date not null,
+user_points int,
+user_purchased int,
+user_auth varchar(1) not null
 );
 
 create table product(
@@ -130,3 +133,7 @@ INSERT INTO user VALUES (1, '관리자', 'admin', '12341234', '남', '123123-123
 INSERT INTO user VALUES (2, '멍멍이', 'mungmung@naver.com', '12341234', '남', '123123-1234123', 46586, '부산 뭐시기', '010-1234-1234', now());
 INSERT INTO user VALUES (3, '냥냥이', 'myaymya@naver.com', '12341234', '남', '123123-1234123', 46586, '부산 뭐시기', '010-1234-1234', now());
 INSERT INTO user VALUES (4, '냥냥이2', 'myaymya2@naver.com', '12341234', '남', '123123-1234123', 46586, '부산 뭐시기', '010-1234-1234',  now());
+
+
+2022-08-31 DB저장 (상품 그림까지 저장되게 16개 만듬(국내,해외만 있음))
+https://drive.google.com/file/d/16fRds2U6_NN2noTQEJGJh_MuHGL4bHO-/view?usp=sharing

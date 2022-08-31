@@ -177,9 +177,49 @@ p {
 	margin: 30px;
 }
 
+.cell2 input[type='button'] {
+/* 	position: absolute; */
+/* 	right: 130px; */
+/* 	top: 18.8px; */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px 13px;
+	font-weight: 500;
+	font-size: 13px;
+	text-align: justify;
+	text-decoration: none;
+	color: #000000;
+	backface-visibility: hidden;
+	border: 3px solid transparent;
+	border-radius: 3rem;
+	
+	font-weight: bold;
+	border-color: #383838;
+	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
 
+/* .cell2 input[type='button']:hover { */
+/* 	font-weight: bold; */
+/* 	color: #fafafa; */
+/* 	border-color: #fafafa; */
+/* 	background: #353555; */
+/* 	transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important; */
+/* } */
 
+/* .cell2 input[type='button'] { */
+/* 	font-weight: bold; */
+/* 	border-color: #383838; */
+/* 	transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95); */
+/* } */
 
+.cell2 input[type='button']:hover {
+	font-weight: bold;
+	color: #fafafa;
+	border-color: #fafafa;
+	background: #353555;
+	transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
 
 
 

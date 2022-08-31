@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <link href="css/admin_header.css" rel="stylesheet" />  
 <link href="css/admin_side.css" rel="stylesheet"/>
+<section class="admin_header">
 <header>
 	<!-- 사이드바 버튼 (JOA(조아)의 웹스토리 : 홈페이지 & 웹루션개발) 활용 -->
 	<span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; 메뉴</span>
@@ -50,3 +51,4 @@
 	</script>
 	<!-- 메뉴 사이드바 자바스크립트(JOA(조아)의 웹스토리 : 홈페이지 & 웹루션개발) 활용 -->
 </header>
+</section>

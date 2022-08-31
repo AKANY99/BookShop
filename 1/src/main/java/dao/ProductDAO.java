@@ -41,7 +41,7 @@ public class ProductDAO {
 			}
 			close(pstmt); // 상품번호를 저장했을때 쓰인 pstmt 자원반환
 			// 2. 상품등록
-			sql = "INSERT INTO product VALUES (?,?,?,?,?,?,?,?,0,now())";
+			sql = "INSERT INTO product VALUES (?,?,?,?,?,?,?,?,now(),0)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, pd_num);
 			pstmt.setString(2, product.getPd_type());

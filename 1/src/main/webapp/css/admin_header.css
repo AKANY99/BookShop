@@ -4,7 +4,8 @@
 	padding: 0;
 }
 
-header {
+
+.admin_header header {
 	position: relative;
 	background: #6c96ec;
 	border-bottom: 2px solid #696969;
@@ -15,14 +16,14 @@ header {
     align-items: center;
 }
 
-span {
+.admin_header span {
 	font-weight: bold;
 	position: absolute;
 	color: #000000;
 	left: 30px;
 }
 
-span:hover {
+.admin_header span:hover {
   color: #dedede;
 }
 

@@ -29,7 +29,7 @@ String sId = (String)session.getAttribute("sId");
 		<img src="upload/${product.pd_file }">
 	</section>
 	<section class="productInfo">
-		<div class="productTitle">
+		<div class="productTitle" title="${product.pd_subject }">
 			책 제목
 			<h1>${product.pd_subject }</h1>
 		</div>
@@ -42,8 +42,8 @@ String sId = (String)session.getAttribute("sId");
 			<em>${product.pd_type }</em>
 		</div>
 		<div class="productContent">
-			책 설명
-			<em>${product.pd_content }</em>
+			
+			<em></em>
 		</div>
 		<div class="productPrice">
 			가격
@@ -71,11 +71,15 @@ String sId = (String)session.getAttribute("sId");
 		</form>
 		<!-- 수량 및 버튼 끝 -->
 	</section>
+	<section style="position: relative; clear: both;"></section>
+	<section class="productContentImg" style="width:100%; margin: 100px 0px;">
+		<img src="upload/${product.pd_content }" style="width:100%;">
+	</section>
 </section>
 <!-- 상품 조회 시작 끝 -->
  
-<section style="position: relative; clear: both;"></section>
 
+<section style="position: relative; clear: both;"></section>
 <!-- 사이드바 -->
 <jsp:include page="/inc/sidebar.jsp"/>
 <!-- 사이드바 끝 -->

@@ -20,8 +20,8 @@
 			<tr>
 				<td class="td_left">도서분류</td>
 				<td class="td_right">
-					<input type="radio" name="pd_type" value="domestic">국내도서
-					<input type="radio" name="pd_type" value="overseas">해외도서
+					<input type="radio" name="pd_type" value="국내도서">국내도서
+					<input type="radio" name="pd_type" value="해외도서">해외도서
 					<input type="radio" name="pd_type" value="eBook">eBook
 				</td>
 			</tr>

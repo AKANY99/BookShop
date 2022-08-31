@@ -155,8 +155,8 @@
 					타입
 				</div>
 				<input type="radio" name="pd_type" value="all" class="type_select" checked="checked">전체&nbsp;&nbsp;
-				<input type="radio" name="pd_type" value="domestic" class="type_select">국내도서&nbsp;&nbsp;
-				<input type="radio" name="pd_type" value="overseas" class="type_select">해외도서&nbsp;&nbsp;
+				<input type="radio" name="pd_type" value="국내도서" class="type_select">국내도서&nbsp;&nbsp;
+				<input type="radio" name="pd_type" value="해외도서" class="type_select">해외도서&nbsp;&nbsp;
 				<input type="radio" name="pd_type" value="eBook" class="type_select">eBook&nbsp;&nbsp;
 			</div>
 			
