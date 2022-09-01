@@ -6,6 +6,7 @@ https://docs.google.com/spreadsheets/d/15ekpF_N1BrWsXZ-rD0bG7CttJ0kTByvFmDYwX6R3
 https://drive.google.com/file/d/16fRds2U6_NN2noTQEJGJh_MuHGL4bHO-/view?usp=sharing
 
 
+```SQL
 테이터베이스와 테이블
 create database bookshop;
 
@@ -123,7 +124,7 @@ order_pd_price int NOT NULL,
 constraint ord_num_fk foreign key(order_num) references ord(order_num),
 constraint ord_pdn_fk foreign key(order_pd_num) references product(pd_num)
 );
-
+```
 
 
 ex) 상품 등록
