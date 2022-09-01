@@ -36,9 +36,7 @@
     font-weight: 500;
     font-size: 26px;
     line-height: 36px;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .productInfo .productName{
@@ -228,7 +226,10 @@
     font-weight: bold;
 }
 
-
+.productContentImg img{
+	margin: 40px 0px;
+	width:900px;
+}
 
 
 

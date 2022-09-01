@@ -1,0 +1,95 @@
+@charset "UTF-8";
+/* font-family: 'Noto Sans KR', sans-serif; */
+.cart{
+	width: 900px;
+	height: 900px;
+	margin: 0px auto;
+	margin-bottom: 100px;
+	background:  white;
+	
+	}
+
+.jur{
+	border-collapse: collapse;	
+}	
+.space{/*th들 공백 */
+	margin-bottom: 6px;
+}	
+/* 총결제 폰트 바꾸기 원하는걸루*/
+/* h3 {font-family: Noto Sans KR;} */
+		
+.text{border-bottom: 2px solid #c1bec2; 
+}
+
+.button {width:200px; 
+  height:60px;
+  background-color: #3d6dd6;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+	
+#button2{float:right; }
+	
+	
+.cart h3{float:right; }
+
+
+.delete input[type=button]{
+	width: 110px;
+	height: 30px;
+	border-color: #199db3;
+    border-bottom-color: #168da1;
+    border-right-color: #168da1;
+    background-color: #199db3;
+    
+    position: relative;
+    padding: 0 7px;
+    text-align: center;
+    text-indent: 0;
+    border-radius: 3px;
+    border: solid 1px #ebebeb;
+    cursor: pointer;
+    
+    /* 폰트 */
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
