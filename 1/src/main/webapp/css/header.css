@@ -66,6 +66,18 @@ header>.header_top>nav>ul>li>a:active {
 	color: #666; /* <a>마우스 올렸을 때 색깔 */}
 
 /* 헤더 mid 부분 =====================*/
+header .logo_location{
+	position: fixed;
+	top: 40px;
+	
+}
+
+header .serch_location{
+	position: fixed;
+	top: 50px;
+	left: 380px;
+}
+
 header>.header_mid{
 	/* 크기(차지하는 부분) */
 	height: 140px;
@@ -79,19 +91,20 @@ header>.header_mid>nav{
 /* 	background-color: white; */
 }
 header>.header_mid>nav>ul{
-	float: left;
 	height: 120px; width: 900px;
+	display: block;
 }
-header>.header_mid>nav>ul>li{
+header>.header_mid>nav>ul>li:nth-last-child(1){
 	/* 줄 바꿈 기능 해제(?) */
-	display: inline-block;
+/* 	display: inline-block; */
 /* 	float: left; */
 /* 	height: 120px; */
 /* 	margin: 0px auto; 중앙 정렬 */
 /* 	overflow: inherit;위치 */
 	vertical-align: middle;
 /* 	position: fixed; */	
-	top:100px;
+	left: 615px;
+	top: 15px;
 	margin-right: 10px; 
 }
 header>.header_mid>nav>ul>li>.serch_area{ /* 검색창 */

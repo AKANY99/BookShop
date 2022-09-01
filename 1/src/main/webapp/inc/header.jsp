@@ -8,8 +8,8 @@
 	<section class="header_mid">
 	<nav>
 		<ul>
-			<li><a href="./"><img alt="로고" src="images/BookShopLogo2.png"  style="width: 200px"></a></li>
-			<li>
+			<li class="logo_location"><a href="./"><img alt="로고" src="images/BookShopLogo2.png"  style="width: 200px"></a></li>
+			<li class="serch_location">
 			<div class="serch_area">
 			<form action="Search.us?sort=last" method="post">
 				<select class="header_select" name="searchType">
