@@ -24,7 +24,8 @@ String sId = (String)session.getAttribute("sId");
 
 <!-- 상품 조회 시작 -->
 <section class="productDetail">
-	<h1>사용자 상품 상세 조회</h1>
+	<h1><img src="images/product_img.png"></h1>
+	
 	<section class="productImg">
 		<img src="upload/${product.pd_file }">
 	</section>
