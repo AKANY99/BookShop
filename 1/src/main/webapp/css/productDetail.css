@@ -31,12 +31,15 @@
 	
 	margin-bottom: 16px;
 	color: #3e3e3e;
-    width: 480px;
+    width: 450px;
     min-height: 0;
     font-weight: 500;
     font-size: 26px;
     line-height: 36px;
     overflow: hidden;
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .productInfo .productName{
@@ -49,7 +52,7 @@
 .productInfo .productName em{
 	margin-bottom: 16px;
 	color: #3e3e3e;
-    width: 480px;
+    width: 450px;
     min-height: 0;
     font-weight: 500;
     font-size: 20px;
@@ -69,7 +72,7 @@
 .productInfo .productType em{
 	margin-bottom: 16px;
 	color: #3e3e3e;
-    width: 480px;
+    width: 450px;
     min-height: 0;
     font-weight: 500;
     font-size: 20px;
@@ -109,7 +112,7 @@
 .productInfo .productPrice em{
 	margin-bottom: 16px;
 	color: #3e3e3e;
-    width: 480px;
+    width: 450px;
     min-height: 0;
     font-weight: 500;
     font-size: 20px;

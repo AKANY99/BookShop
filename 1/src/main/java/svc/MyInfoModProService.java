@@ -22,8 +22,8 @@ public class MyInfoModProService {
 		System.out.println("user 받아옴");
 		
 
-		close(con);
 		JdbcUtil.commit(con);
+		close(con);
 		
 		return user;
 	}

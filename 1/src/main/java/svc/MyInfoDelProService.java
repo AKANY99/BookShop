@@ -22,11 +22,10 @@ public class MyInfoDelProService {
 		
 		if(deleteCount > 0) {
 			JdbcUtil.commit(con);
-			close(con);
 		}else {
 			System.out.println("회원 삭제 실패!");
-		
 		}
+		JdbcUtil.close(con);
 		return deleteCount;
 	}
 

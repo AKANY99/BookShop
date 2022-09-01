@@ -28,19 +28,32 @@
 			<img src="upload/${product.pd_file }" align="left">
 			<div class="product_desc">
 				<div class="product_cell">
-					도서번호 : ${product.pd_num }
-					등록일 : ${product.pd_date }
+					도서번호
+					<em title="${product.pd_num }">${product.pd_num }</em>
 				</div>
 				<div class="product_cell">
-					책 이름 : ${product.pd_subject } 
-					작가 : ${product.pd_name }
+					등록일
+					<em title="${product.pd_date }">${product.pd_date }</em>
+				</div>
+				<div class="product_title">
+					책 이름
+					<em title="${product.pd_subject }">${product.pd_subject }</em>
 				</div>
 				<div class="product_cell">
-					남은 수량 : ${product.pd_quan } 권
-					판매 수량 : ${product.pd_count } 권
+					작가
+					<em title="${product.pd_name }" >${product.pd_name }</em>
+				</div>
+				<div class="product_cell">
+					남은 수량
+					<em title="${product.pd_quan }">${product.pd_quan } 권</em>
+				</div>
+				<div class="product_cell">
+					판매 수량
+					<em title="${product.pd_count }">${product.pd_count } 권</em>
 				</div>
 				<div class="product_cell product_price">
-					가격 : ${product.pd_price } 원
+					가격
+					<em title="${product.pd_price }">${product.pd_price } 원</em>
 				</div>
 			</div>
 		</div>
