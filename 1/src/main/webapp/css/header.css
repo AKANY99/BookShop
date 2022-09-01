@@ -73,9 +73,10 @@ header .logo_location{
 }
 
 header .serch_location{
-	position: fixed;
+	position: relative;
+	width:370px; height: 40px;
 	top: 50px;
-	left: 380px;
+	left: 240px;
 }
 
 header>.header_mid{
@@ -96,15 +97,15 @@ header>.header_mid>nav>ul{
 }
 header>.header_mid>nav>ul>li:nth-last-child(1){
 	/* 줄 바꿈 기능 해제(?) */
-/* 	display: inline-block; */
+	display: inline-block;
 /* 	float: left; */
 /* 	height: 120px; */
 /* 	margin: 0px auto; 중앙 정렬 */
 /* 	overflow: inherit;위치 */
 	vertical-align: middle;
-/* 	position: fixed; */	
-	left: 615px;
-	top: 15px;
+	position: relative;	
+	left: 620px;
+	top: -30px;
 	margin-right: 10px; 
 }
 header>.header_mid>nav>ul>li>.serch_area{ /* 검색창 */
@@ -179,9 +180,7 @@ input[type=submit]:hover{ /* 검색창 */
 	cursor: pointer;
 }
 .header_mid .logoff{
-	width: 279px;
-	position: relative;
-	top: 10px;
+	width: 245px;
 }
 .header_mid .logoff div{
 	float: right;
