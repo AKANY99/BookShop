@@ -88,9 +88,6 @@
 								<div class="info_subject">${searchProductList.pd_subject }</div>
 								<div class="info_name">${searchProductList.pd_name }</div>
 								<div class="info_price"><b>${searchProductList.pd_price }</b>원</div>
-								<div class="info_content">
-									${searchProductList.pd_content }
-								</div>
 								<div class="info_button">
 									<!-- 수량 및 버튼 -->
 									<form action="">

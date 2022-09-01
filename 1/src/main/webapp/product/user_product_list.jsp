@@ -59,13 +59,13 @@
 			
 			<!-- 정렬에 관한 메뉴 -->
 			<div class="contentMenu">
-				<a href="Search.us?sort=last&searchType=${param.searchType}&search=${param.search}">
+				<a href="UserProductList.us?sort_type=last&pd_type=${param.pd_type }">
 					등록일순
 				</a>
-				<a href="Search.us?sort=price&searchType=${param.searchType}&search=${param.search}">
+				<a href="UserProductList.us?sort_type=price&pd_type=${param.pd_type }">
 					가격낮은순
 				</a>
-				<a href="Search.us?sort=count&searchType=${param.searchType}&search=${param.search}">
+				<a href="UserProductList.us?sort_type=count&pd_type=${param.pd_type }">
 					판매량순
 				</a>
 			</div>
@@ -89,9 +89,6 @@
 								<div class="info_subject">${productList.pd_subject }</div>
 								<div class="info_name">${productList.pd_name }</div>
 								<div class="info_price"><b>${productList.pd_price }</b>원</div>
-								<div class="info_content">
-									${productList.pd_content }
-								</div>
 								<div class="info_button">
 									<input type="button" value="상품보기" onclick="location.href='UserProductDetail.us?pd_num=${productList.pd_num }&pageNum=${pageInfo.pageNum }'">
 <!-- 									<input type="button" value="장바구니"> -->
