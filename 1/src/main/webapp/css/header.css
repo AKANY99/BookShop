@@ -67,7 +67,7 @@ header>.header_top>nav>ul>li>a:active {
 
 /* 헤더 mid 부분 =====================*/
 header .logo_location{
-	position: fixed;
+	position: relative;
 	top: 40px;
 	
 }
@@ -76,7 +76,7 @@ header .serch_location{
 	position: relative;
 	width:370px; height: 40px;
 	top: 50px;
-	left: 240px;
+	left: 238px;
 }
 
 header>.header_mid{
@@ -104,14 +104,14 @@ header>.header_mid>nav>ul>li:nth-last-child(1){
 /* 	overflow: inherit;위치 */
 	vertical-align: middle;
 	position: relative;	
-	left: 620px;
-	top: -30px;
+	left: 617px;
+	top: -92px;
 	margin-right: 10px; 
 }
 header>.header_mid>nav>ul>li>.serch_area{ /* 검색창 */
 	/* 위치 */
-/* 	position:relative; */
-/* 	top: -30px; */
+	position:relative;
+	top: -60px;
 	/* 속성 */
 	display: inline-block;
 	
