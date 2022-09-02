@@ -5,14 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지[상품관리]</title>
+<link href="css/admin_product_update.css" rel="stylesheet">
 </head>
 <body>
 	<!-- 헤더부분 -->
 	<jsp:include page="../inc/admin_header.jsp"></jsp:include>
 	<!-- 헤더부분 -->
-	<h1>상품수정</h1>
+	<div class="wrapper_subject">상품수정</div>
+	<section class="admin_product">
 	<form action="ProductUpdatePro.ad?pageNum=${param.pageNum }&pd_num=${param.pd_num }" method="post" enctype="multipart/form-data"> 
-		<table border="1">
+		<table class="myTable">
 			<tr>
 				<td class="td_left">도서제목</td>
 				<td class="td_right"><input type="text" name="pd_subject" value="" required="required"></td>
@@ -20,9 +22,9 @@
 			<tr>
 				<td class="td_left">도서분류</td>
 				<td class="td_right">
-					<input type="radio" name="pd_type" value="국내도서">국내도서
-					<input type="radio" name="pd_type" value="해외도서">해외도서
-					<input type="radio" name="pd_type" value="eBook">eBook
+					<input type="radio" name="pd_type" id="국내도서" value="국내도서"><label for="국내도서">국내도서</label>
+					<input type="radio" name="pd_type" id="국내도서" value="해외도서"><label for="해외도서">해외도서</label>
+					<input type="radio" name="pd_type" id="국내도서" value="eBook"><label for="eBook">eBook</label>
 				</td>
 			</tr>
 			<tr>
@@ -48,9 +50,12 @@
 			</tr>
 		</table>
 		<br>
-		<input type="submit" value="수정하기">
-		<input type="button" value="취소">
-		<input type="reset" value="초기화">
+		<section class="buttonSection">
+			<input type="submit" value="수정하기">
+			<input type="button" value="취소">
+			<input type="reset" value="초기화">
+		</section>
 	</form>
+	</section>
 </body>
 </html>
