@@ -86,6 +86,10 @@ header>.header_mid{
 	background-color: #ffffff;
 	clear: both; /* -float 컷- */
 }
+
+section.header_mid {
+    overflow: hidden;
+}
 header>.header_mid>nav{
 	height: 120px; width: 900px;
 	margin: 0px auto; /* 중앙 정렬 */
