@@ -43,30 +43,30 @@
 <div class="page"  style="text-align: center;">
 		<c:choose>
 			<c:when test="${pdPageInfo.pageNum > 1}">
-				<input type="button" value="이전" onclick="pageMove(${pdPageInfo.pageNum-1})">
+				<input class="num" type="button" value="이전" onclick="pageMove(${pdPageInfo.pageNum-1})">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="이전">
+				<input class="num noClick" type="button" value="이전">
 			</c:otherwise>
 		</c:choose>	
 			
 		<c:forEach var="i" begin="${pdPageInfo.startPage }" end="${pdPageInfo.endPage }">
 			<c:choose>
 				<c:when test="${pdPageInfo.pageNum eq i}">
-					${i }
+					<strong class="num noClick">${i }</strong>
 				</c:when>
 				<c:otherwise>
-					<a href="javascript:void(0)" onclick="pageMove(${i })">${i }</a>
+					<a class="num" href="javascript:void(0)" onclick="pageMove(${i })">${i }</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 
 		<c:choose>
 			<c:when test="${pdPageInfo.pageNum < pdPageInfo.maxPage}">
-				<input type="button" value="다음" onclick="pageMove(${pdPageInfo.pageNum+1 })">
+				<input class="num" type="button" value="다음" onclick="pageMove(${pdPageInfo.pageNum+1 })">
 			</c:when>
 			<c:otherwise>
-				<input type="button" value="다음">
+				<input class="num noClick" type="button" value="다음">
 			</c:otherwise>
 		</c:choose>
 	</div>

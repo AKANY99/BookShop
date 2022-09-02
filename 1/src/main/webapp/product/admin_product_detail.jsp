@@ -58,6 +58,7 @@
 			</div>
 		</div>
 		<img src="upload/${product.pd_content }">
+		<section style="position: relative; clear: both;"></section>
 		<!-- 오른쪽 고정 사이드바 -->
 		<section id="sidebar_section">
 			<div class="sidebar">
