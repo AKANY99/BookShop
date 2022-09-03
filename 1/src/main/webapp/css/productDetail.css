@@ -223,17 +223,56 @@
 	width:900px;
 }
 
+.reviewSection{
+	width: 900px;
+	margin-bottom: 50px;
+	
+}
+.reviewListSection{
+	border-top: 1px solid #c3c3c3;
+	border-bottom: 1px solid #c3c3c3;
+}
+
+.reviewSection table{
+	width: 900px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	border-top: 1px solid #c3c3c3;
+}
+
+.reviewSection table:first-of-type{
+	border-top: none;
+}
+.reviewSection table td{
+	padding: 5px 20px;
+}
+
+.reviewSection table .title{
+	font-size: 18px;
+	color: black;
+	font-weight: bold;
+}
 
 
+.star-rating_review {width:100px; }
+.star-rating_review,.star-rating_review span {display:inline-block; height:18px; overflow:hidden; background:url(../images/star_sp.png)no-repeat; }
+.star-rating_review span{background-position:left bottom; line-height:0; vertical-align:top; }
 
+.wrap-star_review{
+	display: inline;
+	
+}
+.reviewSection table td em{
+	font-size: 8px;
+	color: #c3c3c3;
+}
 
-
-
-
-
-
-
-
+.reviewSection h2{
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	padding: 20px 0px;
+}
 
 
 

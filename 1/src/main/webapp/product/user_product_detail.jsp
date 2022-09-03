@@ -90,7 +90,7 @@ function quanPlus(current){
 				평점
 				<div class="wrap-star">
 				    <div class='star-rating'>
-				        <span style ="width:${product.avg_score*15 }%"></span>
+				        <span style ="width:${product.avg_score*10 }%"></span>
 				    </div>
 				</div>
 				
@@ -198,24 +198,37 @@ function quanPlus(current){
 	<jsp:include page="/inc/user_product_etc.jsp"/>
 	
 
-	<h3>별점 및 리뷰</h3>
-	<c:forEach var="reviewList" items="${reviewList }">
-	<table border="1">
-		<tr>
-			<th colspan="3">작성일 : ${reviewList.review_date }</th>
-			<th>별점 : ${reviewList.review_score }</th> 
-		</tr>
-		<tr>
-			<th>작성자 : ${reviewList.user_name }</th> 
-			<th colspan="3">제목 : ${reviewList.review_subject }</th>
-		</tr>
-		<tr>
-			<td colspan="4">${reviewList.review_content }</td>
-		</tr>
-	</table> 
-	<br>
-	</c:forEach>
-	
+	<section class="reviewSection">
+		<h3>별점 및 리뷰</h3>
+		<br>
+		<section class="reviewListSection">
+			<c:forEach var="reviewList" items="${reviewList }">
+			<table>
+				<tr>
+					<td class="title">${reviewList.review_subject }</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="wrap-star_review">
+						    <div class='star-rating_review'>
+						        <span style ="width:${reviewList.review_score*10 }%"></span>
+						    </div>
+						</div>
+						<em>|</em> ${reviewList.user_name } 
+						<em>|</em> ${reviewList.review_date }
+					</td>
+				</tr>
+				<tr>
+					<td> ${reviewList.review_content }</td>
+				</tr>
+			</table> 
+			<br>
+			</c:forEach>
+			<c:if test="${empty reviewList}">
+				<h2>아직 리뷰가 없습니다</h2>
+			</c:if>
+		</section>
+	</section>
 </section>
 <!-- 상품 조회 시작 끝 -->
 
