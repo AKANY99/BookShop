@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+.star-rating {width:304px; }
+.star-rating,.star-rating span {display:inline-block; height:55px; overflow:hidden; background:url(../images/star.png)no-repeat; }
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
+.productContentDetail{
+	overflow: hidden;
+	margin-bottom: 20px; 
+	margin-top: 20px; 
+}
+
 .productDetail{
 	width: 900px;
 /* 	background-color: orange; */
@@ -8,7 +18,6 @@
 .productImg{
 	width: 400px;
 	float: left;
-	overflow: hidden;
 }
 
 .productImg img{
@@ -83,7 +92,7 @@
 }
 
 .productInfo .productContent{
-	height: 240px;
+	height: 90px;
 	
 	font-size: 14px;
 	color: #aeaeae;
@@ -124,7 +133,7 @@
 
 .productQuan{
 	display: block;
-	height: 60px;
+	height: 135px;
 	margin-bottom: 16px;
 	
 	color: green;
@@ -185,30 +194,10 @@
 
 .productButton{
 	display: block;
+	overflow:visible;
 }
 
 .productButton input[type=submit]{
-	width: 110px;
-	height: 30px;
-	border-color: #199db3;
-    border-bottom-color: #168da1;
-    border-right-color: #168da1;
-    background-color: #199db3;
-    
-    position: relative;
-    padding: 0 7px;
-    text-align: center;
-    text-indent: 0;
-    border-radius: 3px;
-    border: solid 1px #ebebeb;
-    cursor: pointer;
-    
-    /* 폰트 */
-    color: white;
-    font-weight: bold;
-}
-
-.productButton input[type=button]{
 	width: 110px;
 	height: 30px;
 	border-color: #199db3;
@@ -233,8 +222,6 @@
 	margin: 40px 0px;
 	width:900px;
 }
-
-
 
 
 

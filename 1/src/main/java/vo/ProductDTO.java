@@ -30,6 +30,7 @@ public class ProductDTO {
 	
 	//조인용
 	private int cart_pd_quan;
+	private Float avg_score;
 	
 	public String getPd_type() {
 		return pd_type;
@@ -98,6 +99,12 @@ public class ProductDTO {
 	}
 	public void setCart_pd_quan(int cart_pd_quan) {
 		this.cart_pd_quan = cart_pd_quan;
+	}
+	public Float getAvg_score() {
+		return avg_score;
+	}
+	public void setAvg_score(Float avg_score) {
+		this.avg_score = avg_score;
 	}
 	
 	@Override
