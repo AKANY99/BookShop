@@ -151,4 +151,18 @@ INSERT INTO user VALUES (2, '멍멍이', 'mungmung@naver.com', '12341234', '남'
 INSERT INTO user VALUES (3, '냥냥이', 'myaymya@naver.com', '12341234', '남', '123123-1234123', 46586, '부산 뭐시기', '010-1234-1234', now());
 INSERT INTO user VALUES (4, '냥냥이2', 'myaymya2@naver.com', '12341234', '남', '123123-1234123', 46586, '부산 뭐시기', '010-1234-1234',  now());
 
-
+ex) 메인 슬라이더 광고판
+create table main_ad(
+ad_index int primary key,
+ad_pd_num int not null,
+ad_file varchar(50) not null,
+ad_subject varchar(10) not null,
+constraint main_pd_fk foreign key(ad_pd_num) references product(pd_num)
+);
+ex) 그 밑 센터 오늘의책 광고판
+create table center_ad(
+ad_index int primary key,
+ad_pd_num int not null,
+ad_content varchar(50) not null,
+constraint center_pd_fk foreign key(ad_pd_num) references product(pd_num)
+);
