@@ -6,6 +6,9 @@ https://docs.google.com/spreadsheets/d/15ekpF_N1BrWsXZ-rD0bG7CttJ0kTByvFmDYwX6R3
 https://drive.google.com/file/d/16fRds2U6_NN2noTQEJGJh_MuHGL4bHO-/view?usp=sharing  
 
 
+2022-09-04 DB저장  
+https://drive.google.com/file/d/1wNVAFWGVNI3zz-uxdA7Tw0_2JN6NtFcD/view?usp=sharing
+
 ```SQL
 테이터베이스와 테이블
 create database bookshop;
