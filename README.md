@@ -54,7 +54,6 @@ review_score float
 
 
 
-문의 내역
 create table qna(
 qna_num int primary key,
 qna_user varchar(30),
@@ -72,8 +71,7 @@ constraint qna_pd_fk foreign key(qna_pd_num)
 references product(pd_num)
 );
 
-
-장바구니  
+  
 CREATE TABLE cart(
 cart_user_num int NOT NULL,
 cart_pd_num int NOT NULL,
@@ -83,7 +81,6 @@ constraint pd_num_fk FOREIGN KEY(cart_pd_num) REFERENCES product(pd_num)
 );
 
 
-관심목록(찜목록)
 CREATE TABLE interest(
 inter_user_num int NOT NULL,
 inter_pd_num int NOT NULL,
@@ -92,7 +89,6 @@ constraint int_pd_num_fk FOREIGN KEY(inter_pd_num) REFERENCES product(pd_num)
 );
 
 
-주문테이블
 CREATE TABLE ord(
 order_num int PRIMARY KEY,
 order_user_email VARCHAR(50) NOT NULL,
@@ -101,7 +97,8 @@ order_status VARCHAR(20) default '결제완료',
 order_price int NOT NULL,
 constraint ord_email_fk foreign key(order_user_email) references user(user_email)
 );
-주문 세부정보 테이블
+
+
 CREATE TABLE ordDetail(
 order_num int NOT NULL,
 order_pd_num int NOT NULL,
