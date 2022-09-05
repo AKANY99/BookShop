@@ -33,12 +33,12 @@ user_auth varchar(1) not null
 create table product(
 pd_num int primary key,
 pd_type varchar(10) not null,
-pd_name varchar(10) not null,
+pd_name varchar(25) not null,
 pd_price int not null,
 pd_quan int not null,
 pd_file varchar(100) not null,
-pd_subject varchar(50) not null,
-pd_content varchar(500) not null,
+pd_subject varchar(100) not null,
+pd_content varchar(100) not null,
 pd_count int not null,
 pd_date date not null
 );
