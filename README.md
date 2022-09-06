@@ -46,10 +46,14 @@ pd_date date not null
 
 create table review(
 review_num int primary key,
+review_user_num int,
 review_pd_num int,
 review_subject varchar(20),
 review_content varchar(500),
-review_score float
+review_score float,
+review_date date,
+FOREIGN KEY (review_user_num) REFERENCES user(user_num),
+FOREIGN KEY (review_pd_num) REFERENCES product(pd_num)
 );
 
 
